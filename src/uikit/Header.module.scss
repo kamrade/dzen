@@ -1,0 +1,57 @@
+@import "~styles/colors";
+
+.Header {
+  --header-font-size: 12px;
+}
+
+.Header {
+  font-size: var(--header-font-size);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 0;
+  background-color: $color-bg-base-100;
+  box-shadow: 0 0 24px rgba(0,0,0,0.1);
+  h6 {
+    margin: 0;
+  }
+}
+
+.HeaderContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HeaderTitle {
+  font-size: var(--header-font-size);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.HeaderNav {
+  line-height: 0;
+  display: flex;
+  gap: 2rem;
+
+  h6 {
+    line-height: 0;
+  }
+
+  a, a.link, a.visited {
+    font-size: var(--header-font-size);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $color-text-secondary;
+
+  }
+}
+
+.Logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: $color-text-body;
+  border-radius: 50%;
+}

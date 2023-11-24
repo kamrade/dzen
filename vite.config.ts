@@ -7,7 +7,8 @@ export default defineConfig({
   root: path.resolve(__dirname, ''),
   resolve: {
     alias: {
-      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap')
+      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+      '~styles': path.resolve(__dirname, 'src/styles'),
     }
   },
   server: {

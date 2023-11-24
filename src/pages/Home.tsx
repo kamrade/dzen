@@ -1,8 +1,17 @@
+import s from './Home.module.scss';
+
 export function Home() {
   return (
-    <div className="HomePage">
+    <div className={s.HomePage}>
       <div className="container">
-        This is a Home page
+        <div className={s.Slide}></div>
+        <div className={s.Slide}></div>
+        <div className={s.Slide}></div>
+        <div className={s.Slide}></div>
+        <div className={s.Slide}></div>
+        <div className={s.Slide}></div>
+        <div className={s.Slide}></div>
+        <div className={s.Slide}></div>
       </div>
     </div>
   );

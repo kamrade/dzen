@@ -1,1 +1,6 @@
 @import "./styles/bootstrap.scss";
+@import "./styles/typography.scss";
+
+body {
+  color: $color-text-body;
+}
