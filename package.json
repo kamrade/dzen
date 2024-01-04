@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kamrade/react-scrambled-text": "0.0.16",
     "@types/lodash": "4.14.202",
     "bootstrap": "^5.3.2",
     "lodash": "4.17.21",

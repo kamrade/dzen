@@ -2,8 +2,18 @@
 import { NavLink } from 'react-router-dom';
 import s from './Header.module.scss';
 import { StickyHeader } from '~/uikit';
+import { ScrambledText } from '@kamrade/react-scrambled-text';
 
 export const Header = () => {
+
+    let scrambledValues = [
+    '[ Product design ]',
+    '[ Prototyping ]',
+    '[ Infographic ]',
+    '[ Design systems ]',
+    '[ React/Angular components ]',
+    '[ Business and system analytics ]'
+  ]
 
   return (        
     
@@ -14,8 +24,14 @@ export const Header = () => {
           <div className={s.HeaderContent}>
           
             <h6 className={s.HeaderTitle}>
-              Denys Mykhailov.
+              Denys Mykhailov. 
               <span className={s.HeaderTitleEmphasis}>Seasoned UX Designer</span>
+              <ScrambledText 
+                value={scrambledValues} 
+                slideLength={2000} 
+                postAnimate 
+                postAnimateSensetivity={10}
+              />
             </h6>
             
             <div className={s.HeaderNav}>

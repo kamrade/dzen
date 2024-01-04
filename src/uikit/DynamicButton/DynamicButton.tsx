@@ -1,36 +1,34 @@
 import React from 'react';
 import s from './DynamicButton.module.scss';
 
-
 // Geneartive button data
-interface IButtonTheme {
-  name: string;
+export interface IButtonTheme<ThemeType> {
+  name: ThemeType;
   backgroundColor: string;
   outline: string;
   color: string;
   default: boolean;
 }
 
-interface IButtonSize {
-  name: string;
+export interface IButtonSize<SizeType> {
+  name: SizeType;
   paddingY: number;
   paddingX: number;
   innerGap: number;
   default: boolean;
 }
 
-interface IButtonShape {
-  name: string;
+export interface IButtonShape<ShapeType> {
+  name: ShapeType;
   borderRadius: number;
   default: boolean;
 }
 
-interface IButtonGeneratorData {
-  themes: IButtonTheme[];
-  sizes: IButtonSize[];
-  shapes: IButtonShape[];
+export interface IButtonGeneratorData<ThemeType, SizeType, ShapeType> {
+  themes: IButtonTheme<ThemeType>[];
+  sizes: IButtonSize<SizeType>[];
+  shapes: IButtonShape<ShapeType>[];
 }
-
 
 // Basic button data
 type ButtonType = 'button' | 'submit' | 'reset';
@@ -43,15 +41,18 @@ interface IButtonBase {
 
 
 // Function generator
-export function DynamicButtonGenerator<ThemeType, SizeType>(data: IButtonGeneratorData) {
+export function DynamicButtonGenerator<ThemeType, SizeType, ShapeType>(data: IButtonGeneratorData<ThemeType, SizeType, ShapeType>) {
 
   interface IDynamicButton extends IButtonBase {
     theme?: ThemeType;
     size?: SizeType;
+    shape?: ShapeType;
   }
 
-
   const DynamicButton: React.FC<IDynamicButton> = (props) => {
+
+    console.log(props);
+    console.log(data);
 
     return (
       <button className={s.DynamicButton}>
@@ -64,40 +65,3 @@ export function DynamicButtonGenerator<ThemeType, SizeType>(data: IButtonGenerat
   return DynamicButton;
 
 }
-
-
-//  Create component
-export type ButtonTheme = 'primary' | 'secondary';
-export type ButtonSize = 'md' | 'sm';
-
-export const Button = DynamicButtonGenerator<ButtonTheme, ButtonSize>({
-  
-  sizes: [{
-    name: 'md',
-    paddingY: 8,
-    paddingX: 12,
-    innerGap: 4,
-    default: false,
-  }],
-  
-  themes: [{
-    name: 'primary',
-    color: 'white',
-    outline: 'transparent',
-    backgroundColor: 'blue',
-    default: false,
-  }, {
-    name: 'secondary',
-    color: 'darkgrey',
-    outline: 'transparent',
-    backgroundColor: 'lightgray',
-    default: false,
-  }],
-
-  shapes: [{
-    name: 'base',
-    borderRadius: 6,
-    default: true,
-  }]
-
-});
