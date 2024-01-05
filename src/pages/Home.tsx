@@ -7,7 +7,9 @@ export function Home() {
       <div className="container">
         <div className={s.Slide}>
 
-          <Button theme='primary'>Test</Button>
+          <Button>Test 1</Button>{' '}
+          <Button theme='secondary' size={'lg'}>Large Secondary</Button>{' '}
+          <Button theme={'primary'} size={'lg'}>Large Primary</Button>{' '}
 
         </div>
         <div className={s.Slide}></div>

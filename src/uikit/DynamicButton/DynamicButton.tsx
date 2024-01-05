@@ -1,44 +1,9 @@
 import React from 'react';
-import s from './DynamicButton.module.scss';
-
-// Geneartive button data
-export interface IButtonTheme<ThemeType> {
-  name: ThemeType;
-  backgroundColor: string;
-  outline: string;
-  color: string;
-  default: boolean;
-}
-
-export interface IButtonSize<SizeType> {
-  name: SizeType;
-  paddingY: number;
-  paddingX: number;
-  innerGap: number;
-  default: boolean;
-}
-
-export interface IButtonShape<ShapeType> {
-  name: ShapeType;
-  borderRadius: number;
-  default: boolean;
-}
-
-export interface IButtonGeneratorData<ThemeType, SizeType, ShapeType> {
-  themes: IButtonTheme<ThemeType>[];
-  sizes: IButtonSize<SizeType>[];
-  shapes: IButtonShape<ShapeType>[];
-}
-
-// Basic button data
-type ButtonType = 'button' | 'submit' | 'reset';
-
-interface IButtonBase {
-  type?: ButtonType;
-  disabled?: boolean;
-  children?: React.ReactNode;
-}
-
+import './DynamicButton.scss';
+import { IButtonGeneratorData } from './DynamicButton.params.ts';
+import { CustomCSS } from './CustomCSS.ts';
+import { IButtonBase } from './BasicButtonData.ts';
+import { defaultTheme, defaultSize, defaultShape } from './Defaults.ts';
 
 // Function generator
 export function DynamicButtonGenerator<ThemeType, SizeType, ShapeType>(data: IButtonGeneratorData<ThemeType, SizeType, ShapeType>) {
@@ -51,12 +16,33 @@ export function DynamicButtonGenerator<ThemeType, SizeType, ShapeType>(data: IBu
 
   const DynamicButton: React.FC<IDynamicButton> = (props) => {
 
-    console.log(props);
-    console.log(data);
+    const th = data.themes.find((theme) => theme.name === props.theme);
+    const sz = data.sizes.find((size) => size.name === props.size);
+    const sh = data.shapes.find((shape) => shape.name === props.shape);
+
+    const getStyles = (): CustomCSS => {
+      return {
+        '--background': th?.background || defaultTheme.background ,
+        '--hoverBackground': th?.hoverBackground || defaultTheme.hoverBackground,
+        '--activeBackground': th?.activeBackground || defaultTheme.activeBackground,
+        '--color': th?.color || defaultTheme.color,
+        '--borderColor': th?.borderColor || defaultTheme.borderColor,
+
+        '--paddingY': `${sz?.paddingY || defaultSize.paddingY}px`,
+        '--paddingX': `${sz?.paddingX || defaultSize.paddingX}px`,
+        '--innerGap': `${sz?.innerGap || defaultSize.innerGap}px`,
+        '--fontSize': `${sz?.fontSize || defaultSize.fontSize}px`,
+        '--lineHeight': `${sz?.lineHeight || defaultSize.lineHeight}`,
+
+        '--borderRadius': sh?.borderRadius || defaultShape.borderRadius,
+      }
+    }
 
     return (
-      <button className={s.DynamicButton}>
-        {props.children}
+      <button className={'DynamicButton'} style={getStyles()}>
+        <span className={'DynamicButtonContent'}>
+          {props.children}
+        </span>
       </button>
     );
 

@@ -26,12 +26,12 @@ export const Header = () => {
             <h6 className={s.HeaderTitle}>
               Denys Mykhailov. 
               <span className={s.HeaderTitleEmphasis}>Seasoned UX Designer</span>
-              <ScrambledText 
+              {/* <ScrambledText 
                 value={scrambledValues} 
                 slideLength={2000} 
                 postAnimate 
                 postAnimateSensetivity={10}
-              />
+              /> */}
             </h6>
             
             <div className={s.HeaderNav}>
