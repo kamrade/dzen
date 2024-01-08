@@ -1,12 +1,19 @@
-import {IButtonShape, IButtonSize, IButtonTheme} from "~/uikit/DynamicButton/DynamicButton.params.ts";
+import { IButtonShape, IButtonSize, IButtonTheme } from "~/uikit/DynamicButton/Params.ts";
 
-export const defaultTheme: IButtonTheme<'default'> = {
+export const defaultTheme: IButtonTheme<'default', 'default'> = {
   name: 'default',
-  background: '#f2f4f6',
-  hoverBackground: '#eaecef',
-  activeBackground: '#e3e6e8',
-  borderColor: 'transparent',
-  color: '#000',
+  variants: [{
+    name: 'default',
+    background: '#f2f4f6',
+    hoverBackground: '#eaecef',
+    activeBackground: '#e3e6e8',
+    borderColor: 'transparent',
+    color: '#000',
+    focusColor: '#000',
+    convex: true,
+    focusFrame: true,
+  }]
+
 }
 
 export const defaultSize: IButtonSize<'default'> = {
@@ -16,9 +23,11 @@ export const defaultSize: IButtonSize<'default'> = {
   innerGap: 4,
   fontSize: 16,
   lineHeight: 1.5,
+  borderWidth: 1
 }
 
 export const defaultShape: IButtonShape<'default'> = {
   name: 'default',
-  borderRadius: '6px'
+  borderRadius: '6px',
+  focusBorderRadius: '8px'
 }

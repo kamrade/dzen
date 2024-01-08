@@ -2,41 +2,93 @@ import { DynamicButtonGenerator } from ".";
 
 //  Create component
 export type ButtonTheme = 'primary' | 'secondary' | 'contrast';
-export type ButtonSize = 'md' | 'lg';
+export type ButtonVariant = 'text' | 'contained' | 'outlined';
+export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonShape = 'straight' | 'rounded' | 'circled';
 
-export const Button = DynamicButtonGenerator<ButtonTheme, ButtonSize, ButtonShape>({
+export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonSize, ButtonShape>({
+
+  mainClassName: 'FancyButton',
 
   themes: [{
     name: 'primary',
-    background: '#63D0F2',
-    hoverBackground: '#59C8EB',
-    activeBackground: '#53BEE0',
-    borderColor: '#30BEEB',
-    color: '#ffffff',
+    variants: [{
+      name: 'text',
+      background: 'transparent',
+      hoverBackground: '#E7F6FF',
+      activeBackground: '#DBF1FF',
+      borderColor: 'transparent',
+      color: '#1983BF',
+      focusColor: '#7ED1FF',
+      convex: true,
+      focusFrame: true,
+    }, {
+      name: 'contained',
+      background: '#34B0F6',
+      hoverBackground: '#24A4EC',
+      activeBackground: '#1D9BE3',
+      borderColor: 'transparent',
+      color: '#ffffff',
+      focusColor: '#7ED1FF',
+      convex: true,
+      focusFrame: true,
+    }, {
+      name: 'outlined',
+      background: 'transparent',
+      hoverBackground: '#E7F6FF',
+      activeBackground: '#DBF1FF',
+      borderColor: '#7ED1FF',
+      color: '#1983BF',
+      focusColor: '#7ED1FF',
+      convex: true,
+      focusFrame: true,
+    }]
+
   }, {
     name: 'secondary',
-    background: '#1B4552',
-    hoverBackground: '#133540',
-    activeBackground: '#0C262E',
-    borderColor: 'transparent',
-    color: 'white',
-  }, {
-    name: 'contrast',
-    background: '#1B4552',
-    hoverBackground: '#133540',
-    activeBackground: '#0C262E',
-    borderColor: 'transparent',
-    color: '#ffffff',
+    variants: [{
+      name: 'text',
+      background: 'transparent',
+      hoverBackground: '#F3F6F8',
+      activeBackground: '#EBEEF0',
+      borderColor: 'transparent',
+      color: '#272D34',
+      focusColor: '#7ED1FF',
+    }, {
+      name: 'contained',
+      background: '#F3F6F8',
+      hoverBackground: '#EBEEF0',
+      activeBackground: '#E3E6E8',
+      borderColor: '#E3E6E8',
+      color: '#272D34',
+      focusColor: '#7ED1FF',
+    }, {
+      name: 'outlined',
+      background: 'transparent',
+      hoverBackground: '#F3F6F8',
+      activeBackground: '#EBEEF0',
+      borderColor: '#C1CAD0',
+      color: '#272D34',
+      focusColor: '#7ED1FF',
+    }]
   }],
 
   sizes: [{
+    name: 'sm',
+    paddingY: 2,
+    paddingX: 8,
+    innerGap: 2,
+    fontSize: 12,
+    lineHeight: 1.5,
+    borderWidth: 1,
+  }, {
     name: 'md',
     paddingY: 4,
     paddingX: 12,
     innerGap: 4,
     fontSize: 14,
     lineHeight: 1.5,
+    borderWidth: 1,
   }, {
     name: 'lg',
     paddingY: 8,
@@ -44,17 +96,21 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonSize, ButtonShap
     innerGap: 4,
     fontSize: 14,
     lineHeight: 1.5,
+    borderWidth: 1,
   }],
 
   shapes: [{
     name: 'straight',
-    borderRadius: '0'
+    borderRadius: 0,
+    focusBorderRadius: 2,
   }, {
     name: 'rounded',
-    borderRadius: '6px',
+    borderRadius: 6,
+    focusBorderRadius: 8,
   }, {
     name: 'circled',
-    borderRadius: '50%'
+    borderRadius: 16,
+    focusBorderRadius: 18,
   }]
 
 });

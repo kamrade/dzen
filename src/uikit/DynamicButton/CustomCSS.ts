@@ -14,4 +14,9 @@ export interface CustomCSS extends CSSProperties {
   '--lineHeight': string;
 
   '--borderRadius': string;
+  '--focusBorderRadius': string;
+
+  '--focusColor': string;
+  '--borderWidth': string;
+  '--focusBorderOffset': string;
 }
