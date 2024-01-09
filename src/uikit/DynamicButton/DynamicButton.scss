@@ -36,8 +36,10 @@
 
   &.DynamicButton--convex {
     box-shadow:
-      inset 2px 2px 1px 0 rgba(255,255,255,.2),
-      inset -2px -2px 1px 0 rgba(255,255,255,.2),
+      inset 2px 2px 1px 0 rgba(255,255,255,.15),
+      inset -2px 2px 1px 0 rgba(255,255,255,.15),
+      inset 2px -2px 1px 0 rgba(255,255,255,.15),
+      inset -2px -2px 1px 0 rgba(255,255,255,.15),
       inset 0 -1px 2px 0 rgba(0,0,0,.1)
     ;
 
@@ -51,6 +53,15 @@
       .DynamicButtonContent {
         transform: translateY(0.5px);
       }
+    }
+
+    &:not(:active):focus {
+      box-shadow: inset 2px 2px 1px 0 rgba(255,255,255,.15),
+        inset -2px 2px 1px 0 rgba(255,255,255,.15),
+        inset 2px -2px 1px 0 rgba(255,255,255,.15),
+        inset -2px -2px 1px 0 rgba(255,255,255,.15),
+        inset 0 -1px 2px 0 rgba(0,0,0,.1),
+        0 0 0 3px rgba(86, 180, 231, .2);
     }
   }
 

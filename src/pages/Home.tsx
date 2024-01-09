@@ -31,6 +31,12 @@ export function Home() {
             <Button shape={'circled'} theme='primary' variant={'outlined'} size={'lg'}>Secondary Outlined</Button>{' '}
           </div>
 
+          <div className="mb-3">
+            <Button shape={'circled'} theme='primary' variant={'text'} size={'huge'}>Secondary Text</Button>{' '}
+            <Button shape={'circled'} theme='primary' variant={'contained'} size={'huge'}>Secondary Contained</Button>{' '}
+            <Button shape={'circled'} theme='primary' variant={'outlined'} size={'huge'}>Secondary Outlined</Button>{' '}
+          </div>
+
         </div>
         <div className={s.Slide}></div>
         <div className={s.Slide}></div>

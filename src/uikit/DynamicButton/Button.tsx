@@ -3,7 +3,7 @@ import { DynamicButtonGenerator } from ".";
 //  Create component
 export type ButtonTheme = 'primary' | 'secondary' | 'contrast';
 export type ButtonVariant = 'text' | 'contained' | 'outlined';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'huge';
 export type ButtonShape = 'straight' | 'rounded' | 'circled';
 
 export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonSize, ButtonShape>({
@@ -97,6 +97,14 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
     fontSize: 14,
     lineHeight: 1.5,
     borderWidth: 1,
+  }, {
+    name: 'huge',
+    paddingY: 24,
+    paddingX: 32,
+    innerGap: 8,
+    fontSize: 24,
+    lineHeight: 1.2,
+    borderWidth: 3,
   }],
 
   shapes: [{
