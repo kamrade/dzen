@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Basic button data
-export type ButtonType = 'button' | 'submit' | 'reset';
+export type ButtonHTMLTypes = 'button' | 'submit' | 'reset';
 
 export interface IButtonBase {
-  type?: ButtonType;
+  type?: ButtonHTMLTypes;
   disabled?: boolean;
   children?: React.ReactNode;
 }
@@ -39,8 +39,8 @@ export interface IButtonSize<SizeType> {
 
 export interface IButtonShape<ShapeType> {
   name: ShapeType;
-  borderRadius: number | string;
-  focusBorderRadius: number | string;
+  borderRadius: number;
+  focusBorderRadius: number;
 }
 
 // Button Generator Component Props

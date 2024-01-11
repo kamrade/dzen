@@ -3,7 +3,7 @@ import { DynamicButtonGenerator } from ".";
 //  Create component
 export type ButtonTheme = 'primary' | 'secondary' | 'contrast';
 export type ButtonVariant = 'text' | 'contained' | 'outlined';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'huge';
 export type ButtonShape = 'straight' | 'rounded' | 'circled';
 
 export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonSize, ButtonShape>({
@@ -20,7 +20,7 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
       borderColor: 'transparent',
       color: '#1983BF',
       focusColor: '#7ED1FF',
-      convex: true,
+      convex: false,
       focusFrame: true,
     }, {
       name: 'contained',
@@ -93,9 +93,17 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
     name: 'lg',
     paddingY: 8,
     paddingX: 12,
-    innerGap: 4,
+    innerGap: 5,
     fontSize: 14,
     lineHeight: 1.5,
+    borderWidth: 1,
+  }, {
+    name: 'huge',
+    paddingY: 24,
+    paddingX: 24,
+    innerGap: 8,
+    fontSize: 24,
+    lineHeight: 1.25,
     borderWidth: 1,
   }],
 
@@ -109,8 +117,8 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
     focusBorderRadius: 8,
   }, {
     name: 'circled',
-    borderRadius: 16,
-    focusBorderRadius: 18,
+    borderRadius: 30,
+    focusBorderRadius: 32,
   }]
 
 });

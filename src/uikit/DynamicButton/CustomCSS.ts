@@ -19,4 +19,8 @@ export interface CustomCSS extends CSSProperties {
   '--focusColor': string;
   '--borderWidth': string;
   '--focusBorderOffset': string;
+
+  '--focusHeight': string;
+  '--cutRight': string;
+  '--cutLeft': string;
 }

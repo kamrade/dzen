@@ -28,6 +28,6 @@ export const defaultSize: IButtonSize<'default'> = {
 
 export const defaultShape: IButtonShape<'default'> = {
   name: 'default',
-  borderRadius: '6px',
-  focusBorderRadius: '8px'
+  borderRadius: 6,
+  focusBorderRadius: 8
 }
