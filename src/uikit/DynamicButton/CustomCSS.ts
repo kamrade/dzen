@@ -1,11 +1,11 @@
 import { CSSProperties } from "react";
 
 export interface CustomCSS extends CSSProperties {
-  '--background': string;
-  '--hoverBackground': string;
-  '--activeBackground': string;
-  '--color': string;
-  '--borderColor': string;
+  // '--background': string;
+  // '--hoverBackground': string;
+  // '--activeBackground': string;
+  // '--color': string;
+  // '--borderColor': string;
 
   '--paddingY': string;
   '--paddingX': string;
@@ -16,7 +16,7 @@ export interface CustomCSS extends CSSProperties {
   '--borderRadius': string;
   '--focusBorderRadius': string;
 
-  '--focusColor': string;
+  // '--focusColor': string;
   '--borderWidth': string;
   '--focusBorderOffset': string;
 

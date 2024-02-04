@@ -3,6 +3,7 @@ import './DynamicButton.scss';
 import { IButtonGeneratorData, IButtonBase } from './Params.ts';
 import { CustomCSS } from './CustomCSS.ts';
 import { defaultTheme, defaultSize, defaultShape } from './Defaults.ts';
+import { addStylesheet } from './add-stylesheet.ts';
 
 // Function generator
 export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, ShapeType>(data: IButtonGeneratorData<ThemeType, ButtonVariant, SizeType, ShapeType>) {
@@ -22,6 +23,71 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
     suffixIcon?: ReactNode;
   }
 
+
+  const stylesId = 'dynamic-button-styles';
+
+  if ( !document.getElementById(stylesId) ) {
+    console.log(data);
+
+    const allThemesTypes: ThemeType[] = data.themes.map(theme => theme.name);
+    const vrs = data.themes[0].variants.map(variant => variant.name);
+    const allSizes = data.sizes.map(size => size.name);
+    // const shapes = data.shapes.map(shape => shape.name);
+
+    let allSizesCss = '';
+
+    allSizes.map((sizeType) => {
+      allSizesCss +=
+        `.${data.mainClassName}.${data.mainClassName}-size-${sizeType} {`;
+      let sz = data.sizes.find(size => size.name === sizeType);
+      if (sz) {
+        allSizesCss += (
+          `--paddingY: ${sz.paddingY}px;` +
+          `--paddingX: ${sz.paddingX}px;` +
+          `--innerGap: ${sz.innerGap}px;` +
+          `--fontSize: ${sz.fontSize}px;` +
+          `--lineHeight: ${sz.lineHeight};` +
+          `--borderWidth: ${sz.borderWidth}px;`
+        );
+      }
+    });
+
+    console.log(allSizesCss);
+
+    let themeVariantCss = '';
+
+    allThemesTypes.map(themeType => {
+      vrs.map(variantName => {
+        themeVariantCss +=
+          `.${data.mainClassName}.${data.mainClassName}-theme-${themeType}.${data.mainClassName}-variant-${variantName} {`
+        let st = data.themes.find(theme => theme.name === themeType)?.variants?.find(variant => variant.name === variantName);
+        if (st) {
+
+          const background = st?.background || defaultTheme.variants[0].background;
+          const hoverBackground = st?.hoverBackground || defaultTheme.variants[0].hoverBackground;
+          const activeBackground = st?.activeBackground || defaultTheme.variants[0].activeBackground;
+          const color = st?.color || defaultTheme.variants[0].color;
+          const borderColor = st?.borderColor || defaultTheme.variants[0].borderColor;
+          const focusColor = st?.focusColor || defaultTheme.variants[0].focusColor;
+
+          themeVariantCss += (
+            `--background: ${background};` +
+            `--hoverBackground: ${hoverBackground};` +
+            `--activeBackground: ${activeBackground};` +
+            `--color: ${color};` +
+            `--borderColor: ${borderColor};` +
+            `--focusColor: ${focusColor};` +
+            `}`
+          );
+        }
+      });
+    });
+
+    const styles = themeVariantCss + allSizesCss;
+    addStylesheet(styles, stylesId)
+
+  }
+
   const DynamicButton: React.FC<IDynamicButton> = (props) => {
 
     const { onClick, customLoader, prefixIcon, suffixIcon } = props;
@@ -38,12 +104,12 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
     const borderWidth = size?.borderWidth === undefined ? defaultSize.borderWidth : size?.borderWidth;
     const innerGap = size?.innerGap === undefined ? defaultSize.innerGap : size?.innerGap;
 
-    const background = theme?.background || defaultTheme.variants[0].background;
-    const hoverBackground = theme?.hoverBackground || defaultTheme.variants[0].hoverBackground;
-    const activeBackground = theme?.activeBackground || defaultTheme.variants[0].activeBackground;
-    const color = theme?.color || defaultTheme.variants[0].color;
-    const borderColor = theme?.borderColor || defaultTheme.variants[0].borderColor;
-    const focusColor = theme?.focusColor || defaultTheme.variants[0].focusColor;
+    // const background = theme?.background || defaultTheme.variants[0].background;
+    // const hoverBackground = theme?.hoverBackground || defaultTheme.variants[0].hoverBackground;
+    // const activeBackground = theme?.activeBackground || defaultTheme.variants[0].activeBackground;
+    // const color = theme?.color || defaultTheme.variants[0].color;
+    // const borderColor = theme?.borderColor || defaultTheme.variants[0].borderColor;
+    // const focusColor = theme?.focusColor || defaultTheme.variants[0].focusColor;
 
     let borderRadius = shape?.borderRadius === undefined ? defaultShape.borderRadius : shape?.borderRadius;
     let focusBorderRadius = shape?.focusBorderRadius === undefined ? defaultShape.focusBorderRadius : shape?.focusBorderRadius;
@@ -62,12 +128,12 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
     const disabled = props.disabled || props.isLoading;
 
     const getStyleVariables = (): CustomCSS => ({
-      '--background': background,
-      '--hoverBackground': hoverBackground,
-      '--activeBackground': activeBackground,
-      '--color': color,
-      '--borderColor': borderColor,
-      '--focusColor': focusColor,
+      // '--background': background,
+      // '--hoverBackground': hoverBackground,
+      // '--activeBackground': activeBackground,
+      // '--color': color,
+      // '--borderColor': borderColor,
+      // '--focusColor': focusColor,
 
       '--paddingY': `${paddingY}px`,
       '--paddingX': `${paddingX}px`,
@@ -92,6 +158,12 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
       className += ' ';
       className += data.mainClassName;
       className += ' ';
+
+      className += props.theme ? data.mainClassName + '-theme-' + props.theme + ' ' : '';
+      className += props.variant ? data.mainClassName + '-variant-' + props.variant + ' ' : '';
+      className += props.size ? data.mainClassName + '-size-' + props.size + ' ' : '';
+      className += props.shape ? data.mainClassName + '-shape-' + props.shape + ' ' : '';
+
       className += theme?.convex ? 'DynamicButton--convex' : '';
       className += ' ';
       className += theme?.focusFrame ? 'DynamicButton--focusFrame' : '';
