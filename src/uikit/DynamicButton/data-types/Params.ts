@@ -22,9 +22,9 @@ export interface IButtonVariant<ButtonVariants> {
   focusFrame?: boolean;
 }
 
-export interface IButtonTheme<ThemeType, VariantType> {
+export interface IButtonTheme<ThemeType, ButtonVariant> {
   name: ThemeType;
-  variants: IButtonVariant<VariantType>[];
+  variants: IButtonVariant<ButtonVariant>[];
 }
 
 export interface IButtonSize<SizeType> {

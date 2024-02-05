@@ -17,7 +17,7 @@ export function Home() {
         <div className={s.Slide}>
 
           <div className="mb-3">
-            <Button style={{ color: 'green' }} theme='primary' shape={'straight'} variant={'text'} size={'lg'}>Primary Text Large</Button>{' '}
+            <Button onClick={() => console.log('Knock!')} style={{ color: 'green' }} theme='primary' shape={'straight'} variant={'text'} size={'lg'}>Primary Text Large</Button>{' '}
             <Button theme='primary' shape={'straight'} variant={'contained'} size={'lg'}>Primary Contained Large</Button>{' '}
             <Button prefixIcon={prefix} theme='primary' shape={'straight'} variant={'outlined'} size={'lg'}>Primary Outlined Large</Button>{' '}
           </div>

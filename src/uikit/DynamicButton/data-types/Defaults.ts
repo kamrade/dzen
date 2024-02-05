@@ -1,4 +1,4 @@
-import { IButtonShape, IButtonSize, IButtonTheme } from "~/uikit/DynamicButton/Params.ts";
+import { IButtonShape, IButtonSize, IButtonTheme } from "./Params.ts";
 
 export const defaultTheme: IButtonTheme<'default', 'default'> = {
   name: 'default',
