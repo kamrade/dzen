@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import './DynamicButton.scss';
 import { IButtonGeneratorData, IButtonBase } from './Params.ts';
-import { CustomCSS } from './CustomCSS.ts';
 import { defaultTheme, defaultSize, defaultShape } from './Defaults.ts';
 import { addStylesheet } from './add-stylesheet.ts';
 
@@ -23,40 +22,25 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
     suffixIcon?: ReactNode;
   }
 
-
   const stylesId = 'dynamic-button-styles';
 
   if ( !document.getElementById(stylesId) ) {
-    console.log(data);
 
     const allThemesTypes: ThemeType[] = data.themes.map(theme => theme.name);
-    const vrs = data.themes[0].variants.map(variant => variant.name);
+    const allVariants = data.themes[0].variants.map(variant => variant.name);
     const allSizes = data.sizes.map(size => size.name);
-    // const shapes = data.shapes.map(shape => shape.name);
+    const allShapes = data.shapes.map(shape => shape.name);
 
     let allSizesCss = '';
-
-    allSizes.map((sizeType) => {
-      allSizesCss +=
-        `.${data.mainClassName}.${data.mainClassName}-size-${sizeType} {`;
-      let sz = data.sizes.find(size => size.name === sizeType);
-      if (sz) {
-        allSizesCss += (
-          `--paddingY: ${sz.paddingY}px;` +
-          `--paddingX: ${sz.paddingX}px;` +
-          `--innerGap: ${sz.innerGap}px;` +
-          `--fontSize: ${sz.fontSize}px;` +
-          `--lineHeight: ${sz.lineHeight};` +
-          `--borderWidth: ${sz.borderWidth}px;` +
-          `}`
-        );
-      }
-    });
-
     let themeVariantCss = '';
+    let allShapesCss = '';
+
+    const focusOffset = 3;
+    let height = 0;
+    let focusHeight = 0;
 
     allThemesTypes.map(themeType => {
-      vrs.map(variantName => {
+      allVariants.map(variantName => {
         themeVariantCss +=
           `.${data.mainClassName}.${data.mainClassName}-theme-${themeType}.${data.mainClassName}-variant-${variantName} {`
         let st = data.themes.find(theme => theme.name === themeType)?.variants?.find(variant => variant.name === variantName);
@@ -82,7 +66,63 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
       });
     });
 
-    const styles = themeVariantCss + allSizesCss;
+    allSizes.map((sizeType) => {
+      allSizesCss +=
+        `.${data.mainClassName}.${data.mainClassName}-size-${sizeType} {`;
+      let sz = data.sizes.find(size => size.name === sizeType);
+      if (sz) {
+        const paddingY = sz?.paddingY === undefined ? defaultSize.paddingY : sz?.paddingY;
+        const paddingX = sz?.paddingX === undefined ?  defaultSize.paddingX : sz?.paddingX;
+        const fontSize = sz?.fontSize === undefined ? defaultSize.fontSize : sz?.fontSize;
+        const lineHeight = sz?.lineHeight === undefined ? defaultSize.lineHeight : sz?.lineHeight;
+        const borderWidth = sz?.borderWidth === undefined ? defaultSize.borderWidth : sz?.borderWidth;
+        const innerGap = sz?.innerGap === undefined ? defaultSize.innerGap : sz?.innerGap;
+
+        const focusBorderOffset = -1 * ((sz?.borderWidth || defaultSize.borderWidth) + focusOffset);
+        height = (paddingY * 2) + fontSize * lineHeight + borderWidth * 2;
+        focusHeight = height + (focusOffset * 2);
+
+
+        allSizesCss += (
+          `--paddingY: ${paddingY}px;` +
+          `--paddingX: ${paddingX}px;` +
+          `--innerGap: ${innerGap}px;` +
+          `--fontSize: ${fontSize}px;` +
+          `--lineHeight: ${lineHeight};` +
+          `--borderWidth: ${borderWidth}px;` +
+          `--focusBorderOffset: ${focusBorderOffset}px;` +
+          `--focusHeight: ${focusHeight}px;` +
+          `}`
+        );
+      }
+    });
+
+    allShapes.map((shapeType) => {
+      allShapesCss +=
+        `.${data.mainClassName}.${data.mainClassName}-shape-${shapeType} {`;
+      let sh = data.shapes.find(shape => shape.name === shapeType);
+
+      let borderRadius = sh?.borderRadius === undefined ? defaultShape.borderRadius : sh?.borderRadius;
+      let focusBorderRadius = sh?.focusBorderRadius === undefined ? defaultShape.focusBorderRadius : sh?.focusBorderRadius;
+
+      borderRadius = borderRadius > (height/2) ? Math.ceil(height/2) : borderRadius;
+      focusBorderRadius = focusBorderRadius > (focusHeight/2) ? Math.ceil(focusHeight/2) : focusBorderRadius;
+
+      const cut = Math.ceil(((focusHeight - (borderRadius))/focusHeight) * 100);
+      const cutLeft = cut > 80 ? 80 : cut;
+      const cutRight = (100 - cut) < 20 ? 20 : (100 - cut);
+
+      if (sh) {
+        allShapesCss +=
+          `--borderRadius: ${borderRadius}px;` +
+          `--focusBorderRadius: ${focusBorderRadius}px;` +
+          `--cutLeft: ${cutLeft}%;` +
+          `--cutRight: ${cutRight}%;` +
+          `}`
+      }
+    })
+
+    const styles = themeVariantCss + allSizesCss + allShapesCss;
     addStylesheet(styles, stylesId)
 
   }
@@ -92,54 +132,11 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
     const { onClick, customLoader, prefixIcon, suffixIcon } = props;
 
 
-    const size = data.sizes.find((s) => s.name === props.size);
+    // const size = data.sizes.find((s) => s.name === props.size);
     const theme = data.themes.find((t) => t.name === props.theme)?.variants.find((v) => v.name === props.variant);
-    const shape = data.shapes.find((s) => s.name === props.shape);
-    const focusOffset = 3;
-
-    const paddingY = size?.paddingY === undefined ? defaultSize.paddingY : size?.paddingY;
-    const paddingX = size?.paddingX === undefined ?  defaultSize.paddingX : size?.paddingX;
-    const fontSize = size?.fontSize === undefined ? defaultSize.fontSize : size?.fontSize;
-    const lineHeight = size?.lineHeight === undefined ? defaultSize.lineHeight : size?.lineHeight;
-    const borderWidth = size?.borderWidth === undefined ? defaultSize.borderWidth : size?.borderWidth;
-    const innerGap = size?.innerGap === undefined ? defaultSize.innerGap : size?.innerGap;
-
-    const focusBorderOffset = -1 * ((size?.borderWidth || defaultSize.borderWidth) + focusOffset);
-    const height = (paddingY * 2) + fontSize * lineHeight + borderWidth * 2;
-    const focusHeight = height + (focusOffset * 2);
-
-    let borderRadius = shape?.borderRadius === undefined ? defaultShape.borderRadius : shape?.borderRadius;
-    let focusBorderRadius = shape?.focusBorderRadius === undefined ? defaultShape.focusBorderRadius : shape?.focusBorderRadius;
-
-    borderRadius = borderRadius > (height/2) ? Math.ceil(height/2) : borderRadius;
-    focusBorderRadius = focusBorderRadius > (focusHeight/2) ? Math.ceil(focusHeight/2) : focusBorderRadius;
-
-    const cut = Math.ceil(((focusHeight - (borderRadius))/focusHeight) * 100);
-    const cutLeft = cut > 80 ? 80 : cut;
-    const cutRight = (100 - cut) < 20 ? 20 : (100 - cut);
+    // const shape = data.shapes.find((s) => s.name === props.shape);
 
     const disabled = props.disabled || props.isLoading;
-
-    const getStyleVariables = (): CustomCSS => ({
-
-      '--paddingY': `${paddingY}px`,
-      '--paddingX': `${paddingX}px`,
-      '--innerGap': `${innerGap}px`,
-      '--fontSize': `${fontSize}px`,
-      '--lineHeight': `${lineHeight}`,
-      '--borderWidth': `${borderWidth}px`,
-
-      '--borderRadius': `${borderRadius}px`,
-
-      '--focusBorderRadius': `${focusBorderRadius}px`,
-      '--focusBorderOffset': `${focusBorderOffset}px`,
-
-
-
-      '--focusHeight': `${focusHeight}px`,
-      '--cutLeft': `${cutLeft}%`,
-      '--cutRight': `${cutRight}%`,
-    });
 
     const getClassName = () => {
       let className = 'DynamicButton';
@@ -168,10 +165,7 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
       <button
         onClick={onClick}
         className={ getClassName() }
-        style={{
-          ...getStyleVariables(),
-          ...props.style
-        }}
+        style={{ ...props.style }}
         disabled={disabled}
       >
         {prefixIcon &&
