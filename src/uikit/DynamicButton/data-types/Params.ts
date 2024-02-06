@@ -43,10 +43,18 @@ export interface IButtonShape<ShapeType> {
   focusBorderRadius: number;
 }
 
+export interface IDefaults<ThemeType, ButtonVariant, SizeType, ShapeType> {
+  defaultTheme: ThemeType;
+  defaultVariant: ButtonVariant;
+  defaultSize: SizeType;
+  defaultShape: ShapeType;
+}
+
 // Button Generator Component Props
 export interface IButtonGeneratorData<ThemeType, ButtonVariant, SizeType, ShapeType> {
   themes: IButtonTheme<ThemeType, ButtonVariant>[];
   sizes: IButtonSize<SizeType>[];
   shapes: IButtonShape<ShapeType>[];
+  defaults: IDefaults<ThemeType, ButtonVariant, SizeType, ShapeType>;
   mainClassName: string;
 }

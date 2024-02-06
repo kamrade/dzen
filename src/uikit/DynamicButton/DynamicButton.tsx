@@ -9,7 +9,6 @@ export interface IDynamicButton<ThemeType, ButtonVariant, SizeType, ShapeType> e
   variant?: ButtonVariant;
   size?: SizeType;
   shape?: ShapeType;
-  onClick?: () => any;
   block?: boolean;
   disabled?: boolean;
   isLoading?: boolean;
@@ -17,6 +16,8 @@ export interface IDynamicButton<ThemeType, ButtonVariant, SizeType, ShapeType> e
   style?: React.CSSProperties;
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
+
+  onClick?: () => void;
 }
 
 // Function generator
@@ -27,7 +28,7 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
   const DynamicButton: React.FC<IDynamicButton<ThemeType, ButtonVariant, SizeType, ShapeType>> = (props) => {
 
     const { onClick, customLoader, prefixIcon, suffixIcon } = props;
-    const theme = data.themes.find((t) => t.name === props.theme)?.variants.find((v) => v.name === props.variant);
+    const themeVariant = data.themes.find((t) => t.name === props.theme)?.variants.find((v) => v.name === props.variant);
     const disabled = props.disabled || props.isLoading;
 
     return (
@@ -35,14 +36,16 @@ export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, Shape
         onClick={onClick}
         className={ getButtonClassname<ThemeType, ButtonVariant, SizeType, ShapeType>({
           data: data,
-          th: theme,
           theme: props.theme,
           variant: props.variant,
           size: props.size,
           shape: props.shape,
           block: props.block,
           disabled: disabled,
-          isLoading: props.isLoading
+          isLoading: props.isLoading,
+          convex: themeVariant?.convex,
+          focusFrame: themeVariant?.focusFrame
+
         }) }
         style={{ ...props.style }}
         disabled={disabled}

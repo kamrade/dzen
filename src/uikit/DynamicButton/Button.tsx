@@ -10,6 +10,13 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
 
   mainClassName: 'FancyButton',
 
+  defaults: {
+    defaultTheme: 'primary',
+    defaultVariant: 'text',
+    defaultSize: 'md',
+    defaultShape: 'rounded'
+  },
+
   themes: [{
     name: 'primary',
     variants: [{
