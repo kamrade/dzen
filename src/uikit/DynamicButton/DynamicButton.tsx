@@ -1,67 +1,79 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './DynamicButton.scss';
-import { IButtonGeneratorData, IButtonBase } from './Params.ts';
-import { CustomCSS } from './CustomCSS.ts';
-import { defaultTheme, defaultSize, defaultShape } from './Defaults.ts';
+import { IButtonGeneratorData, IButtonBase } from './data-types/Params.ts';
+import { setButtonVariables } from './helpers/set-button-variables.ts';
+import { getButtonClassname } from './helpers/get-button-classname.ts';
+
+export interface IDynamicButton<ThemeType, ButtonVariant, SizeType, ShapeType> extends IButtonBase {
+  theme?: ThemeType;
+  variant?: ButtonVariant;
+  size?: SizeType;
+  shape?: ShapeType;
+  block?: boolean;
+  disabled?: boolean;
+  isLoading?: boolean;
+  customLoader?: ReactNode;
+  style?: React.CSSProperties;
+  prefixIcon?: ReactNode;
+  suffixIcon?: ReactNode;
+
+  onClick?: () => void;
+}
 
 // Function generator
 export function DynamicButtonGenerator<ThemeType, ButtonVariant, SizeType, ShapeType>(data: IButtonGeneratorData<ThemeType, ButtonVariant, SizeType, ShapeType>) {
 
-  interface IDynamicButton extends IButtonBase {
-    theme?: ThemeType;
-    variant?: ButtonVariant;
-    size?: SizeType;
-    shape?: ShapeType;
-    onClick?: () => any;
-  }
+  setButtonVariables<ThemeType, ButtonVariant, SizeType, ShapeType>(data);
 
-  const DynamicButton: React.FC<IDynamicButton> = (props) => {
+  const DynamicButton: React.FC<IDynamicButton<ThemeType, ButtonVariant, SizeType, ShapeType>> = (props) => {
 
-    const theme = data.themes.find((t) => t.name === props.theme)?.variants.find((v) => v.name === props.variant);
-    const size = data.sizes.find((s) => s.name === props.size);
-    const shape = data.shapes.find((s) => s.name === props.shape);
-    const { onClick } = props;
-
-    let borderRadius: string;
-    let focusBorderRadius: string;
-    if (shape && shape.borderRadius !== undefined && shape.borderRadius !== null) {
-      borderRadius = typeof shape.borderRadius === 'number' ? `${shape.borderRadius}px` : shape.borderRadius;
-      focusBorderRadius = typeof shape.focusBorderRadius === 'number' ? `${shape.focusBorderRadius}px` : shape.focusBorderRadius;
-    } else {
-      borderRadius = defaultShape.borderRadius as string;
-      focusBorderRadius = defaultShape.focusBorderRadius as string;
-    }
-    let focusBorderOffset = `${-1 * ((size?.borderWidth || defaultSize.borderWidth) + 3)}px`;
-
-    const getStyles = (): CustomCSS => {
-      return {
-        '--background': theme?.background || defaultTheme.variants[0].background ,
-        '--hoverBackground': theme?.hoverBackground || defaultTheme.variants[0].hoverBackground,
-        '--activeBackground': theme?.activeBackground || defaultTheme.variants[0].activeBackground,
-        '--color': theme?.color || defaultTheme.variants[0].color,
-        '--borderColor': theme?.borderColor || defaultTheme.variants[0].borderColor,
-        '--focusColor': theme?.focusColor || defaultTheme.variants[0].focusColor,
-
-        '--paddingY': `${size?.paddingY || defaultSize.paddingY}px`,
-        '--paddingX': `${size?.paddingX || defaultSize.paddingX}px`,
-        '--innerGap': `${size?.innerGap || defaultSize.innerGap}px`,
-        '--fontSize': `${size?.fontSize || defaultSize.fontSize}px`,
-        '--lineHeight': `${size?.lineHeight || defaultSize.lineHeight}`,
-
-        '--borderRadius': borderRadius,
-
-        '--focusBorderRadius': focusBorderRadius,
-        '--focusBorderOffset': focusBorderOffset,
-
-        '--borderWidth': `${size?.borderWidth}px` || `${defaultSize.borderWidth}px`,
-      }
-    }
+    const { onClick, customLoader, prefixIcon, suffixIcon } = props;
+    const themeVariant = data.themes.find((t) => t.name === props.theme)?.variants.find((v) => v.name === props.variant);
+    const disabled = props.disabled || props.isLoading;
 
     return (
-      <button onClick={onClick} className={`DynamicButton ${theme?.convex ? 'DynamicButton--convex' : ''} ${theme?.focusFrame ? 'DynamicButton--focusFrame' : ''} ${data.mainClassName}`} style={getStyles()}>
+      <button
+        onClick={onClick}
+        className={ getButtonClassname<ThemeType, ButtonVariant, SizeType, ShapeType>({
+          data: data,
+          theme: props.theme,
+          variant: props.variant,
+          size: props.size,
+          shape: props.shape,
+          block: props.block,
+          disabled: disabled,
+          isLoading: props.isLoading,
+          convex: themeVariant?.convex,
+          focusFrame: themeVariant?.focusFrame
+
+        }) }
+        style={{ ...props.style }}
+        disabled={disabled}
+      >
+        {prefixIcon &&
+          <span className={`DynamicButton--prefixIcon`}>
+            <span className={`DynamicButton--prefixIconContent`}>
+              {prefixIcon}
+            </span>
+          </span>
+        }
         <span className={`DynamicButtonContent ${data.mainClassName}-content`}>
           {props.children}
         </span>
+
+        {suffixIcon &&
+          <span className={`DynamicButton--suffixIcon`}>
+            <span className={`DynamicButton--suffixIconContent`}>
+              {suffixIcon}
+            </span>
+          </span>
+        }
+
+        { props.isLoading &&
+          <span className="DynamicButton--loader">
+            {customLoader ? customLoader : <span className="DynamicButton--spinner" />}
+          </span>
+        }
       </button>
     );
 

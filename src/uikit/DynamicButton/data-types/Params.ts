@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Basic button data
-export type ButtonType = 'button' | 'submit' | 'reset';
+export type ButtonHTMLTypes = 'button' | 'submit' | 'reset';
 
 export interface IButtonBase {
-  type?: ButtonType;
+  type?: ButtonHTMLTypes;
   disabled?: boolean;
   children?: React.ReactNode;
 }
@@ -22,9 +22,9 @@ export interface IButtonVariant<ButtonVariants> {
   focusFrame?: boolean;
 }
 
-export interface IButtonTheme<ThemeType, VariantType> {
+export interface IButtonTheme<ThemeType, ButtonVariant> {
   name: ThemeType;
-  variants: IButtonVariant<VariantType>[];
+  variants: IButtonVariant<ButtonVariant>[];
 }
 
 export interface IButtonSize<SizeType> {
@@ -39,8 +39,15 @@ export interface IButtonSize<SizeType> {
 
 export interface IButtonShape<ShapeType> {
   name: ShapeType;
-  borderRadius: number | string;
-  focusBorderRadius: number | string;
+  borderRadius: number;
+  focusBorderRadius: number;
+}
+
+export interface IDefaults<ThemeType, ButtonVariant, SizeType, ShapeType> {
+  defaultTheme: ThemeType;
+  defaultVariant: ButtonVariant;
+  defaultSize: SizeType;
+  defaultShape: ShapeType;
 }
 
 // Button Generator Component Props
@@ -48,5 +55,6 @@ export interface IButtonGeneratorData<ThemeType, ButtonVariant, SizeType, ShapeT
   themes: IButtonTheme<ThemeType, ButtonVariant>[];
   sizes: IButtonSize<SizeType>[];
   shapes: IButtonShape<ShapeType>[];
+  defaults: IDefaults<ThemeType, ButtonVariant, SizeType, ShapeType>;
   mainClassName: string;
 }

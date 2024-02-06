@@ -7,3 +7,25 @@
   border-bottom: 1px solid gray;
   padding: 40px 0 0;
 }
+
+.CustomLoader {
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid white;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
