@@ -29,7 +29,7 @@ export function Home() {
           </div>
 
           <div className="mb-3">
-            <Button theme='secondary' variant={'text'} size={'lg'}>Secondary Text Large</Button>{' '}
+            <Button theme='primary' variant={'text'} size={'lg'}>Primary Text Large</Button>{' '}
             <Button theme='secondary' variant={'contained'} size={'lg'}>Secondary Contained Large</Button>{' '}
             <Button suffixIcon={suffix} theme='secondary' variant={'outlined'} size={'lg'}>Secondary Outlined Large</Button>{' '}
           </div>
