@@ -1,0 +1,77 @@
+@import "~styles/variables";
+@import "~bootstrap/scss/mixins";
+
+.Slide {
+  height: 100vh;
+  border-bottom: 1px solid gray;
+  padding: 40px 0 0;
+}
+
+.title {
+  font-size: 80px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 100px;
+}
+
+.titleLabel {
+  position: relative;
+  display: inline-block;
+  &::after {
+    content: 'Digital';
+    padding: 5px 10px;
+    background-color: var(--color-bg-emp-100);
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-text-body-inv);
+    position: absolute;
+    right: -0.5rem;
+    top: 1rem;
+    transform: translateX(100%);
+  }
+}
+
+.headerCardsWrapper {
+  margin: 40px 0 120px;
+}
+
+.headerCard {
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+.headerCardSpecial {
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+.cards {
+  margin-bottom: 120px;
+}
+
+.card {
+  padding: 40px;
+  background: var(--color-bg-base-100);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  min-height: 340px;
+
+  @include media-breakpoint-down(xl) {
+    min-height: 200px;
+  }
+
+  @include media-breakpoint-down(lg) {
+    min-height: 160px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}

@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { Button } from '~/uikit';
+import { Button } from '@kamrade/react-dynamic-button';
 import { RiAddCircleFill, RiArrowRightCircleLine } from "react-icons/ri";
 import s from './Showcase.module.scss';
 

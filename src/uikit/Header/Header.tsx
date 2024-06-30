@@ -1,4 +1,3 @@
-
 import { NavLink } from 'react-router-dom';
 import s from './Header.module.scss';
 import { StickyHeader } from '~/uikit';
@@ -6,7 +5,7 @@ import { ScrambledText } from '@kamrade/react-scrambled-text';
 
 export const Header = () => {
 
-    let scrambledValues = [
+  const scrambledValues = [
     '[ Product design ]',
     '[ Prototyping ]',
     '[ Infographic ]',
@@ -26,12 +25,14 @@ export const Header = () => {
             <h6 className={s.HeaderTitle}>
               Denys Mykhailov. 
               <span className={s.HeaderTitleEmphasis}>Seasoned UX Designer</span>
-              {/* <ScrambledText 
-                value={scrambledValues} 
-                slideLength={2000} 
-                postAnimate 
-                postAnimateSensetivity={10}
-              /> */}
+              <span className={s.HeaderTitleDynamic}>
+                <ScrambledText
+                  value={scrambledValues}
+                  slideLength={2000}
+                  postAnimate
+                  postAnimateSensetivity={500}
+                />
+              </span>
             </h6>
             
             <div className={s.HeaderNav}>

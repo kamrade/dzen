@@ -7,7 +7,6 @@
 
 .Header {
   font-size: var(--header-font-size);
-  background-color: $color-bg-base-100;
 }
 
 .HeaderContent {
@@ -25,6 +24,11 @@
   .HeaderTitleEmphasis {
     color: $color-text-emphasis;
     padding-left: .5rem;
+  }
+  .HeaderTitleDynamic {
+    color: var(--color-text-placeholder);
+    margin-top: 0.25rem;
+    display: block;
   }
 }
 
