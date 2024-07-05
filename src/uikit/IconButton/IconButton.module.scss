@@ -1,0 +1,13 @@
+.IconButton {
+  border: none;
+  background: transparent;
+  border-radius: var(--border-radius-control-base);
+  padding: var(--padding-control-base);
+  font-size: 1rem;
+  line-height: 0;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--color-bg-control-200);
+  }
+}

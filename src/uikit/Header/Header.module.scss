@@ -12,7 +12,6 @@
 .HeaderContent {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .HeaderTitle {
@@ -23,7 +22,7 @@
   margin: 0;
   .HeaderTitleEmphasis {
     color: $color-text-emphasis;
-    padding-left: .5rem;
+    padding-left: 0.5rem;
   }
   .HeaderTitleDynamic {
     color: var(--color-text-placeholder);
@@ -32,10 +31,21 @@
   }
 }
 
+.headerNavMobile {
+  display: none;
+  @include media-breakpoint-down(lg) {
+    display: block;
+  }
+}
+
 .HeaderNav {
   line-height: 0;
   display: flex;
   gap: 2rem;
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
 
   h6 {
     line-height: 1;
@@ -54,7 +64,9 @@
 }
 
 :global {
-  a, a:visited, a:link {
+  a,
+  a:visited,
+  a:link {
     color: $color-text-secondary;
     &.active {
       color: $color-text-emphasis;

@@ -1,0 +1,10 @@
+.Drawer {
+  position: fixed;
+  z-index: var(--z-index-drawer);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  background-color: #fff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+}

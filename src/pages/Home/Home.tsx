@@ -1,32 +1,52 @@
-import s from './Home.module.scss';
-import { homeCards } from './home-cards';
+import s from "./Home.module.scss";
+import { homeCards } from "./home-cards";
+import { ScrambledText } from "@kamrade/react-scrambled-text";
+
+const scrambledValues = [
+  "Digital",
+  "UX/UI and Product",
+  "Mobile Application",
+  "Graphic",
+  "Motion",
+];
 
 export const Home = () => {
-
   return (
     <div className={s.HomePage}>
       <div className="container">
-        
         <div>
           <h1 className={s.title}>
             <div>Human focusing</div>
-            <div className={s.titleLabel}>design</div>
-          </h1>
-          
-          <div className={s.headerCardsWrapper}>
-            <div className='row'>
-              <div className='col-lg-6'>
-                <div className={s.headerCard}>Improving digital interactions for enhanced user experiences</div>
+            <div className={s.titleLabelAnchor}>
+              design
+              <div className={s.titleLabel}>
+                <ScrambledText
+                  value={scrambledValues}
+                  slideLength={10000}
+                  postAnimate
+                  postAnimateSensetivity={100}
+                />
               </div>
-                
-              <div className='col-lg-6'>
+            </div>
+          </h1>
+
+          <div className={s.headerCardsWrapper}>
+            <div className="row">
+              <div className="col-lg-6">
+                <div className={s.headerCard}>
+                  Improving digital interactions for enhanced user experiences
+                </div>
+              </div>
+
+              <div className="col-lg-6">
                 <div className={s.headerCard}>
                   User-friendly, intuitive, and enjoyable digital platforms
                 </div>
               </div>
-              <div className='col-lg-12'>
+              <div className="col-lg-12">
                 <div className={`${s.headerCard} ${s.headerCardSpecial}`}>
-                  Optimize user satisfaction by improving the usability, accessibility, and efficiency of digital interfaces
+                  Optimize user satisfaction by improving the usability,
+                  accessibility, and efficiency of digital interfaces
                 </div>
               </div>
             </div>
@@ -44,13 +64,10 @@ export const Home = () => {
               ))}
             </div>
           </div>
-          
         </div>
 
         <div className={s.processFlow}>
-          <h2 className={s.titleH2}>
-            Process Flow
-          </h2>
+          <h2 className={s.titleH2}>Process Flow</h2>
         </div>
 
         <div className={s.Slide}></div>
@@ -63,4 +80,4 @@ export const Home = () => {
       </div>
     </div>
   );
-}
+};
