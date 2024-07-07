@@ -1,14 +1,9 @@
-import s from "./Home.module.scss";
-import { homeCards } from "./home-cards";
-import { ScrambledText } from "@kamrade/react-scrambled-text";
+import s from './Home.module.scss';
+import { homeCards } from './home-cards';
+import { ScrambledText } from '@kamrade/react-scrambled-text';
+import { Typewriter } from '~/uikit';
 
-const scrambledValues = [
-  "Digital",
-  "UX/UI and Product",
-  "Mobile Application",
-  "Graphic",
-  "Motion",
-];
+const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 
 export const Home = () => {
   return (
@@ -20,12 +15,7 @@ export const Home = () => {
             <div className={s.titleLabelAnchor}>
               design
               <div className={s.titleLabel}>
-                <ScrambledText
-                  value={scrambledValues}
-                  slideLength={10000}
-                  postAnimate
-                  postAnimateSensetivity={100}
-                />
+                <ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />
               </div>
             </div>
           </h1>
@@ -33,24 +23,26 @@ export const Home = () => {
           <div className={s.headerCardsWrapper}>
             <div className="row">
               <div className="col-lg-6">
-                <div className={s.headerCard}>
-                  Improving digital interactions for enhanced user experiences
-                </div>
+                <div className={s.headerCard}>Improving digital interactions for enhanced user experiences</div>
               </div>
 
               <div className="col-lg-6">
-                <div className={s.headerCard}>
-                  User-friendly, intuitive, and enjoyable digital platforms
-                </div>
+                <div className={s.headerCard}>User-friendly, intuitive, and enjoyable digital platforms</div>
               </div>
               <div className="col-lg-12">
                 <div className={`${s.headerCard} ${s.headerCardSpecial}`}>
-                  Optimize user satisfaction by improving the usability,
-                  accessibility, and efficiency of digital interfaces
+                  Optimize user satisfaction by improving the usability, accessibility, and efficiency of digital interfaces
                 </div>
               </div>
             </div>
           </div>
+
+          <h2 className={s.openingQuote}>
+            <Typewriter
+              text="Create products and services that meet users' needs and preferences. It emphasizes empathy, usability, satisfaction, inclusivity, and
+              sustainability, ensuring solutions are intuitive, accessible, and beneficial for both users and organizations."
+            />
+          </h2>
 
           <div className={s.cards}>
             <div className="row">

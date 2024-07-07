@@ -1,5 +1,5 @@
-@import "~styles/variables";
-@import "~bootstrap/scss/mixins";
+@import '~styles/variables';
+@import '~bootstrap/scss/mixins';
 
 .Slide {
   height: 100vh;
@@ -68,6 +68,12 @@
     opacity: 1;
     transform: scale(1) translateX(100%);
   }
+}
+
+.openingQuote {
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 80px 0;
 }
 
 .headerCardsWrapper {

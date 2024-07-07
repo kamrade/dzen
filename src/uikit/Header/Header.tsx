@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import s from "./Header.module.scss";
-import { StickyHeader, Drawer, IconButton } from "~/uikit";
-import { ScrambledText } from "@kamrade/react-scrambled-text";
-import { RiMenuLine } from "react-icons/ri";
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import s from './Header.module.scss';
+import { StickyHeader, Drawer, IconButton } from '~/uikit';
+import { ScrambledText } from '@kamrade/react-scrambled-text';
+import { RiMenuLine } from 'react-icons/ri';
 
 const scrambledValues = [
-  "[ Product design ]",
-  "[ Prototyping ]",
-  "[ Infographic ]",
-  "[ Design systems ]",
-  "[ React/Angular components ]",
-  "[ Business and system analytics ]",
+  '[ Product design ]',
+  '[ Prototyping ]',
+  '[ Infographic ]',
+  '[ Design systems ]',
+  '[ React/Angular components ]',
+  '[ Business and system analytics ]',
 ];
 
 export const Header = () => {
@@ -25,16 +25,9 @@ export const Header = () => {
             <div className={s.HeaderContent}>
               <h6 className={s.HeaderTitle}>
                 Denys Mykhailov.
-                <span className={s.HeaderTitleEmphasis}>
-                  Seasoned UX Designer
-                </span>
+                <span className={s.HeaderTitleEmphasis}>Seasoned UX Designer</span>
                 <span className={s.HeaderTitleDynamic}>
-                  <ScrambledText
-                    value={scrambledValues}
-                    slideLength={2000}
-                    postAnimate
-                    postAnimateSensetivity={500}
-                  />
+                  <ScrambledText value={scrambledValues} slideLength={2000} postAnimate postAnimateSensetivity={500} />
                 </span>
               </h6>
 
