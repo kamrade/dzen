@@ -4,21 +4,26 @@ import { randomIntFromInterval } from '~helpers';
 
 export interface ITypewriterProps {
   text: string;
+  minTimeout: number;
+  maxTimeout: number;
+  defaultInterval: number;
 }
 
-export const Typewriter: FC<ITypewriterProps> = ({ text }) => {
+export const Typewriter: FC<ITypewriterProps> = ({ 
+  text, 
+  minTimeout = 0, 
+  maxTimeout = 100,
+  defaultInterval = 40
+}) => {
 
   const [ wordsArray, setWordsArray ] = useState<string[]>([]);
-  // const [ fullAnimatedText, setFullAnimationText ] = useState('');
   const [ animatedText, setAnimatedText ] = useState('');
 
-  // componentDidMount
   useEffect(() => setWordsArray( text.split(' ').reverse() ) , []);
-  // componentDidMount and array is set
-  useEffect(() => render(wordsArray, 40), [wordsArray]);
+  useEffect(() => render(wordsArray, defaultInterval), [wordsArray]);
 
   const render = (phrase: string[], interval: number, previous: string = '') => {    
-    const timeout = randomIntFromInterval(0, 100);
+    const timeout = randomIntFromInterval(minTimeout, maxTimeout);
     const word = phrase.pop() || '';
     let part = previous;
     let currentLetter = 0;
@@ -30,7 +35,7 @@ export const Typewriter: FC<ITypewriterProps> = ({ text }) => {
         currentLetter++;
       } else {
         clearInterval(int1);
-        setTimeout(() => render(phrase, 10, part + ' '), timeout);
+        setTimeout(() => render(phrase, defaultInterval, part + ' '), timeout);
       }
     }, interval);
   }
