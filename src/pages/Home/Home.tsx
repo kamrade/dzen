@@ -37,13 +37,6 @@ export const Home = () => {
             </div>
           </div>
 
-          <h2 className={s.openingQuote}>
-            <Typewriter
-              text="Create products and services that meet users' needs and preferences. It emphasizes empathy, usability, satisfaction, inclusivity, and
-              sustainability, ensuring solutions are intuitive, accessible, and beneficial for both users and organizations."
-            />
-          </h2>
-
           <div className={s.cards}>
             <div className="row">
               {homeCards.map((card, i) => (
@@ -57,6 +50,13 @@ export const Home = () => {
             </div>
           </div>
         </div>
+
+        <h2 className={s.openingQuote}>
+          <Typewriter
+            text="Create products and services that meet users' needs and preferences. It emphasizes empathy, usability, satisfaction, inclusivity, and
+            sustainability, ensuring solutions are intuitive, accessible, and beneficial for both users and organizations."
+          />
+        </h2>
 
         <div className={s.processFlow}>
           <h2 className={s.titleH2}>Process Flow</h2>

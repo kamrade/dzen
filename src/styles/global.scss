@@ -1,0 +1,61 @@
+
+.random {
+  color: var(--color-text-body-inv);
+  animation: 4s infinite alternate glitching;
+  background: var(--color-bg-inv-100);
+  position: relative;
+  padding: 0 0 0 4px;
+
+}
+
+@keyframes glitching {
+  0% {
+    opacity: 0.1
+  }
+  1% {
+    opacity: 0.3
+  }
+  2% {
+    opacity: 0.2
+  }
+  3% {
+    opacity: 0.5
+  }
+  4% {
+    opacity: 0.6
+  }
+  
+  10% {
+    opacity: 0.5
+  }
+  11% {
+    opacity: 0.1
+  }
+  12% {
+    opacity: 0.5
+  }
+
+  14% {
+    opacity: 1
+  }
+  15% {
+    opacity: 0.3
+  }
+  16% {
+    opacity: 1
+  }
+  
+  58% {
+    opacity: 1
+  }
+  59% {
+    opacity: 0.3
+  }
+  60% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 1
+  }
+}
