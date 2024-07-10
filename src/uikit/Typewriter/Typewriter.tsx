@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useRef } from 'react';
 import s from './Typewriter.module.scss';
-import { randomIntFromInterval } from '~helpers';
-import { useInterval } from '~hooks';
+import { randomIntFromInterval } from '~/helpers';
+import { useInterval } from '~/hooks';
 
 export interface ITypewriterProps {
   text: string;
@@ -19,6 +19,7 @@ export const Typewriter: FC<ITypewriterProps> = ({
 
   const [ wordsArray, setWordsArray ] = useState<string[]>([]);
   const [ animatedText, setAnimatedText ] = useState('');
+  const intervalID = useRef<any>();
 
   useEffect(() => setWordsArray( text.split(' ').reverse() ) , []);
   useEffect(() => render(wordsArray, defaultInterval), [wordsArray]);
@@ -39,9 +40,11 @@ export const Typewriter: FC<ITypewriterProps> = ({
         setTimeout(() => render(phrase, defaultInterval, part + ' '), timeout);
       }
     }, interval);
+    
+    intervalID.current = int1;
   }
 
-  return <TypewriterEngine animatedText={animatedText} allText={text} />
+  return <div><TypewriterEngine animatedText={animatedText} allText={text} /></div>
 }
 
 export interface ITypewriterEngineProps {
@@ -54,6 +57,7 @@ export const TypewriterEngine: FC<ITypewriterEngineProps> = ({ animatedText, all
   const [ mainText, setMainText ] = useState<string[]>()
   const [ lastWord, setLastWord ] = useState<string>();
   const [ randomNumber, setRandomNumber ] = useState<number>();
+  const intervalID = useRef<any>(null);
 
   const emp = () => {
     let totalWords = animatedText.split(' ').length;
@@ -61,7 +65,7 @@ export const TypewriterEngine: FC<ITypewriterEngineProps> = ({ animatedText, all
     setRandomNumber(randomN);
   }
 
-  useInterval(emp, 4000);
+  intervalID.current = useInterval(emp, 4000);  
 
   useEffect(() => {
     let allWords = animatedText.split(' ');
