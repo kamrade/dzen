@@ -55,7 +55,7 @@ export const Header = () => {
           </div>
         </header>
       </StickyHeader>
-      <Drawer isVisible={isDrawerVisible} setVisibility={setIsDrawerVisible} />
+      <Drawer isVisible={isDrawerVisible} setVisibility={setIsDrawerVisible} initialWidth={300} />
     </>
   );
 };
