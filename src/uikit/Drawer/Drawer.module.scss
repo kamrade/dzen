@@ -6,13 +6,17 @@
   bottom: 0;
   background-color: #fff;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
-  padding: 2rem;
+  padding: 0.5rem;
   transform: translateX(120%);
   transition: all .3s ease-in-out;
 
   &.DrawerVisible {
     transform: translateX(0);
     animation: .3s ease-in drawerAppearance;
+  }
+
+  .DrawerContent {
+    padding: 1.5rem;
   }
 }
 

@@ -7,6 +7,11 @@
   line-height: 0;
   transition: all 0.3s ease-in-out;
 
+  &.IconButtonSm {
+    padding: var(--padding-control-sm);
+    border-radius: var(--border-radius-control-sm);
+  }
+
   &:hover {
     background: var(--color-bg-control-200);
   }

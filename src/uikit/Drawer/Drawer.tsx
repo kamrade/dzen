@@ -51,10 +51,12 @@ export const Drawer: FC<IDrawerProps> = ({ isVisible, setVisibility, initialWidt
     (<>
       {isInnerVisible && (
         <div className={drawerClassNames} ref={drawerRef} onTransitionEnd={transitionEndHandler} style={{ width: `${initialWidth}px` }}>
-          <IconButton onClick={() => setVisibility(false)}>
+          <IconButton size='sm' onClick={() => setVisibility(false)}>
             <RiCloseLine />
           </IconButton>
-          IconButtonThis is a Drawer
+          <div className={s.DrawerContent}>
+            IconButtonThis is a Drawer
+          </div>
         </div>
       )}
     </>), document.getElementById('drawer-root') as HTMLDivElement);
