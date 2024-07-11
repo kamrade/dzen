@@ -5,6 +5,7 @@ export const useOnClickOutside = (
   handler: (event: MouseEvent | TouchEvent) => void,
   condition: boolean
 ) => {
+
   useEffect(() => {
     if (condition) {
       const listener = (event: MouseEvent | TouchEvent) => {
