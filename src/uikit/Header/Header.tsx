@@ -1,7 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Header.module.scss';
-import { StickyHeader, Drawer, TextSwitcherBoolean } from '~/uikit';
+import { StickyHeader, Drawer, TextSwitcherBoolean, MobileMenu } from '~/uikit';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
 
 const scrambledValues = [
@@ -12,20 +12,6 @@ const scrambledValues = [
   'React/Angular components',
   'Business and system analytics',
 ];
-
-const mainMenuMobile = [{
-  text: 'Home',
-  link: '/'
-}, {
-  text: 'Services',
-  link: '/services'
-}, {
-  text: 'Showcase',
-  link: '/showcase'
-}, {
-  text: 'About',
-  link: '/about'
-}];
 
 const switcherValues = [{
   text: 'Menu',
@@ -39,6 +25,8 @@ const switcherValues = [{
 export const Header = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const switcherRef = useRef(null);
+
+  useEffect(() => console.log(isDrawerVisible), [isDrawerVisible]);
 
   return (
     <>
@@ -83,17 +71,11 @@ export const Header = () => {
         clickOutside={true}
         insideRefs={[switcherRef]}
         top={100}
-        bottom={32}
-        right={32}
-        left={32}
+        bottom={16}
+        right={16}
+        left={16}
       >
-        <div className={s.mobileMenu}>
-          {mainMenuMobile.map((menuItem, i) => (
-            <a key={i} href={menuItem.link} className={s.mobileMenuItem}>
-              {menuItem.text}
-            </a>
-          ))}
-        </div>
+        <MobileMenu closeMenu={ () => setIsDrawerVisible(false) }/>
       </Drawer>
     </>
   );

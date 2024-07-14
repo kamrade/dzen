@@ -52,8 +52,8 @@ export const Drawer: FC<IDrawerProps> = ({
   }, [isVisible]);
 
   useEffect(() => {
-    setDrawerClassNames(`${s.Drawer} ${isInnerVisible ? s.DrawerVisible : ''}`);
-  }, [isInnerVisible]);
+    setDrawerClassNames(`${s.Drawer} ${isVisible ? s.DrawerVisible : ''}`);
+  }, [isVisible]);
 
   const transitionEndHandler: TransitionEventHandler<HTMLDivElement> = (e) => {
     if (e.target === drawerRef.current && (!isVisible)) {
@@ -71,6 +71,9 @@ export const Drawer: FC<IDrawerProps> = ({
   
   return createPortal(
     (<>
+      {isVisible && (
+        <div className={s.DrawerBackdrop}></div>
+      )}
       {isInnerVisible && (
         <div 
           className={drawerClassNames} 

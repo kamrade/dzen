@@ -1,0 +1,72 @@
+.mobileMenu {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  background-color: var(--color-bg-base-100);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-control-panel);
+
+  .mobileMenuItem {
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    >h6 {
+      font-size: 30px;
+      line-height: 1;
+    }
+  }
+
+  .mainMenuContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+
+    .mainMenuContentInner {
+      flex-grow: 1;
+    }
+  }
+
+  .social {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+
+    .socialImage {
+      flex-grow: 1;
+      background-color: pink;
+      background-image: url('../../../public/gradient-pattern.avif');
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-bottom: 1rem;
+    }
+  }
+  
+
+  .mobileMenuItemSocial {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    >h6 {
+      font-size: 0.75rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -15,7 +15,6 @@ export interface ITextSwitcherBooleanProps {
 export const TextSwitcherBoolean: FC<ITextSwitcherBooleanProps> = ({ values, setValue, currentValue }) => {
 
   const clickHandler = () => {
-    console.log(currentValue);
     setValue(!currentValue);
   }
 
