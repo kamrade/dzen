@@ -1,21 +1,44 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Header.module.scss';
-import { StickyHeader, Drawer, IconButton } from '~/uikit';
+import { StickyHeader, Drawer, TextSwitcherBoolean } from '~/uikit';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { RiMenuLine } from 'react-icons/ri';
 
 const scrambledValues = [
-  '[ Product design ]',
-  '[ Prototyping ]',
-  '[ Infographic ]',
-  '[ Design systems ]',
-  '[ React/Angular components ]',
-  '[ Business and system analytics ]',
+  'Product design',
+  'Prototyping',
+  'Infographic',
+  'Design systems',
+  'React/Angular components',
+  'Business and system analytics',
 ];
+
+const mainMenuMobile = [{
+  text: 'Home',
+  link: '/'
+}, {
+  text: 'Services',
+  link: '/services'
+}, {
+  text: 'Showcase',
+  link: '/showcase'
+}, {
+  text: 'About',
+  link: '/about'
+}];
+
+const switcherValues = [{
+  text: 'Menu',
+  value: true
+}, {
+  text: 'Close',
+  value: false
+}];
+
 
 export const Header = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const switcherRef = useRef(null);
 
   return (
     <>
@@ -31,10 +54,8 @@ export const Header = () => {
                 </span>
               </h6>
 
-              <div className={s.headerNavMobile}>
-                <IconButton onClick={() => setIsDrawerVisible(true)}>
-                  <RiMenuLine />
-                </IconButton>
+              <div className={s.headerNavMobile} ref={switcherRef}>
+                 <TextSwitcherBoolean values={switcherValues} currentValue={isDrawerVisible} setValue={setIsDrawerVisible} />
               </div>
 
               <div className={s.HeaderNav}>
@@ -55,7 +76,25 @@ export const Header = () => {
           </div>
         </header>
       </StickyHeader>
-      <Drawer isVisible={isDrawerVisible} setVisibility={setIsDrawerVisible} initialWidth={320} />
+      <Drawer 
+        isVisible={isDrawerVisible} 
+        setVisibility={setIsDrawerVisible} 
+        initialWidth='auto'
+        clickOutside={true}
+        insideRefs={[switcherRef]}
+        top={100}
+        bottom={32}
+        right={32}
+        left={32}
+      >
+        <div className={s.mobileMenu}>
+          {mainMenuMobile.map((menuItem, i) => (
+            <a key={i} href={menuItem.link} className={s.mobileMenuItem}>
+              {menuItem.text}
+            </a>
+          ))}
+        </div>
+      </Drawer>
     </>
   );
 };

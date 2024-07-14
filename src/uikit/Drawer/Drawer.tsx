@@ -1,17 +1,35 @@
-import { Dispatch, FC, SetStateAction, useRef, useState, useEffect, TransitionEventHandler, ReactPortal } from "react";
+import { Dispatch, FC, SetStateAction, useRef, useState, useEffect, TransitionEventHandler, ReactNode, RefObject } from "react";
 import { createPortal } from 'react-dom';
 import { IconButton } from "~/uikit";
 import s from "./Drawer.module.scss";
 import { RiCloseLine } from "react-icons/ri";
-import { useOnClickOutside } from '~/hooks';
+import { useOnClickOutside, useLockBodyScroll } from '~/hooks';
 
 export interface IDrawerProps {
   isVisible: boolean;
   setVisibility: Dispatch<SetStateAction<boolean>>;
-  initialWidth?: number;
+  initialWidth?: string;
+  children: ReactNode | ReactNode[];
+  closeButton?: boolean;
+  clickOutside?: boolean;
+  insideRefs?: RefObject<HTMLElement>[]; // click on these elements is not a click outside
+  top?: number;
+  bottom?: number;
+  right?: number;
+  left?: number;
 }
 
-export const Drawer: FC<IDrawerProps> = ({ isVisible, setVisibility, initialWidth = 400 }) => {
+export const Drawer: FC<IDrawerProps> = ({ 
+  isVisible, setVisibility, children,
+  initialWidth = 'auto', 
+  closeButton = false,
+  clickOutside = true,
+  insideRefs = [],
+  top = 0,
+  bottom = 0,
+  right = 0,
+  left = 0,
+}) => {
 
   const drawerRef = useRef<HTMLDivElement>(null);
   const [ isInnerVisible, setIsInnerVisible ] = useState(false);
@@ -43,19 +61,36 @@ export const Drawer: FC<IDrawerProps> = ({ isVisible, setVisibility, initialWidt
     }
   }
 
-  useOnClickOutside([drawerRef], () => {
-    setVisibility(false);
+  useOnClickOutside([...insideRefs, drawerRef], () => {
+    if (clickOutside) {
+      setVisibility(false);
+    }
   }, isVisible);
+
+  useLockBodyScroll(isVisible);
   
   return createPortal(
     (<>
       {isInnerVisible && (
-        <div className={drawerClassNames} ref={drawerRef} onTransitionEnd={transitionEndHandler} style={{ width: `${initialWidth}px` }}>
-          <IconButton size='sm' onClick={() => setVisibility(false)}>
-            <RiCloseLine />
-          </IconButton>
+        <div 
+          className={drawerClassNames} 
+          ref={drawerRef} 
+          onTransitionEnd={transitionEndHandler} 
+          style={{ 
+            width: initialWidth,
+            top: `${top}px`,
+            bottom: `${bottom}px`,
+            right: `${right}px`,
+            left: `${left}px`,
+          }}
+        >
+          { closeButton &&  
+            <IconButton size='sm' onClick={() => setVisibility(false)}>
+              <RiCloseLine />
+            </IconButton>
+          }
           <div className={s.DrawerContent}>
-            IconButtonThis is a Drawer
+            {children}
           </div>
         </div>
       )}

@@ -1,9 +1,9 @@
 import { ReactNode, useState } from 'react';
 import { Button } from '@kamrade/react-dynamic-button';
 import { RiAddCircleFill, RiArrowRightCircleLine } from "react-icons/ri";
-import s from './Showcase.module.scss';
+import s from './ButtonShowcase.module.scss';
 
-export function Showcase() {
+export function ButtonShowcase() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const customLoader: ReactNode = <span className={s.CustomLoader}></span>;
@@ -13,6 +13,8 @@ export function Showcase() {
   return (
     <div className={'ShowcasePage'}>
       <div className="container">
+
+        <h1>Showcase</h1>
 
         <div className="mb-3">
           <Button onClick={() => console.log('Knock!')} style={{ color: 'green' }} theme='primary' shape={'straight'} variant={'text'} size={'lg'}>Primary Text Large</Button>{' '}
@@ -75,6 +77,7 @@ export function Showcase() {
             <Button type='submit' theme='primary' shape={'rounded'} variant={'contained'} size={'md'}>Submit</Button>{' '}
           </form>
         </div>
+
       </div>
     </div>
   );

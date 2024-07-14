@@ -21,8 +21,12 @@
   letter-spacing: 1px;
   margin: 0;
   .HeaderTitleEmphasis {
-    color: $color-text-emphasis;
+    color: var(--color-text-emphasis);
     padding-left: 0.5rem;
+    @include media-breakpoint-down(md) {
+      display: block;
+      padding: 0;
+    }
   }
   .HeaderTitleDynamic {
     color: var(--color-text-placeholder);
@@ -59,20 +63,43 @@
 .Logo {
   width: 1.5rem;
   height: 1.5rem;
-  background: $color-text-body;
+  background: var(--color-text-body);
   border-radius: 50%;
 }
 
-:global {
-  a,
-  a:visited,
-  a:link {
-    color: $color-text-secondary;
-    &.active {
-      color: $color-text-emphasis;
-    }
-    &:hover {
-      text-decoration: none !important;
-    }
+
+.mobileMenu {
+  padding: 3rem;
+  background-color: var(--color-bg-base-100);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-control-panel);
+
+  .mobileMenuItem {
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--color-line-base);
   }
 }
+
+
+// :global {
+//   a,
+//   a:visited,
+//   a:link {
+//     color: var(--color-text-secondary);
+//     &.active {
+//       color: var(--color-text-emphasis);
+//     }
+//     &:hover {
+//       text-decoration: none !important;
+//     }
+//   }
+// }

@@ -3,7 +3,7 @@
 @import "./styles/global.scss";
 
 body {
-  color: $color-text-body;
+  color: var(--color-text-body);
   position: relative;
   background: linear-gradient(45deg, #FFF6EE, #F0F8FF);
 }

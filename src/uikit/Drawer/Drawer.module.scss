@@ -4,9 +4,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: #fff;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
-  padding: 0.5rem;
+  left: 0;
   transform: translateX(120%);
   transition: all .3s ease-in-out;
 
@@ -16,7 +14,7 @@
   }
 
   .DrawerContent {
-    padding: 1.5rem;
+    display: block;
   }
 }
 
