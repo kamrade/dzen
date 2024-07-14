@@ -36,7 +36,7 @@ export const MobileMenu: FC<IMobileMenuProps> = ({ closeMenu }) => {
       <div className="container" style={{ height: '100%' }}>
         <div className="row" style={{ height: '100%' }}>
 
-          <div className="col-md-12" style={{ position: 'relative' }}>
+          <div className="col-sm-12" style={{ position: 'relative' }}>
             <div className={s.mainMenuContent}>
               <div className={s.mainMenuContentInner} onMouseUp={closeMenu}>
                 {mainMenuMobile.map((menuItem, i) => (
@@ -55,18 +55,20 @@ export const MobileMenu: FC<IMobileMenuProps> = ({ closeMenu }) => {
             </div>
           </div>
           
-          <div className="col-md-12" style={{ position: 'relative' }}>
+          <div className="col-sm-12" style={{ position: 'relative' }}>
             <div className={s.social}>
               <div className={s.socialImage}></div>
-              <a href='/' className={s.mobileMenuItemSocial}>
-                <h6>Behance</h6>
-              </a>
-              <a href='/' className={s.mobileMenuItemSocial}>
-                <h6>Dribble</h6>
-              </a>
-              <a href='/' className={s.mobileMenuItemSocial}>
-                <h6>LinkedIn</h6>
-              </a>
+              <div className={s.socialLinks}>
+                <a href='/' className={s.mobileMenuItemSocial}>
+                  <h6>Behance</h6>
+                </a>
+                <a href='/' className={s.mobileMenuItemSocial}>
+                  <h6>Dribble</h6>
+                </a>
+                <a href='/' className={s.mobileMenuItemSocial}>
+                  <h6>LinkedIn</h6>
+                </a>
+              </div>
             </div>
           </div>
 

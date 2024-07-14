@@ -15,7 +15,7 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ children, preventHiding = t
   const [lastScrollDirection, setLastScrollDirection] = useState<ScrollDirection>('up');
   const stickyHeaderContent = useRef<HTMLDivElement>(null);
 
-  const windowSize = useWindowSize({ debounced: true });
+  const windowSize = useWindowSize({ debounceTime: 400 });
   const preventHidingRef = useRef(preventHiding);
 
   const handleScroll = () => {

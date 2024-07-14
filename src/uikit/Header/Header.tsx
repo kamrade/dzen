@@ -1,32 +1,14 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Header.module.scss';
 import { StickyHeader, Drawer, TextSwitcherBoolean, MobileMenu } from '~/uikit';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-
-const scrambledValues = [
-  'Product design',
-  'Prototyping',
-  'Infographic',
-  'Design systems',
-  'React/Angular components',
-  'Business and system analytics',
-];
-
-const switcherValues = [{
-  text: 'Menu',
-  value: true
-}, {
-  text: 'Close',
-  value: false
-}];
-
+import { scrambledValues } from './scrambled-values';
+import { switcherValues } from './switcher-values';
 
 export const Header = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const switcherRef = useRef(null);
-
-  useEffect(() => console.log(isDrawerVisible), [isDrawerVisible]);
 
   return (
     <>
@@ -64,6 +46,7 @@ export const Header = () => {
           </div>
         </header>
       </StickyHeader>
+     
       <Drawer 
         isVisible={isDrawerVisible} 
         setVisibility={setIsDrawerVisible} 
@@ -74,6 +57,7 @@ export const Header = () => {
         bottom={16}
         right={16}
         left={16}
+        mobileTrigger={576}
       >
         <MobileMenu closeMenu={ () => setIsDrawerVisible(false) }/>
       </Drawer>

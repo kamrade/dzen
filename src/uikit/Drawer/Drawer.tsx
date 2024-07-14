@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { IconButton } from "~/uikit";
 import s from "./Drawer.module.scss";
 import { RiCloseLine } from "react-icons/ri";
-import { useOnClickOutside, useLockBodyScroll } from '~/hooks';
+import { useOnClickOutside, useLockBodyScroll, useWindowSize } from '~/hooks';
 
 export interface IDrawerProps {
   isVisible: boolean;
@@ -17,6 +17,7 @@ export interface IDrawerProps {
   bottom?: number;
   right?: number;
   left?: number;
+  mobileTrigger?: number;
 }
 
 export const Drawer: FC<IDrawerProps> = ({ 
@@ -29,11 +30,14 @@ export const Drawer: FC<IDrawerProps> = ({
   bottom = 0,
   right = 0,
   left = 0,
+  mobileTrigger = 600,
 }) => {
 
   const drawerRef = useRef<HTMLDivElement>(null);
   const [ isInnerVisible, setIsInnerVisible ] = useState(false);
   const [ drawerClassNames, setDrawerClassNames] = useState(`${s.Drawer}`);
+
+  const windowSize = useWindowSize({ debounceTime: 400 });
 
   const drawerRoot = document.getElementById('drawer-root') as HTMLDivElement;
   if (!drawerRoot) {
@@ -82,9 +86,9 @@ export const Drawer: FC<IDrawerProps> = ({
           style={{ 
             width: initialWidth,
             top: `${top}px`,
-            bottom: `${bottom}px`,
-            right: `${right}px`,
-            left: `${left}px`,
+            bottom: `${windowSize.width > mobileTrigger ? bottom : 0}px`,
+            right: `${windowSize.width > mobileTrigger ? right : 0}px`,
+            left: `${windowSize.width > mobileTrigger ? left : 0}px`,
           }}
         >
           { closeButton &&  

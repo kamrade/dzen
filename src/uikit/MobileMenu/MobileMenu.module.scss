@@ -1,3 +1,6 @@
+@import '~styles/variables';
+@import '~bootstrap/scss/mixins';
+
 .mobileMenu {
   padding-top: 4rem;
   padding-bottom: 2rem;
@@ -11,6 +14,11 @@
   right: 0;
   bottom: 0;
   border-radius: var(--border-radius-control-panel);
+
+  @include media-breakpoint-down(sm) {
+    padding: 2rem 1rem 0;
+    border-radius: var(--border-radius-control-panel) var(--border-radius-control-panel) 0 0;
+  }
 
   .mobileMenuItem {
     display: block;
@@ -35,6 +43,14 @@
     display: flex;
     flex-direction: column;
 
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
+    }
+
     .mainMenuContentInner {
       flex-grow: 1;
     }
@@ -49,13 +65,31 @@
     display: flex;
     flex-direction: column;
 
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
+    }
+
+    .socialLinks {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .socialImage {
       flex-grow: 1;
+      min-height: 240px;
       background-color: pink;
       background-image: url('../../../public/gradient-pattern.avif');
       background-size: cover;
       background-repeat: no-repeat;
       margin-bottom: 1rem;
+
+      @include media-breakpoint-down(sm) {
+        background-position: 50% 50%;
+      }
     }
   }
   
