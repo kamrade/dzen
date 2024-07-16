@@ -9,6 +9,7 @@
   transition: all .3s ease-in-out;
 
   &.DrawerVisible {
+    animation: .3s ease-in-out drawerAppearance;
     transform: translateX(0);
   }
 
@@ -40,6 +41,16 @@
   background-size: calc(10* .5px) calc(10* .5px);
 
   &.DrawerBackdropVisible {
+    animation: .3s ease-in-out backdropAppearance;
+    opacity: 1;
+  }
+}
+
+@keyframes backdropAppearance {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }

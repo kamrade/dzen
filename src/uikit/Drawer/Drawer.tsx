@@ -40,6 +40,12 @@ export const Drawer: FC<IDrawerProps> = ({
   const [ backdropClassNames, setBackdropClassNames] = useState(`${s.DrawerBackdrop}`);
 
   const windowSize = useWindowSize({ debounceTime: 400 });
+  useLockBodyScroll(isVisible);
+  useOnClickOutside([...insideRefs, drawerRef], () => {
+    if (clickOutside) {
+      setVisibility(false);
+    }
+  }, isVisible);
 
   const drawerRoot = document.getElementById('drawer-root') as HTMLDivElement;
   if (!drawerRoot) {
@@ -52,67 +58,49 @@ export const Drawer: FC<IDrawerProps> = ({
   useEffect(() => {
     if (isVisible) {
       setIsInnerVisible(true);
-    } else {
-      setDrawerClassNames(s.Drawer);
-      setBackdropClassNames(s.DrawerBackdrop);
     }
+    setDrawerClassNames(`${s.Drawer} ${isVisible ? s.DrawerVisible : ''}`);
+    setBackdropClassNames(`${s.DrawerBackdrop} ${isVisible ? s.DrawerBackdropVisible : ''}`);
   }, [isVisible]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setDrawerClassNames(`${s.Drawer} ${isVisible ? s.DrawerVisible : ''}`);
-      setBackdropClassNames(`${s.DrawerBackdrop} ${isVisible ? s.DrawerBackdropVisible : ''}`);
-    }, 5);
-  }, [isInnerVisible]);
 
   const transitionEndHandler: TransitionEventHandler<HTMLDivElement> = (e) => {
     if ((e.target === drawerRef.current || e.target === backdropRef.current) && (!isVisible)) {
-      setIsInnerVisible(isVisible);
+      setIsInnerVisible(false);
     }
   }
 
-  useOnClickOutside([...insideRefs, drawerRef], () => {
-    if (clickOutside) {
-      setVisibility(false);
-    }
-  }, isVisible);
-
-  useEffect(() => {
-  }, [isInnerVisible, drawerClassNames])
-
-  useLockBodyScroll(isVisible);
-  
   return createPortal(
     (<>
       {isInnerVisible && (
-        <div 
-          onTransitionEnd={transitionEndHandler}
-          ref={backdropRef} 
-          className={backdropClassNames}
-        ></div>
-      )}
-      {isInnerVisible && (
-        <div 
-          className={drawerClassNames} 
-          ref={drawerRef} 
-          onTransitionEnd={transitionEndHandler}
-          style={{ 
-            width: initialWidth,
-            top: `${top}px`,
-            bottom: `${windowSize.width > mobileTrigger ? bottom : 0}px`,
-            right: `${windowSize.width > mobileTrigger ? right : 0}px`,
-            left: `${windowSize.width > mobileTrigger ? left : 0}px`,
-          }}
-        >
-          { closeButton &&  
-            <IconButton size='sm' onClick={() => setVisibility(false)}>
-              <RiCloseLine />
-            </IconButton>
-          }
-          <div className={s.DrawerContent}>
-            {children}
+        <>
+          <div 
+            onTransitionEnd={transitionEndHandler}
+            ref={backdropRef} 
+            className={backdropClassNames}
+          ></div>
+        
+          <div 
+            className={drawerClassNames} 
+            ref={drawerRef} 
+            onTransitionEnd={transitionEndHandler}
+            style={{ 
+              width: initialWidth,
+              top: `${top}px`,
+              bottom: `${windowSize.width > mobileTrigger ? bottom : 0}px`,
+              right: `${windowSize.width > mobileTrigger ? right : 0}px`,
+              left: `${windowSize.width > mobileTrigger ? left : 0}px`,
+            }}
+          >
+            { closeButton &&  
+              <IconButton size='sm' onClick={() => setVisibility(false)}>
+                <RiCloseLine />
+              </IconButton>
+            }
+            <div className={s.DrawerContent}>
+              {children}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>), document.getElementById('drawer-root') as HTMLDivElement);
 };
