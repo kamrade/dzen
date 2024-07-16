@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import s from './TextSwitcher.module.scss';
 
 export interface ITextSwitcherBooleanValue {

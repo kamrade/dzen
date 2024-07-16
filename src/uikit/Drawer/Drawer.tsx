@@ -34,8 +34,10 @@ export const Drawer: FC<IDrawerProps> = ({
 }) => {
 
   const drawerRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
   const [ isInnerVisible, setIsInnerVisible ] = useState(false);
   const [ drawerClassNames, setDrawerClassNames] = useState(`${s.Drawer}`);
+  const [ backdropClassNames, setBackdropClassNames] = useState(`${s.DrawerBackdrop}`);
 
   const windowSize = useWindowSize({ debounceTime: 400 });
 
@@ -52,15 +54,19 @@ export const Drawer: FC<IDrawerProps> = ({
       setIsInnerVisible(true);
     } else {
       setDrawerClassNames(s.Drawer);
+      setBackdropClassNames(s.DrawerBackdrop);
     }
   }, [isVisible]);
 
   useEffect(() => {
-    setDrawerClassNames(`${s.Drawer} ${isVisible ? s.DrawerVisible : ''}`);
-  }, [isVisible]);
+    setTimeout(() => {
+      setDrawerClassNames(`${s.Drawer} ${isVisible ? s.DrawerVisible : ''}`);
+      setBackdropClassNames(`${s.DrawerBackdrop} ${isVisible ? s.DrawerBackdropVisible : ''}`);
+    }, 5);
+  }, [isInnerVisible]);
 
   const transitionEndHandler: TransitionEventHandler<HTMLDivElement> = (e) => {
-    if (e.target === drawerRef.current && (!isVisible)) {
+    if ((e.target === drawerRef.current || e.target === backdropRef.current) && (!isVisible)) {
       setIsInnerVisible(isVisible);
     }
   }
@@ -71,18 +77,25 @@ export const Drawer: FC<IDrawerProps> = ({
     }
   }, isVisible);
 
+  useEffect(() => {
+  }, [isInnerVisible, drawerClassNames])
+
   useLockBodyScroll(isVisible);
   
   return createPortal(
     (<>
-      {isVisible && (
-        <div className={s.DrawerBackdrop}></div>
+      {isInnerVisible && (
+        <div 
+          onTransitionEnd={transitionEndHandler}
+          ref={backdropRef} 
+          className={backdropClassNames}
+        ></div>
       )}
       {isInnerVisible && (
         <div 
           className={drawerClassNames} 
           ref={drawerRef} 
-          onTransitionEnd={transitionEndHandler} 
+          onTransitionEnd={transitionEndHandler}
           style={{ 
             width: initialWidth,
             top: `${top}px`,

@@ -10,7 +10,6 @@
 
   &.DrawerVisible {
     transform: translateX(0);
-    animation: .3s ease-in drawerAppearance;
   }
 
   .DrawerContent {
@@ -34,5 +33,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: all .3s ease-in-out;
+  opacity: 0;
+  background-image: radial-gradient(currentColor .5px, transparent .5px);
+  background-size: calc(10* .5px) calc(10* .5px);
+
+  &.DrawerBackdropVisible {
+    opacity: 1;
+  }
 }
