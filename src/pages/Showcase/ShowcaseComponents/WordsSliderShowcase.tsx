@@ -12,7 +12,6 @@ export const WordsSliderShowcase = () => {
     let t = toWord;
     setFromWord(t);
     setToWord(f);
-    
   }
 
   return (
