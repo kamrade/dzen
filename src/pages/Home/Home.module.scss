@@ -96,11 +96,11 @@
 }
 
 .card {
-  padding: 40px;
+  padding: 24px;
   background: var(--color-bg-base-100);
   border-radius: 1rem;
   margin-bottom: 1rem;
-  min-height: 340px;
+  min-height: 280px;
 
   @include media-breakpoint-down(xl) {
     min-height: 200px;

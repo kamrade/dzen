@@ -1,0 +1,21 @@
+.CharSlider {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+
+  .CharOriginal {
+    opacity: 0;
+    display: block;
+  }
+
+  .CharAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    transform: translateY(100%);
+    transition: transform .3s ease-in-out;
+  }
+
+}

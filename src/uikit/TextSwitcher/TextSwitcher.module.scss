@@ -3,6 +3,8 @@
   position: relative;
   padding: 0 4px;
   height: 12px;
+  display: inline-block;
+  vertical-align: top;
 
   &.TextSitcherOff {
     color: var(--color-text-placeholder);

@@ -6,3 +6,4 @@ export * from './IconButton';
 export * from './Typewriter';
 export * from './TextSwitcher';
 export * from './MobileMenu';
+export * from './CharSlider';
