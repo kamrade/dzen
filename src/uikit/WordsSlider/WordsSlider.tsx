@@ -28,7 +28,7 @@ export const WordsSlider: FC<IWordsSliderProps> = ({
 
   useEffect(() => {
     setLongerWord(from.length > to.length ? from : to);
-  }, [])
+  }, []);
 
   return (
     <div className={s.WordSlider}>

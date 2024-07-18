@@ -1,15 +1,28 @@
+import { useState } from 'react';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter } from '~/uikit';
+import { Typewriter, WordsSlider } from '~/uikit';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 
 export const Home = () => {
+
+  const [fromWord, setFromWord] = useState('Improving digital interactions for enhanced user experiences');
+  const [toWord, setToWord] =     useState('User-friendly, intuitive, and enjoyable digital platforms');
+
+  const clickHandler = () => {
+    let f = fromWord;
+    let t = toWord;
+    setFromWord(t);
+    setToWord(f);
+  }
+
   return (
     <div className={s.HomePage}>
       <div className="container">
         <div>
+          
           <h1 className={s.title}>
             <div>Human focusing</div>
             <div className={s.titleLabelAnchor}>
@@ -21,20 +34,27 @@ export const Home = () => {
           </h1>
 
           <div className={s.headerCardsWrapper}>
-            <div className="row">
-              <div className="col-lg-6">
-                <div className={s.headerCard}>Improving digital interactions for enhanced user experiences</div>
-              </div>
+            <div className={s.headerCard}onClick={clickHandler}>
+              <WordsSlider 
+                from={fromWord} 
+                to={toWord} 
+                randomMax={70}
+                orderBasicDelay={20}
+                transitionDuration={0.25}
+                order={'ordered'}
+              />
+            </div>
 
-              <div className="col-lg-6">
-                <div className={s.headerCard}>User-friendly, intuitive, and enjoyable digital platforms</div>
+              {/* <div className="col-lg-6">
+                <div className={s.headerCard}>
+                  User-friendly, intuitive, and enjoyable digital platforms
+                </div>
               </div>
               <div className="col-lg-12">
                 <div className={`${s.headerCard} ${s.headerCardSpecial}`}>
                   Optimize user satisfaction by improving the usability, accessibility, and efficiency of digital interfaces
                 </div>
-              </div>
-            </div>
+              </div> */}
           </div>
 
           <div className={s.cards}>
