@@ -1,6 +1,6 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-base);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 a, a:link, a:visited {
@@ -9,6 +9,10 @@ a, a:link, a:visited {
   &:hover {
     text-decoration: underline;
   }
+}
+
+body {
+  font-family: var(--font-family-base);
 }
 
 :root {

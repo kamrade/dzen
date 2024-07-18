@@ -1,22 +1,13 @@
-import { useState } from 'react';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, WordsSlider } from '~/uikit';
+import { Typewriter } from '~/uikit';
+import { FullWordsSliderShowcase } from '../Showcase/ShowcaseComponents';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 
 export const Home = () => {
 
-  const [fromWord, setFromWord] = useState('Improving digital interactions for enhanced user experiences');
-  const [toWord, setToWord] =     useState('User-friendly, intuitive, and enjoyable digital platforms');
-
-  const clickHandler = () => {
-    let f = fromWord;
-    let t = toWord;
-    setFromWord(t);
-    setToWord(f);
-  }
 
   return (
     <div className={s.HomePage}>
@@ -34,15 +25,12 @@ export const Home = () => {
           </h1>
 
           <div className={s.headerCardsWrapper}>
-            <div className={s.headerCard}onClick={clickHandler}>
-              <WordsSlider 
-                from={fromWord} 
-                to={toWord} 
-                randomMax={70}
-                orderBasicDelay={20}
-                transitionDuration={0.25}
-                order={'ordered'}
-              />
+            <div className="row">
+              <div className="col-md-12">
+                <div className={s.headerCard}>
+                  <FullWordsSliderShowcase />
+                </div>
+              </div>
             </div>
 
               {/* <div className="col-lg-6">

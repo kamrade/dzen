@@ -1,4 +1,4 @@
-import { TextSwitcherBooleanShowcase, CharSliderShowcase, CharsSliderShowcase, WordsSliderShowcase } from './ShowcaseComponents';
+import { TextSwitcherBooleanShowcase, CharSliderShowcase, CharsSliderShowcase, WordsSliderShowcase, FullWordsSliderShowcase } from './ShowcaseComponents';
 
 export function Showcase() {
   return (
@@ -13,6 +13,8 @@ export function Showcase() {
         <CharsSliderShowcase />
         <hr/>
         <WordsSliderShowcase />
+        <hr/>
+        <FullWordsSliderShowcase />
       </div>
     </div>
   );
