@@ -5,14 +5,14 @@ import s from './CharsSlider.module.scss'
 export interface ICharsSliderProps {
   charFrom: string;
   charTo: string;
-  randomValue?: number;
+  timeout?: number; 
+  maxRandomTimeout?: number;
   transitionDuration?: number;
 }
 
-export const CharsSlider: FC<ICharsSliderProps> = ({ charFrom, charTo, randomValue = 40, transitionDuration = 0.2 }) => {
+export const CharsSlider: FC<ICharsSliderProps> = ({ charFrom, charTo, maxRandomTimeout = 40, timeout = 0, transitionDuration = 0.2 }) => {
 
-
-  const rand = randomIntFromInterval(0, randomValue);
+  const rand = timeout ? timeout : randomIntFromInterval(0, maxRandomTimeout);
 
   const [charFromShift, setCharFromShift] = useState('translateY(-100%)');
   const [charToShift, setCharToShift] = useState('translateY(0)');
