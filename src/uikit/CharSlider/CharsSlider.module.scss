@@ -16,7 +16,7 @@
     left: 0;
     display: block;
     transform: translateY(0);
-    transition: transform .3s ease-in-out;
+    
   }
 
   .CharTo {
@@ -25,7 +25,43 @@
     left: 0;
     display: block;
     transform: translateY(100%);
-    transition: transform .3s ease-in-out;
+    
+    &.CharToAnimation {
+      animation: bbb 1s linear;
+    }
   }
 
+}
+
+@keyframes bbb {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  44% {
+    opacity: 0.1;
+  }
+  48% {
+    opacity: 0;
+  }
+  52% {
+    opacity: 0.2;
+  }
+  56% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  64% {
+    opacity: 0.2;
+  }
+  68% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.8
+  }
 }

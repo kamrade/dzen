@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { CharsSlider } from '~/uikit';
-import s from './WordsSliderShowcase.module.scss';
+import { WordsSlider } from '~/uikit';
 
 export const WordsSliderShowcase = () => {
   
-  const [fromWord, setFromWord] = useState('eMibnta');
-  const [toWord, setToWord] = useState('Ambient');
+  const [fromWord, setFromWord] = useState('Nuclear physics or quantum mechanics');
+  const [toWord, setToWord] =     useState('Neuralistic and neural networks');
 
   const clickHandler = () => {
     let f = fromWord;
@@ -15,11 +14,8 @@ export const WordsSliderShowcase = () => {
   }
 
   return (
-    <div onClick={clickHandler} className={s.WordSlider}>
-      { fromWord.split('').map((char, i) =>
-          <CharsSlider charFrom={fromWord[i]} charTo={toWord[i]} key={i} randomValue={400} />
-        )
-      }
+    <div onClick={clickHandler}>
+      <WordsSlider from={fromWord} to={toWord} randomMax={500} transitionDuration={0.5} />
     </div>
   );
 }

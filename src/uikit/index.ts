@@ -7,3 +7,4 @@ export * from './Typewriter';
 export * from './TextSwitcher';
 export * from './MobileMenu';
 export * from './CharSlider';
+export * from './WordsSlider';

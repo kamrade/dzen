@@ -7,11 +7,12 @@ export interface ICharSliderProps {
   char: string;
   isVisible: boolean;
   animationDirection?: CharAnimateDirection;
+  transitionDuration?: number;
 }
 
 
 
-export const CharSlider: FC<ICharSliderProps> = ({ char, isVisible, animationDirection = 'top' }) => {
+export const CharSlider: FC<ICharSliderProps> = ({ char, isVisible, animationDirection = 'top', transitionDuration = 0.1 }) => {
 
   const getTransform = () => {
 
@@ -46,6 +47,7 @@ export const CharSlider: FC<ICharSliderProps> = ({ char, isVisible, animationDir
         className={s.CharAnimation}
         style={{
           transform: getTransform(),
+          transitionDuration: `${transitionDuration}s`
         }}
       >{char}</span>
     </span>

@@ -6,9 +6,10 @@ export interface ICharsSliderProps {
   charFrom: string;
   charTo: string;
   randomValue?: number;
+  transitionDuration?: number;
 }
 
-export const CharsSlider: FC<ICharsSliderProps> = ({ charFrom, charTo, randomValue = 40 }) => {
+export const CharsSlider: FC<ICharsSliderProps> = ({ charFrom, charTo, randomValue = 40, transitionDuration = 0.2 }) => {
 
 
   const rand = randomIntFromInterval(0, randomValue);
@@ -32,18 +33,21 @@ export const CharsSlider: FC<ICharsSliderProps> = ({ charFrom, charTo, randomVal
 
   return (
     <span className={s.CharsSlider}>
+      
       <span className={s.CharOriginal}>
-        {charFrom}
+        {charFrom === ' ' ? '0' : charFrom}
       </span>
+
       <span className={s.CharFrom} style={{
         transform: charFromShift,
-        transition: isAnimated ? 'transform .2s linear' : 'none'
+        transition: isAnimated ? `transform ${transitionDuration}s ease-in-out` : 'none',
       }}>
         {charFrom}
       </span>
-      <span className={s.CharTo} style={{
+      <span className={`${s.CharTo} ${isAnimated ? s.CharToAnimation : ''}`} style={{
         transform: charToShift,
-        transition: isAnimated ? 'transform .3s ease-in-out' : 'none'
+        transition: isAnimated ? `transform ${transitionDuration}s ease-in-out` : 'none',
+        animationDuration: `${isAnimated ? transitionDuration : 0}s`,
       }}>
         {charTo}
       </span>
