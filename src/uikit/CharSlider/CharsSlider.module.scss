@@ -13,62 +13,20 @@
     }
   }
 
-  .CharFrom {
+  .CharAnimationSlider {
     position: absolute;
     top: 0;
     left: 0;
-    display: inline-block;
-    transform: translateY(0);
-    
-  }
-
-  .CharTo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    transform: translateY(100%);
-
-    .CharToContentBlock {
-      
+    display: flex;
+    flex-direction: column;
+    .CharAnimationSliderItem {
+      display: block;
     }
-    
-    &.CharToAnimation {
-      animation: bbb 1s linear;
+    .CharAnimationSliderItemTo {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      transform: translateY(100%);
     }
-  }
-
-}
-
-@keyframes bbb {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  44% {
-    opacity: 0.1;
-  }
-  48% {
-    opacity: 0;
-  }
-  52% {
-    opacity: 0.2;
-  }
-  56% {
-    opacity: 0.4;
-  }
-  60% {
-    opacity: 0.3;
-  }
-  64% {
-    opacity: 0.2;
-  }
-  68% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0.8
   }
 }

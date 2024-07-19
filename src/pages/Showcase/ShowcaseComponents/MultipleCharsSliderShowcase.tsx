@@ -19,8 +19,9 @@ export const MultipleCharsSliderShowcase = () => {
       <CharsSlider 
         charFrom={charA} 
         charTo={charB}
-        multipleRandomChars={5}
-        transitionDuration={1}
+        
+        multipleRandomChars={3}
+        transitionDuration={0.5}
       />
     </div>
   );

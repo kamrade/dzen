@@ -16,7 +16,7 @@ export interface ICharsSliderProps {
 export const CharsSlider: FC<ICharsSliderProps> = ({ 
   charFrom, 
   charTo, 
-  maxRandomTimeout = 40, 
+  maxRandomTimeout = 40,
   timeout = 0, 
   transitionDuration = 0.2,
   multipleRandomChars = 0
@@ -24,41 +24,31 @@ export const CharsSlider: FC<ICharsSliderProps> = ({
 
   const animationTimeout = timeout ? timeout : randomIntFromInterval(0, maxRandomTimeout);
 
-  const [charFromShift, setCharFromShift] = useState('translateY(-100%)');
-  const [charToShift, setCharToShift] = useState('translateY(0)');
+  const [animatorShift, setAnimatorShift] = useState('translateY(-100%)');
   const [isAnimated, setIsAnimated] = useState(true);
-
+  
+  const [showAnimator, setShowAnimator] = useState(false);
   const [showOriginal, setShowOriginal] = useState(true);
-  const [showFrom, setShowFrom] = useState(false);
-  const [showTo, setShowTo] = useState(false);
 
-  // let randomChars = getRandomChars(multipleRandomChars);
+  let randomChars = getRandomChars(multipleRandomChars);
 
   useEffect(() => {
     setIsAnimated(false);
-    setCharFromShift('translateY(0)');
-    setCharToShift('translateY(100%)');
-    setShowFrom(true);
-    setShowTo(true);
+    setAnimatorShift('translateY(0)');
+    setShowAnimator(true);
     setShowOriginal(false);
     
     setTimeout(() => {
       setIsAnimated(true);
-      setCharFromShift('translateY(-100%)');
-      setCharToShift('translateY(0)');
+      setAnimatorShift('translateY(-100%)');
     }, animationTimeout);
 
   }, [charFrom, charTo]);
 
-  const fromTransitionEndHandler = () => {
-    setShowFrom(false);
-  }
-
-  const toTransitionEndHandler = () => {
-    setShowTo(false);
+  const transitionEndHandler = () => {
+    setShowAnimator(false);
     setShowOriginal(true);
   }
-
 
   return (
     <span className={s.CharsSlider}>
@@ -69,25 +59,18 @@ export const CharsSlider: FC<ICharsSliderProps> = ({
         {charTo}
       </span>
 
-      { showFrom && 
-        <span onTransitionEnd={fromTransitionEndHandler} className={s.CharFrom} style={{
-          transform: charFromShift,
+      {showAnimator&&
+        <span onTransitionEnd={transitionEndHandler} className={s.CharAnimationSlider} style={{
+          transform: animatorShift,
           transition: isAnimated ? `transform ${transitionDuration}s ease-in-out` : 'none',
         }}>
-          {charFrom}
+          <span className={s.CharAnimationSliderItem}>{charFrom}</span>
+          {randomChars.split('').map((randomChar, i) => (
+            <span className={s.CharAnimationSliderItem} key={i}>{randomChar}</span>
+          ))}
+          <span className={s.CharAnimationSliderItemTo}>{charTo}</span>
         </span>
       }
-
-      { showTo &&
-        <span onTransitionEnd={toTransitionEndHandler} className={`${s.CharTo} ${isAnimated ? s.CharToAnimation : ''}`} style={{
-          transform: charToShift,
-          transition: isAnimated ? `transform ${transitionDuration}s ease-in-out` : 'none',
-          animationDuration: `${isAnimated ? transitionDuration : 0}s`,
-        }}>
-          {charTo}
-        </span>
-      }
-
     </span>
   );
 }
