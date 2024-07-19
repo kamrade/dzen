@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { randomIntFromInterval } from '~/helpers';
+import { randomIntFromInterval, getRandomChars } from '~/helpers';
 import s from './CharsSlider.module.scss'
 
 export interface ICharsSliderProps {
@@ -10,9 +10,17 @@ export interface ICharsSliderProps {
   maxRandomTimeout?: number;
 
   transitionDuration?: number;
+  multipleRandomChars?: number;
 }
 
-export const CharsSlider: FC<ICharsSliderProps> = ({ charFrom, charTo, maxRandomTimeout = 40, timeout = 0, transitionDuration = 0.2 }) => {
+export const CharsSlider: FC<ICharsSliderProps> = ({ 
+  charFrom, 
+  charTo, 
+  maxRandomTimeout = 40, 
+  timeout = 0, 
+  transitionDuration = 0.2,
+  multipleRandomChars = 0
+}) => {
 
   const animationTimeout = timeout ? timeout : randomIntFromInterval(0, maxRandomTimeout);
 
@@ -23,6 +31,8 @@ export const CharsSlider: FC<ICharsSliderProps> = ({ charFrom, charTo, maxRandom
   const [showOriginal, setShowOriginal] = useState(true);
   const [showFrom, setShowFrom] = useState(false);
   const [showTo, setShowTo] = useState(false);
+
+  // let randomChars = getRandomChars(multipleRandomChars);
 
   useEffect(() => {
     setIsAnimated(false);

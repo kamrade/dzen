@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CharsSlider } from '~/uikit';
+import s from './MultipleCharsSliderShowcase.module.scss';
 
 export const MultipleCharsSliderShowcase = () => {
   
@@ -14,10 +15,12 @@ export const MultipleCharsSliderShowcase = () => {
   }
 
   return (
-    <div className="mb-3 d-flex" onClick={clickHandler}>
+    <div className={`${s.MultipleCharsSliderShowcase} mb-3 d-flex`} onClick={clickHandler}>
       <CharsSlider 
         charFrom={charA} 
         charTo={charB}
+        multipleRandomChars={5}
+        transitionDuration={1}
       />
     </div>
   );

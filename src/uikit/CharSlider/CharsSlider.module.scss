@@ -28,6 +28,10 @@
     left: 0;
     display: inline-block;
     transform: translateY(100%);
+
+    .CharToContentBlock {
+      
+    }
     
     &.CharToAnimation {
       animation: bbb 1s linear;
