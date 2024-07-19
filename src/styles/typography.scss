@@ -3,6 +3,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+h6 {
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 a, a:link, a:visited {
   text-decoration: none;
   transition: $transition-base;

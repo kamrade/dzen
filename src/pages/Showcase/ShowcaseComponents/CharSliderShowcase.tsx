@@ -1,3 +1,7 @@
+/*
+// Useless and deprecated
+*/
+
 import { useState } from 'react';
 import { CharSlider } from '~/uikit';
 

@@ -4,7 +4,7 @@ import { WordsSlider } from '~/uikit';
 const phrases = [
   'Improving digital interactions for enhanced user experiences',
   'User-friendly, intuitive, and enjoyable digital platforms',
-  'Optimize user satisfaction by improving the usability, accessibility, and efficiency of digital interfaces'
+  'Optimize user satisfaction by improving the usability'
 ]
 
 export const FullWordsSliderShowcase = () => {
@@ -26,12 +26,12 @@ export const FullWordsSliderShowcase = () => {
       <WordsSlider 
         from={fromWord} 
         to={toWord} 
-        randomMax={20}
-        orderBasicDelay={50}
-        transitionDuration={0.15}
+        randomMax={100}
+        orderBasicDelay={10}
+        transitionDuration={0.25}
         order={'ordered'}
-        fullWord={true}
-        largest={phrases[2]}
+        
+        largest={phrases[0]}
       />
     </div>
   );
