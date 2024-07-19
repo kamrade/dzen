@@ -1,20 +1,23 @@
 .CharsSlider {
   position: relative;
-  display: block;
+  display: inline-block;
   overflow: hidden;
-  cursor: pointer;
-  user-select: none;
+  white-space: pre;
 
   .CharOriginal {
+    display: inline-block;
     opacity: 0;
-    display: block;
+
+    &.CharOriginalVisible {
+      opacity: 1;
+    }
   }
 
   .CharFrom {
     position: absolute;
     top: 0;
     left: 0;
-    display: block;
+    display: inline-block;
     transform: translateY(0);
     
   }
@@ -23,7 +26,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    display: block;
+    display: inline-block;
     transform: translateY(100%);
     
     &.CharToAnimation {

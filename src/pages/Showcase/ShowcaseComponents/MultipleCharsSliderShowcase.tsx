@@ -15,7 +15,10 @@ export const MultipleCharsSliderShowcase = () => {
 
   return (
     <div className="mb-3 d-flex" onClick={clickHandler}>
-      <CharsSlider charFrom={charA} charTo={charB} />
+      <CharsSlider 
+        charFrom={charA} 
+        charTo={charB}
+      />
     </div>
   );
 }

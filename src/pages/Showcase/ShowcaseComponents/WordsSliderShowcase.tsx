@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { WordsSlider } from '~/uikit';
 
 export const WordsSliderShowcase = () => {
@@ -12,6 +12,8 @@ export const WordsSliderShowcase = () => {
     setFromWord(t);
     setToWord(f);
   }
+
+  useEffect(() => console.log(fromWord, ':::', toWord), [fromWord, toWord]);
 
   return (
     <div onClick={clickHandler}>
