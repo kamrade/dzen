@@ -13,8 +13,6 @@ export const WordsSliderShowcase = () => {
     setToWord(f);
   }
 
-  useEffect(() => console.log(fromWord, ':::', toWord), [fromWord, toWord]);
-
   return (
     <div onClick={clickHandler}>
       <WordsSlider 
