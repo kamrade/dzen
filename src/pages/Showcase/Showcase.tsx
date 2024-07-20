@@ -4,7 +4,8 @@ import {
   CharsSliderShowcase, 
   WordsSliderShowcase, 
   FullWordsSliderShowcase,
-  MultipleCharsSliderShowcase
+  MultipleCharsSliderShowcase,
+  RandomCharsSliderShowcase
 } from './ShowcaseComponents';
 
 export function Showcase() {
@@ -53,6 +54,13 @@ export function Showcase() {
         <div className="row">
           <div className="col-md-12"><h5>Multiple Chars Slider Slider</h5></div>
           <div className="col-md-12"><MultipleCharsSliderShowcase /></div>
+        </div>
+
+        <hr/>
+        
+        <div className="row">
+          <div className="col-md-12"><h5>Random Chars Slider Slider</h5></div>
+          <div className="col-md-12"><RandomCharsSliderShowcase /></div>
         </div>
         
       </div>

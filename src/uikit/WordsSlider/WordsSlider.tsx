@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { CharsSlider } from '~/uikit';
 import { randomIntFromInterval } from '~/helpers';
 import s from './WordsSlider.module.scss';
@@ -9,25 +9,32 @@ export interface IWordsSliderProps {
   from: string;
   to: string;
   
-  randomMax?: number; 
-  transitionDuration?: number;
+  maxRandomTimeout?: number;
   timeout?: number;
+
+  transitionDuration?: number;
   order?: Order;
   orderBasicDelay?: number;
   fullWord?: boolean;
   largest?: string;
+
+  multipleRandomChars?: number;
 }
 
 export const WordsSlider: FC<IWordsSliderProps> = ({ 
   from, 
   to, 
-  randomMax = 500, 
-  transitionDuration = 1, 
+  
+  maxRandomTimeout = 500, 
   timeout = 0, 
+
+  transitionDuration = 1, 
+  
   order = 'mixed',
   orderBasicDelay = 30,
   fullWord = false,
-  largest = ''
+  largest = '',
+  multipleRandomChars = 0
 }) => {
   const [longerWord, setLongerWord] = useState('');
 
@@ -52,9 +59,12 @@ export const WordsSlider: FC<IWordsSliderProps> = ({
               charFrom={f}
               charTo={t}
               key={i}
-              maxRandomTimeout={randomMax}
-              timeout={timeout + (i * orderBasicDelay + (order === 'ordered' ? randomIntFromInterval(0, randomMax) : 0))}
+              maxRandomTimeout={maxRandomTimeout}
+              // -> If timeout is set maxRandomTimeout will be ignored
+              timeout={timeout + (i * orderBasicDelay + (order === 'ordered' ? randomIntFromInterval(0, maxRandomTimeout) : 0))}
               transitionDuration={transitionDuration}
+
+              multipleRandomChars={multipleRandomChars}
             />
           );
         })
@@ -76,9 +86,13 @@ export const WordsSlider: FC<IWordsSliderProps> = ({
                 charFrom={f}
                 charTo={t}
                 key={counter}
-                maxRandomTimeout={randomMax}
+                maxRandomTimeout={maxRandomTimeout}
+                
+                // -> If timeout is set maxRandomTimeout will be ignored
                 timeout={timeout + (i * orderBasicDelay + (order === 'ordered' ? randomIntFromInterval(0, randomMax) : 0))}
                 transitionDuration={transitionDuration}
+                
+                multipleRandomChars={multipleRandomChars}
               />
             );
           });

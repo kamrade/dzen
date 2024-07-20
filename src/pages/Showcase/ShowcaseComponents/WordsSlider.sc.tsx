@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { WordsSlider } from '~/uikit';
 
 export const WordsSliderShowcase = () => {
@@ -18,7 +18,7 @@ export const WordsSliderShowcase = () => {
       <WordsSlider 
         from={fromWord} 
         to={toWord} 
-        randomMax={200}
+        maxRandomTimeout={200}
         orderBasicDelay={30}
         transitionDuration={0.25}
         order={'ordered'}

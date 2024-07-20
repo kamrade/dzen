@@ -4,3 +4,4 @@ export * from './CharsSlider.sc';
 export * from './WordsSlider.sc';
 export * from './FullWordsSlider.sc';
 export * from './MultipleCharsSlider.sc';
+export * from './RandomCharsSlider.sc';
