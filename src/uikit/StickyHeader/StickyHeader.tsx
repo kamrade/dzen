@@ -28,7 +28,7 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ children, preventHiding = t
       : setLastScrollDirection('up');
 
     setLastScrollTop(scrollPosition);
-  }, [scrollPosition]);
+  }, [scrollPosition, lastScrollTop, preventHiding]);
 
   const updateWrapperSize = () => {
     if (stickyHeaderContent?.current) {

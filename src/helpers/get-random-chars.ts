@@ -3,8 +3,8 @@ import { randomIntFromInterval } from './random-int-from-interval';
 const allChars = "1234567890_+-=QWERTYUIOP{}[]ASDFGHJKL:|;~ZXCVBNM<>?";
 
 export const getRandomChar = () => {
-  let length = allChars.length;
-  let randomIndex = randomIntFromInterval(0, length - 1 );
+  const length = allChars.length;
+  const randomIndex = randomIntFromInterval(0, length - 1 );
   return allChars[randomIndex];
 }
 

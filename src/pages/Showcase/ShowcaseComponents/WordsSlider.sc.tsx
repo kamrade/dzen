@@ -7,8 +7,8 @@ export const WordsSliderShowcase = () => {
   const [toWord, setToWord] =     useState('Aeuralistic and neural networks');
 
   const clickHandler = () => {
-    let f = fromWord;
-    let t = toWord;
+    const f = fromWord;
+    const t = toWord;
     setFromWord(t);
     setToWord(f);
   }

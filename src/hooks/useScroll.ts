@@ -25,7 +25,7 @@ export const useScroll: (debounceTime: IUseScroll) => IUseScrollReturnValue = (p
     handleScroll();
 
     return () => window.removeEventListener('resize', handleScrollDebounced);
-  }, []);
+  }, [props.debounceTime]);
 
   return { scrollX, scrollY };
 };

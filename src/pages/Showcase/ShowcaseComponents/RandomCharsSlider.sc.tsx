@@ -14,10 +14,10 @@ export const RandomCharsSliderShowcase = () => {
   const [counter, setCounter] = useState(2);
 
   const clickHandler = () => {
-    let previousCounter = counter === 0 ? 2 : counter - 1;
+    const previousCounter = counter === 0 ? 2 : counter - 1;
     setFromText( phrases[previousCounter] );
     setToText( phrases[counter] );
-    let nextCounter = counter === 2 ? 0 : counter + 1
+    const nextCounter = counter === 2 ? 0 : counter + 1
     setCounter(nextCounter);
   }
 

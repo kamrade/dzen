@@ -36,7 +36,7 @@ export const CharsSlider: FC<ICharsSliderProps> = ({
   const [showAnimator, setShowAnimator] = useState(false);
   const [showOriginal, setShowOriginal] = useState(true);
 
-  let randomChars = getRandomChars(multipleRandomChars);
+  const randomChars = getRandomChars(multipleRandomChars);
 
   useEffect(() => {
     setIsAnimated(false);
@@ -49,7 +49,7 @@ export const CharsSlider: FC<ICharsSliderProps> = ({
       setAnimatorShift('translateY(-100%)');
     }, animationTimeout);
 
-  }, [charFrom, charTo]);
+  }, [charFrom, charTo, animationTimeout]);
 
   const transitionEndHandler = () => {
     setShowAnimator(false);

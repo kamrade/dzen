@@ -1,5 +1,5 @@
-let el: HTMLElement | null = document.querySelector('.text');
-let originalText = el?.innerHTML;
+const el: HTMLElement | null = document.querySelector('.text');
+const originalText = el?.innerHTML;
 
 console.log('el: ' + el);
 console.log('original text: ' + originalText);

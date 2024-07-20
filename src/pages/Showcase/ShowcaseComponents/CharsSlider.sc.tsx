@@ -7,8 +7,8 @@ export const CharsSliderShowcase = () => {
   const [charB, setCharB] = useState('Y');
 
   const clickHandler = () => {
-    let a = charA;
-    let b = charB;
+    const a = charA;
+    const b = charB;
     setCharA(b);
     setCharB(a);
   }

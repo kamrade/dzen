@@ -5,7 +5,7 @@ export type IconButtonSize = 'sm' | 'md';
 
 export interface IIconButton {
   children: ReactNode;
-  onClick?: any;
+  onClick?: (e?: MouseEvent) => unknown;
   size?: IconButtonSize;
 }
 

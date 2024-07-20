@@ -46,13 +46,13 @@ export const WordsSlider: FC<IWordsSliderProps> = ({
     } else {
       setLongerWord(from.length > to.length ? from : to);
     }
-  }, []);
+  }, [from, largest, to]);
 
   return (
     <div className={s.WordSlider}>
       { !fullWord && longerWord.split('').map((_char, i) => {
-          let f = from[i] || ' ';
-          let t = to[i] || ' ';
+          const f = from[i] || ' ';
+          const t = to[i] || ' ';
 
           return (
             <CharsSlider
@@ -72,12 +72,12 @@ export const WordsSlider: FC<IWordsSliderProps> = ({
 
       { fullWord && longerWord.split(' ').map((word, i) => {
 
-          let realWord = word + ' ';
+          const realWord = word + ' ';
           
-          return realWord.split('').map((_char, j) => {
+          return realWord.split('').map(() => {
             
-            let f = from[counter] || ' ';
-            let t = to[counter] || ' ';
+            const f = from[counter] || ' ';
+            const t = to[counter] || ' ';
             
             counter = counter + 1;
 

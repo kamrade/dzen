@@ -24,7 +24,7 @@ export function setButtonVariables<ThemeType, ButtonVariant, SizeType, ShapeType
     allThemes.map(themeType => {
       allVariants.map(variantName => {
         themeVariantCss += `.${data.mainClassName}.${data.mainClassName}-theme-${themeType}.${data.mainClassName}-variant-${variantName} {`
-        let st = data.themes.find(theme => theme.name === themeType)?.variants?.find(variant => variant.name === variantName);
+        const st = data.themes.find(theme => theme.name === themeType)?.variants?.find(variant => variant.name === variantName);
         const background = st?.background || defaultTheme.variants[0].background;
         const hoverBackground = st?.hoverBackground || defaultTheme.variants[0].hoverBackground;
         const activeBackground = st?.activeBackground || defaultTheme.variants[0].activeBackground;
@@ -47,7 +47,7 @@ export function setButtonVariables<ThemeType, ButtonVariant, SizeType, ShapeType
 
     allSizes.map((sizeType) => {
       allSizesCss += `.${data.mainClassName}.${data.mainClassName}-size-${sizeType} {`;
-      let sz = data.sizes.find(size => size.name === sizeType);
+      const sz = data.sizes.find(size => size.name === sizeType);
       const paddingY = sz?.paddingY === undefined ? defaultSize.paddingY : sz?.paddingY;
       const paddingX = sz?.paddingX === undefined ?  defaultSize.paddingX : sz?.paddingX;
       const fontSize = sz?.fontSize === undefined ? defaultSize.fontSize : sz?.fontSize;
@@ -74,7 +74,7 @@ export function setButtonVariables<ThemeType, ButtonVariant, SizeType, ShapeType
 
     allShapes.map((shapeType) => {
       allShapesCss += `.${data.mainClassName}.${data.mainClassName}-shape-${shapeType} {`;
-      let sh = data.shapes.find(shape => shape.name === shapeType);
+      const sh = data.shapes.find(shape => shape.name === shapeType);
       let borderRadius = sh?.borderRadius === undefined ? defaultShape.borderRadius : sh?.borderRadius;
       let focusBorderRadius = sh?.focusBorderRadius === undefined ? defaultShape.focusBorderRadius : sh?.focusBorderRadius;
       borderRadius = borderRadius > (height/2) ? Math.ceil(height/2) : borderRadius;

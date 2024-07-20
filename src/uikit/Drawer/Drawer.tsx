@@ -49,7 +49,7 @@ export const Drawer: FC<IDrawerProps> = ({
 
   const drawerRoot = document.getElementById('drawer-root') as HTMLDivElement;
   if (!drawerRoot) {
-    let createdDrawerRoot = document.createElement('div');
+    const createdDrawerRoot = document.createElement('div');
     createdDrawerRoot.className = 'drawer-root';
     createdDrawerRoot.id = 'drawer-root';
     document.body.appendChild(createdDrawerRoot);

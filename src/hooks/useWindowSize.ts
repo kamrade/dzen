@@ -29,7 +29,7 @@ export const useWindowSize = ({ debounceTime }: IWindowSizeProps) => {
     handleResize();
 
     return () => window.removeEventListener('resize', handleResizeDebounced);
-  }, []); // Empty array ensures that effect is only run on mount
+  }, [debounceTime]); // Empty array ensures that effect is only run on mount
 
   return windowSize;
 };
