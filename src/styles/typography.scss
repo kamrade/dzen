@@ -10,6 +10,10 @@ h6 {
   letter-spacing: 1px;
 }
 
+.mono {
+  font-family: var(--font-family-mono);
+}
+
 a, a:link, a:visited {
   text-decoration: none;
   transition: $transition-base;
