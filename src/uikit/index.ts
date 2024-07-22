@@ -8,3 +8,5 @@ export * from './TextSwitcher';
 export * from './MobileMenu';
 export * from './CharSlider';
 export * from './WordsSlider';
+
+export * from './HitmanCharsSlider';

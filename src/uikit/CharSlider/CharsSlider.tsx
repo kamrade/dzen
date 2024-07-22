@@ -2,7 +2,7 @@
 // Scrolls from char "from" to char "to"
 */
 
-import { FC, useEffect, useState } from 'react';
+import { FC, TransitionEventHandler, useEffect, useState, useRef } from 'react';
 import { randomIntFromInterval, getRandomChars } from '~/helpers';
 import s from './CharsSlider.module.scss'
 
@@ -25,10 +25,13 @@ export const CharsSlider: FC<ICharsSliderProps> = ({
   maxRandomTimeout = 40,
   
   transitionDuration = 0.2,
-  multipleRandomChars = 0
+  multipleRandomChars = 0,
 }) => {
 
-  const animationTimeout = timeout ? timeout : randomIntFromInterval(0, maxRandomTimeout);
+  const timeoutId = useRef<ReturnType<typeof setTimeout>>();
+
+  const animationTimeout = useRef<number>();
+  
 
   const [animatorShift, setAnimatorShift] = useState('translateY(-100%)');
   const [isAnimated, setIsAnimated] = useState(true);
@@ -39,21 +42,26 @@ export const CharsSlider: FC<ICharsSliderProps> = ({
   const randomChars = getRandomChars(multipleRandomChars);
 
   useEffect(() => {
+    animationTimeout.current = timeout ? timeout : randomIntFromInterval(0, maxRandomTimeout);
+  }, [timeout, maxRandomTimeout]);
+
+  useEffect(() => {
     setIsAnimated(false);
     setAnimatorShift('translateY(0)');
     setShowAnimator(true);
     setShowOriginal(false);
     
-    setTimeout(() => {
+    timeoutId.current = setTimeout(() => {
       setIsAnimated(true);
       setAnimatorShift('translateY(-100%)');
-    }, animationTimeout);
+    }, animationTimeout.current);
 
   }, [charFrom, charTo, animationTimeout]);
 
-  const transitionEndHandler = () => {
+  const transitionEndHandler: TransitionEventHandler = () => {
     setShowAnimator(false);
     setShowOriginal(true);
+    clearTimeout(timeoutId.current);
   }
 
   return (

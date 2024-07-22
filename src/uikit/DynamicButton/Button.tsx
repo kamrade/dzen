@@ -37,7 +37,7 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
       borderColor: 'transparent',
       color: '#ffffff',
       focusColor: '#7ED1FF',
-      convex: true,
+      convex: false,
       focusFrame: true,
     }, {
       name: 'outlined',
@@ -47,7 +47,7 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
       borderColor: '#7ED1FF',
       color: '#1983BF',
       focusColor: '#7ED1FF',
-      convex: true,
+      convex: false,
       focusFrame: true,
     }]
 
@@ -91,7 +91,7 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
   }, {
     name: 'md',
     paddingY: 4,
-    paddingX: 12,
+    paddingX: 10,
     innerGap: 4,
     fontSize: 14,
     lineHeight: 1.5,
@@ -120,8 +120,8 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
     focusBorderRadius: 2,
   }, {
     name: 'rounded',
-    borderRadius: 6,
-    focusBorderRadius: 8,
+    borderRadius: 5,
+    focusBorderRadius: 5,
   }, {
     name: 'circled',
     borderRadius: 30,
