@@ -5,63 +5,41 @@ import { getRandomChar } from '~/helpers';
 
 export interface IHitmanCharsSliderProps {
   text: string;
-  factor?: number;
   speed?: number;
 }
 
-export const HitmanCharsSlider: FC<IHitmanCharsSliderProps> = ({ text, factor = 1, speed = 10 }) => {
+export const HitmanCharsSlider: FC<IHitmanCharsSliderProps> = ({ text, speed = 2 }) => {
 
   const [currentText, setCurrentText] = useState(text);
 
   const animator = (randomArray: number[], phase: number) => {
-    const n = randomIntFromInterval(0, randomArray.length - 1);
-    const m = randomArray[n];
-    setCurrentText( (t) => {
-      const firstPart = t.substring(0, m);
-      const secondPart = t.substring(m + 1, t.length);
-      const newChar = phase === 1 ? '_' : text[m];
-      return firstPart + newChar + secondPart;
-    });
-    return n;
-  }
-
-  const animate2 = (counter: number, randomArray: number[]) => {
-
-    if (counter % factor === 0) {
-      const n = animator(randomArray, 2);
-      randomArray.splice(n, 1);
-    }
-    counter += 1;
-
-    if (randomArray.length >= 1) {
-      requestAnimationFrame(() => animate2(counter, randomArray));
+    for (let i = 0; i < speed; i++) {
+      const n = randomIntFromInterval(0, randomArray.length - 1);
+      const m = randomArray[n];
+      setCurrentText( (t) => (t.substring(0, m))  +  (phase === 1 ? '_' : text[m])  +  (t.substring(m + 1, t.length)) );
+      randomArray.splice(n, 1); // Not very nice, but convenient. Check it twice.
     }
   }
-  
-  const animate1 = (counter: number, randomArray: number[]) => {
 
-    if (counter % factor === 0) {
-      const n = animator(randomArray, 1);
-      randomArray.splice(n, 1);
-    }
-    counter += 1;
+  const animate1 = (randomArray: number[]) => {
+    animator(randomArray, 1);
 
     if (randomArray.length >= text.length / 2) {
-      requestAnimationFrame(() => animate1(counter, randomArray));
+      requestAnimationFrame(() => animate1(randomArray));
     } else {
       const randomArray = text.split('').map((_el, i) => i);
-      animate2(counter, randomArray);
+      animate2(randomArray);
     }
-
   }
 
-  useEffect(() => {
-    console.log('old text:', currentText, currentText.length);
-    console.log('new text:', text, text.length);
-    let counter = 0;
-    const randomArray = text.split('').map((_el, i) => i);
-    animate1(counter, randomArray);
-  }, [text]);
+  const animate2 = (randomArray: number[]) => {
+    animator(randomArray, 2);
+    if (randomArray.length >= 1) {
+      requestAnimationFrame(() => animate2(randomArray));
+    }
+  }
+
+  useEffect(() => animate1( text.split('').map((_el, i) => i) ), [text]);
 
   return (
     <div className={s.HitmanCharsSlider}>

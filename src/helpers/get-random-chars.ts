@@ -1,10 +1,10 @@
 import { randomIntFromInterval } from './random-int-from-interval';
 import { allChars } from '~/consts';
 
-export const getRandomChar = () => {
-  const length = allChars.length;
+export const getRandomChar = (charSet = allChars) => {
+  const length = charSet.length;
   const randomIndex = randomIntFromInterval(0, length - 1 );
-  return allChars[randomIndex];
+  return charSet[randomIndex];
 }
 
 export const getRandomChars = (count: number) => {
