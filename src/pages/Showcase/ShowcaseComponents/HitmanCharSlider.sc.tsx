@@ -12,7 +12,9 @@ export const HitmanCharsSliderShowcase = () => {
 
   return (
     <>
-      <Button theme='primary' shape={'straight'} variant={'contained'} size={'md'} onClick={refresh}>Animate</Button>
+      <div className="mb-3">
+        <Button theme='primary' shape={'straight'} variant={'contained'} size={'md'} onClick={refresh}>Animate</Button>
+      </div>
       <HitmanCharsSlider text={phrase} />
     </>
   );

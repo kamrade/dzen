@@ -1,6 +1,5 @@
 import { randomIntFromInterval } from './random-int-from-interval';
-
-const allChars = "1234567890_+-=QWERTYUIOP{}[]ASDFGHJKL:|;~ZXCVBNM<>?";
+import { allChars } from '~/consts';
 
 export const getRandomChar = () => {
   const length = allChars.length;

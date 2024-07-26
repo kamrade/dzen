@@ -1,0 +1,1 @@
+export const allChars = "1234567890_+-=QWERTYUIOP{}[]ASDFGHJKL:|;~ZXCVBNM<>?";
