@@ -3,4 +3,9 @@
   display: flex;
   white-space: pre;
   font-family: var(--font-family-mono);
+
+  .Bold {
+    background-color: var(--color-bg-inv-100);
+    opacity: 0.8;
+  }
 }

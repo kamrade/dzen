@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter } from '~/uikit';
+import { Typewriter, HitmanCharsSlider } from '~/uikit';
 import { FullWordsSliderShowcase } from '../Showcase/ShowcaseComponents';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
+const phrase1 = 'User-friendly, intuitive, and enjoyable digital platforms';
+const phrase2 = 'Optimize user satisfaction by improving the usability';
 
 export const Home = () => {
 
+  const [phrase, setPhrase] = useState(phrase1);
 
   return (
     <div className={s.HomePage}>
@@ -27,8 +31,8 @@ export const Home = () => {
           <div className={s.headerCardsWrapper}>
             <div className="row">
               <div className="col-md-12">
-                <div className={s.headerCard}>
-                  <FullWordsSliderShowcase />
+                <div className={s.headerCard} onClick={() => setPhrase((phrase) => phrase === phrase1 ? phrase2 : phrase1)}>
+                  <HitmanCharsSlider text={phrase} />
                 </div>
               </div>
             </div>
