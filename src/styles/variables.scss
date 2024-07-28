@@ -20,7 +20,7 @@ $h5-font-size: $font-size-base * 1.25;
 $h6-font-size: $font-size-base;
 
 $grid-columns: 24;
-$grid-gutter-width: 1.5rem;
+$grid-gutter-width: .75rem;
 $grid-row-columns: 6;
 
 $spacer: 1rem;
@@ -34,4 +34,21 @@ $spacers: (
   6: $spacer * 5,
   7: $spacer * 8,
   8: $spacer * 10,
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 620px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px // 1320
 );

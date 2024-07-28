@@ -89,7 +89,7 @@ export const WordsSlider: FC<IWordsSliderProps> = ({
                 maxRandomTimeout={maxRandomTimeout}
                 
                 // -> If timeout is set maxRandomTimeout will be ignored
-                timeout={timeout + (i * orderBasicDelay + (order === 'ordered' ? randomIntFromInterval(0, randomMax) : 0))}
+                timeout={timeout + (i * orderBasicDelay + (order === 'ordered' ? randomIntFromInterval(0, maxRandomTimeout) : 0))}
                 transitionDuration={transitionDuration}
                 
                 multipleRandomChars={multipleRandomChars}

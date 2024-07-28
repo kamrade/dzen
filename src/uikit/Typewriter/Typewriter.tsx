@@ -44,8 +44,6 @@ export const Typewriter: FC<ITypewriterProps> = ({
   useEffect(() => setWordsArray( text.split(' ').reverse() ) , [text]);
   useEffect(() => render(wordsArray, defaultInterval), [wordsArray, defaultInterval, render]);
 
-  
-
   return <div><TypewriterEngine animatedText={animatedText} allText={text} /></div>
 }
 

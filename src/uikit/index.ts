@@ -10,3 +10,5 @@ export * from './CharSlider';
 export * from './WordsSlider';
 
 export * from './HitmanCharsSlider';
+
+export * from './Card';

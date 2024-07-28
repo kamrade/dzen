@@ -1,5 +1,4 @@
-@import '~styles/variables';
-@import '~bootstrap/scss/mixins';
+
 
 .Slide {
   height: 100vh;
@@ -78,6 +77,8 @@
 
 .headerCardsWrapper {
   margin: 40px 0 120px;
+  position: relative;
+  transition: transform .2s linear;
 }
 
 .headerCard {
@@ -96,25 +97,32 @@
   margin-bottom: 120px;
 }
 
-.card {
-  padding: 24px;
-  background: var(--color-bg-base-100);
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  min-height: 280px;
+.BackgroundVideoContainer {
+  position: fixed;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.7;
 
-  @include media-breakpoint-down(xl) {
-    min-height: 200px;
+  > video {
+    min-width: 100%; 
+    min-height: 100%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
+}
 
-  @include media-breakpoint-down(lg) {
-    min-height: 160px;
-  }
-
-  .cardTitle {
-    font-size: 20px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
+.BackgroundLottieContainer {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
 }

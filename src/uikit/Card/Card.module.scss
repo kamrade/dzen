@@ -1,0 +1,40 @@
+@import '~styles/variables';
+@import '~bootstrap/scss/mixins';
+
+.Card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  min-height: 440px;
+  backdrop-filter: blur(64px);
+  border: 1px solid white;
+
+  @include media-breakpoint-down(xl) {
+    min-height: 300px;
+  }
+
+  @include media-breakpoint-down(lg) {
+    min-height: 260px;
+  }
+
+  .cardImageWrapper {
+    margin-bottom: 2rem;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: calc(10 * 1px) calc(10 * 1px);
+    padding: 1.25rem 0 1.25rem 1.25rem;
+    border-radius: 20px;
+    opacity: 0.9;
+    > img {
+      mix-blend-mode: multiply;
+    }
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+  }
+}

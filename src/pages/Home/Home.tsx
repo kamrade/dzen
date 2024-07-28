@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import { ScrambledText } from '@kamrade/react-scrambled-text';
+import { Typewriter, HitmanCharsSlider, Card } from '~/uikit';
+import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
-import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, HitmanCharsSlider } from '~/uikit';
-import { FullWordsSliderShowcase } from '../Showcase/ShowcaseComponents';
+import animation from './Flow3.json';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 const phrase1 = 'User-friendly, intuitive, and enjoyable digital platforms';
@@ -12,13 +14,29 @@ const phrase2 = 'Optimize user satisfaction by improving the usability';
 export const Home = () => {
 
   const [phrase, setPhrase] = useState(phrase1);
+  const { scrollY } = useScroll({ debounceTime: 10 });
+
+  let lottieRef = useRef<LottieRefCurrentProps | null>(null);
+
+  useEffect(() => {
+    const scrollHeight = document.body.scrollHeight - window.innerHeight
+    const curr = Math.floor( (lottieRef.current?.animationItem?.totalFrames || 1) * scrollY/scrollHeight );
+    lottieRef.current?.goToAndStop(curr, true);
+  }, [scrollY]);
+
+  useEffect(() => {
+    const interval = setInterval(() => setPhrase(phrase => phrase === phrase1 ? phrase2 : phrase1), 6000);
+    return () => clearInterval(interval);
+  }, [])
 
   return (
     <div className={s.HomePage}>
       <div className="container">
         <div>
           
-          <h1 className={s.title}>
+          <h1 className={s.title} style={{
+            transform: `translateY(${scrollY/10}px)`
+          }}>
             <div>Human focusing</div>
             <div className={s.titleLabelAnchor}>
               design
@@ -28,35 +46,25 @@ export const Home = () => {
             </div>
           </h1>
 
-          <div className={s.headerCardsWrapper}>
+          <div className={s.headerCardsWrapper} >
             <div className="row">
               <div className="col-md-12">
-                <div className={s.headerCard} onClick={() => setPhrase((phrase) => phrase === phrase1 ? phrase2 : phrase1)}>
+                <div className={s.headerCard}>
                   <HitmanCharsSlider text={phrase} />
                 </div>
               </div>
             </div>
-
-              {/* <div className="col-lg-6">
-                <div className={s.headerCard}>
-                  User-friendly, intuitive, and enjoyable digital platforms
-                </div>
-              </div>
-              <div className="col-lg-12">
-                <div className={`${s.headerCard} ${s.headerCardSpecial}`}>
-                  Optimize user satisfaction by improving the usability, accessibility, and efficiency of digital interfaces
-                </div>
-              </div> */}
           </div>
 
           <div className={s.cards}>
             <div className="row">
               {homeCards.map((card, i) => (
                 <div className="col-lg-12 col-xl-6" key={i}>
-                  <div className={s.card}>
-                    <h3 className={s.cardTitle}>{card.title}</h3>
-                    <div>{card.text}</div>
-                  </div>
+                  
+                  <Card image={card.image} title={card.title}>
+                    {card.text}
+                  </Card>
+
                 </div>
               ))}
             </div>
@@ -65,6 +73,8 @@ export const Home = () => {
 
         <h2 className={s.openingQuote}>
           <Typewriter
+            maxTimeout={50}
+            defaultInterval={20}
             text="Create products and services that meet users' needs and preferences. It emphasizes empathy, usability, satisfaction, inclusivity, and
             sustainability, ensuring solutions are intuitive, accessible, and beneficial for both users and organizations."
           />
@@ -74,14 +84,30 @@ export const Home = () => {
           <h2 className={s.titleH2}>Process Flow</h2>
         </div>
 
-        <div className={s.Slide}></div>
-        <div className={s.Slide}></div>
+        
         <div className={s.Slide}></div>
         <div className={s.Slide}></div>
         <div className={s.Slide}></div>
         <div className={s.Slide}></div>
         <div className={s.Slide}></div>
       </div>
+
+      <div className={s.BackgroundVideoContainer}>
+        <video autoPlay muted loop>
+          <source src="public/Comp1.webm" type="video/webm" />
+        </video>
+      </div>
+      
+      <div className={s.BackgroundLottieContainer}>
+        <Lottie
+          animationData={animation}
+          autoplay={false}
+          height={'100%'}
+          width={'100%'}
+          lottieRef={lottieRef}
+        />
+      </div>
+      
     </div>
   );
 };
