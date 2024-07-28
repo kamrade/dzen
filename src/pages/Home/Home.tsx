@@ -77,8 +77,32 @@ export const Home = () => {
           />
         </h2>
 
-        <div className={s.processFlow}>
-          <h2 className={s.titleH2}>Process Flow</h2>
+        <div className="row">
+          
+          <div className="col-md-12">
+            <div className='base-image-wrapper'>
+              <img src="img/b2bcards/thumbnail-compressed.png" alt="" className='base-image' />
+            </div>
+          </div>
+          
+          <div className="col-md-12">
+            <div className='base-image-wrapper'>
+              <img src="img/extreme-waves/thumbnail-compressed.png" alt="" className='base-image' />
+            </div>
+          </div>
+          
+          <div className="col-md-12">
+            <div className='base-image-wrapper'>
+              <img src="img/unlimint-ibank-mobile/thumbnail.jpg" alt="" className='base-image' />
+            </div>
+          </div>
+
+          <div className="col-md-12">
+            <div className='base-image-wrapper'>
+              <img src="img/unlimint-ibank/thumbnail-dark-compressed.png" alt="" className='base-image' />
+            </div>
+          </div>
+
         </div>
 
         
