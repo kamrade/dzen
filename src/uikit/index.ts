@@ -12,3 +12,5 @@ export * from './WordsSlider';
 export * from './HitmanCharsSlider';
 
 export * from './Card';
+
+export * from './ProgressiveImage';

@@ -1,0 +1,37 @@
+.ProgressiveImageContainer {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &:not(.Loading) {
+    &.Interactive {
+      &:hover {
+        .progressiveImage {
+          transform: scale(1.05);
+        }
+        .description {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+}
+
+.description {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255,255,255,0.9);
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: all 0.25s ease-in-out;
+  font-size: 0.75rem;
+  color: var(--color-bg-control-100);
+}
+
+.progressiveImage {
+  transition: all .4s ease-in-out;
+  width: 100%;
+}
