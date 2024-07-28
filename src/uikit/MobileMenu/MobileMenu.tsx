@@ -6,14 +6,11 @@ const mainMenuMobile = [{
   text: 'Home',
   link: '/'
 }, {
-  text: 'Services',
-  link: '/services'
-}, {
-  text: 'Showcase',
-  link: '/showcase'
-}, {
   text: 'About',
   link: '/about'
+}, {
+  text: 'Call Me',
+  link: '/call-me'
 }];
 
 interface INavLinkCLickHandler {

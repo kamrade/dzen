@@ -25,8 +25,8 @@ export function Showcase() {
         <div className="row">
 
         {products.map((product, i) => (
-          <div className="mb-3">
-            <ProgressiveImage  key={i} alt={product.alt} 
+          <div className="col-md-6 mb-3" key={i}>
+            <ProgressiveImage   alt={product.alt} 
               preview={product.preview} image={product.path}
               description={product.description}
             />

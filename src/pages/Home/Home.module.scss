@@ -75,22 +75,15 @@
   margin: 80px 0 200px;
 }
 
-.headerCardsWrapper {
-  margin: 40px 0 120px;
-  position: relative;
-  transition: transform .2s linear;
+.TitleWrapper {
+  padding: 5vh 0 20vh;
 }
 
-.headerCard {
+.titleSub {
   font-family: var(--font-family-mono);
-  font-weight: 300;
+  font-weight: 400;
   padding: 1rem 0;
-}
-
-.headerCardSpecial {
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 1rem;
+  text-transform: uppercase;
 }
 
 .cards {
@@ -105,7 +98,7 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  opacity: 0.7;
+  opacity: 0.5;
 
   > video {
     min-width: 100%; 

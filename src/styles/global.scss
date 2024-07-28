@@ -58,14 +58,3 @@
   }
 }
 
-a,
-a:visited,
-a:link {
-  color: var(--color-text-secondary);
-  &.active {
-    color: var(--color-text-emphasis);
-  }
-  &:hover {
-    text-decoration: none !important;
-  }
-}

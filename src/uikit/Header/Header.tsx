@@ -32,14 +32,11 @@ export const Header = () => {
                 <NavLink to="/">
                   <h6>Home</h6>
                 </NavLink>
-                <NavLink to="/services">
-                  <h6>Services</h6>
-                </NavLink>
-                <NavLink to="/showcase">
-                  <h6>Showcase</h6>
-                </NavLink>
                 <NavLink to="/about">
                   <h6>About</h6>
+                </NavLink>
+                <NavLink to="/call-me">
+                  <h6>Call me</h6>
                 </NavLink>
               </div>
             </div>

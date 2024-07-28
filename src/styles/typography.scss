@@ -14,11 +14,15 @@ h6 {
   font-family: var(--font-family-mono);
 }
 
-a, a:link, a:visited {
-  text-decoration: none;
-  transition: $transition-base;
+a,
+a:visited,
+a:link {
+  color: var(--color-text-placeholder);
+  &.active {
+    color: var(--color-text-emphasis);
+  }
   &:hover {
-    text-decoration: underline;
+    text-decoration: none !important;
   }
 }
 

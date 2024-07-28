@@ -34,25 +34,21 @@ export const Home = () => {
       <div className="container">
         <div>
           
-          <h1 className={s.title} style={{
-            transform: `translateY(${scrollY/10}px)`
-          }}>
-            <div>Human focusing</div>
-            <div className={s.titleLabelAnchor}>
-              design
-              <div className={s.titleLabel}>
-                <ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />
-              </div>
-            </div>
-          </h1>
-
-          <div className={s.headerCardsWrapper} >
-            <div className="row">
-              <div className="col-md-12">
-                <div className={s.headerCard}>
-                  <HitmanCharsSlider text={phrase} />
+          <div className={s.TitleWrapper}>
+            <h1 className={s.title} style={{
+              transform: `translateY(${scrollY/10}px)`,
+            }}>
+              <div>Human focusing</div>
+              <div className={s.titleLabelAnchor}>
+                design
+                <div className={s.titleLabel}>
+                  <ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />
                 </div>
               </div>
+            </h1>
+
+            <div className={s.titleSub}>
+              <HitmanCharsSlider text={phrase} />
             </div>
           </div>
 
@@ -69,6 +65,7 @@ export const Home = () => {
               ))}
             </div>
           </div>
+
         </div>
 
         <h2 className={s.openingQuote}>
