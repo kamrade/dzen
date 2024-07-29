@@ -1,6 +1,6 @@
 export const aboutScheme = {
   title: 'CV',
-  name: 'Denis Mikhailov',
+  name: 'Dennis Mikhailov',
   label: 'Digital Design. Software Development',
   email: 'denis.michailov@gmail.com',
   langs: 'Ukrainian, Russian, English',

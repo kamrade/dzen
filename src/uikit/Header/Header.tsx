@@ -17,7 +17,7 @@ export const Header = () => {
           <div className="container">
             <div className={s.HeaderContent}>
               <h6 className={s.HeaderTitle}>
-                Denys Mykhailov.
+                Denis Mikhailov.
                 <span className={s.HeaderTitleEmphasis}>Seasoned UX Designer</span>
                 <span className={s.HeaderTitleDynamic}>
                   <ScrambledText value={scrambledValues} slideLength={2000} postAnimate postAnimateSensetivity={500} />
