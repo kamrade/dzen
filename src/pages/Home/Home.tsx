@@ -81,33 +81,16 @@ export const Home = () => {
           
           <div className="col-md-8">
             <div className='base-image-wrapper'>
-              <img src="img/b2bcards/thumbnail-compressed.png" alt="" className='base-image' />
+              <img src="img/sidebar_showcase.png" alt="" className='base-image' />
+              
+              <div className="image-label">
+                <p className="image-title">Sidebar component</p>
+                <p className="image-chip">Design Systems</p>
+              </div>
+
             </div>
           </div>
           
-          <div className="col-md-8">
-            <div className='base-image-wrapper'>
-              <img src="img/extreme-waves/thumbnail-compressed.png" alt="" className='base-image' />
-            </div>
-          </div>
-          
-          <div className="col-md-8">
-            <div className='base-image-wrapper'>
-              <img src="img/unlimint-ibank-mobile/thumbnail.jpg" alt="" className='base-image' />
-            </div>
-          </div>
-
-          <div className="col-md-8">
-            <div className='base-image-wrapper'>
-              <img src="img/unlimint-ibank/thumbnail-dark-compressed.png" alt="" className='base-image' />
-            </div>
-          </div>
-
-          <div className="col-md-8">
-            <div className='base-image-wrapper'>
-              <img src="img/turnovers-flow/thumbnail-compressed.jpg" alt="" className='base-image' />
-            </div>
-          </div>
 
         </div>
 
@@ -121,7 +104,7 @@ export const Home = () => {
 
       <div className={s.BackgroundVideoContainer}>
         <video autoPlay muted loop>
-          <source src="public/Comp1.webm" type="video/webm" />
+          <source src="Gradient2.webm" type="video/webm" />
         </video>
       </div>
       
@@ -135,6 +118,10 @@ export const Home = () => {
         />
       </div>
       
+      <div className={s.BackgroundPatter}>
+
+      </div>
+
     </div>
   );
 };

@@ -10,9 +10,6 @@ import {
   ButtonShowcase
 } from './ShowcaseComponents';
 
-import { ProgressiveImage } from '~/uikit';
-import { products } from './products';
-
 export function Showcase() {
 
   return (
@@ -21,19 +18,6 @@ export function Showcase() {
         
         <h1 className="mb-3">Showcase</h1>
         <hr/>
-
-        <div className="row">
-
-        {products.map((product, i) => (
-          <div className="col-md-6 mb-3" key={i}>
-            <ProgressiveImage   alt={product.alt} 
-              preview={product.preview} image={product.path}
-              description={product.description}
-            />
-          </div>
-        ))}
-
-        </div>
 
         <h5 className='mb-3'>Hitman Chars Slider</h5>
         <HitmanCharsSliderShowcase />

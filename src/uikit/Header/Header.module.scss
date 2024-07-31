@@ -47,6 +47,11 @@
   display: flex;
   gap: 2rem;
 
+  > a, a:visited, a:link {
+    text-decoration: none;
+    color: var(--color-text-body);
+  }
+
   @include media-breakpoint-down(lg) {
     display: none;
   }
@@ -66,18 +71,3 @@
   background: var(--color-text-body);
   border-radius: 50%;
 }
-
-
-// :global {
-//   a,
-//   a:visited,
-//   a:link {
-//     color: var(--color-text-secondary);
-//     &.active {
-//       color: var(--color-text-emphasis);
-//     }
-//     &:hover {
-//       text-decoration: none !important;
-//     }
-//   }
-// }
