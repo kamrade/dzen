@@ -84,13 +84,48 @@ export const Home = () => {
               <img src="img/sidebar_showcase.png" alt="" className='base-image' />
               
               <div className="image-label">
-                <p className="image-title">Sidebar component</p>
-                <p className="image-chip">Design Systems</p>
+                <p className="image-title">Sidebar UI component</p>
+                <p className="image-chip">UI Component</p>
               </div>
 
             </div>
           </div>
           
+          <div className="col-md-8">
+            <div className='base-image-wrapper'>
+              <img src="img/calendar_showcase.png" alt="" className='base-image' />
+              
+              <div className="image-label">
+                <p className="image-title">Calendar UI component</p>
+                <p className="image-chip">UI Component</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div className="col-md-8">
+            <div className='base-image-wrapper'>
+              <img src="img/ews_thumbnail.png" alt="" className='base-image' />
+              
+              <div className="image-label">
+                <p className="image-title">Extreme Ways</p>
+                <p className="image-chip">Design Systems</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div className="col-md-8">
+            <div className='base-image-wrapper'>
+              <img src="img/turnover_flow_chart.png" alt="" className='base-image' />
+              
+              <div className="image-label">
+                <p className="image-title">Extreme Ways</p>
+                <p className="image-chip">Design Systems</p>
+              </div>
+
+            </div>
+          </div>
 
         </div>
 
