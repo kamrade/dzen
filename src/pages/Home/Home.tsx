@@ -6,6 +6,7 @@ import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import animation from './Flow3.json';
+import { GallerySidebar} from './GallerySidebar.tsx';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 const phrase1 = 'User-friendly, intuitive, and enjoyable digital platforms';
@@ -15,6 +16,8 @@ export const Home = () => {
 
   const [phrase, setPhrase] = useState(phrase1);
   const { scrollY } = useScroll({ debounceTime: 10 });
+
+  const [ isGallerySidebarShowed, setIsGallerySidebarShowed ] = useState(false);
 
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
@@ -80,22 +83,24 @@ export const Home = () => {
       <div className={"container-fluid"}>
 
         <div className="row">
-          
+
           <div className="col-lg-6 col-md-12">
-            <div className='base-image-wrapper'>
-              <img src="public/img/sidebar_showcase.png" alt="" className='base-image' />
-              
+
+            <div className='base-image-wrapper' onClick={() => setIsGallerySidebarShowed(true)}>
+              <img src="/img/sidebar_showcase.png" alt="" className='base-image' />
               <div className="image-label">
                 <p className="image-title">Sidebar UI component</p>
                 <p className="image-chip">UI Component</p>
               </div>
-
             </div>
+
+            <GallerySidebar isShowed={isGallerySidebarShowed} setIsShowed={setIsGallerySidebarShowed} />
+
           </div>
           
           <div className="col-lg-6 col-md-12">
             <div className='base-image-wrapper'>
-              <img src="public/img/calendar_showcase.png" alt="" className='base-image' />
+              <img src="/img/calendar_showcase.png" alt="" className='base-image' />
               
               <div className="image-label">
                 <p className="image-title">Calendar UI component</p>
@@ -107,7 +112,7 @@ export const Home = () => {
 
           <div className="col-lg-6 col-md-12">
             <div className='base-image-wrapper'>
-              <img src="public/img/ews_thumbnail.png" alt="" className='base-image' />
+              <img src="/img/ews_thumbnail.png" alt="" className='base-image' />
               
               <div className="image-label">
                 <p className="image-title">Extreme Ways</p>
@@ -119,7 +124,7 @@ export const Home = () => {
 
           <div className="col-lg-6 col-md-12">
             <div className='base-image-wrapper'>
-              <img src="public/img/turnover_flow_chart.png" alt="" className='base-image' />
+              <img src="/img/turnover_flow_chart.png" alt="" className='base-image' />
               
               <div className="image-label">
                 <p className="image-title">Extreme Ways</p>
@@ -159,6 +164,7 @@ export const Home = () => {
       <div className={s.BackgroundPatter}>
 
       </div>
+
 
     </div>
   );

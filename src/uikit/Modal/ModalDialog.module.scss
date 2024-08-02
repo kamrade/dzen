@@ -12,7 +12,8 @@
 
   &.ModalDialogFullscreen {
     width: calc(100% - 1rem);
-    min-height: calc(100vh - 4rem);
+    height: calc(100vh - 4rem);
+    overflow-y: scroll;
   }
 
 }
@@ -22,7 +23,7 @@
 }
 
 .Close {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   right: .5rem;
   top: .5rem;

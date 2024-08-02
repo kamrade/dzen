@@ -12,6 +12,19 @@
     border-radius: var(--border-radius-control-sm);
   }
 
+  &.IconButtonInverted {
+    background: var(--color-bg-inv-100);
+    color: var(--color-text-body-inv);
+
+    &:hover {
+      background: var(--color-bg-inv-200);
+    }
+
+    &:active {
+      background: var(--color-bg-inv-300);
+    }
+  }
+
   &:hover {
     background: var(--color-bg-control-200);
   }
