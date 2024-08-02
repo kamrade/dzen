@@ -15,4 +15,8 @@
   &:hover {
     background: var(--color-bg-control-200);
   }
+
+  &:active {
+    background: var(--color-bg-control-300);
+  }
 }

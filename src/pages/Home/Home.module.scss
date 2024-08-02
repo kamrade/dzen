@@ -20,7 +20,6 @@
 }
 
 .titleLabel {
-  position: relative;
   display: inline-block;
   padding: 5px 10px;
   background-color: var(--color-bg-emp-100);
@@ -80,7 +79,7 @@
 }
 
 .titleSub {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-mono), monospace;
   font-weight: 400;
   padding: 1rem 0;
   text-transform: uppercase;

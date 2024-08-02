@@ -1,5 +1,13 @@
+:root {
+  --font-family-base: "Onest", "Archivo", system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-mono: "JetBrains Mono", monospace;
+  --font-family-mobile: "League Gothic", sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-base), sans-serif;
   font-weight: 700;
 }
 
@@ -11,7 +19,7 @@ h6 {
 }
 
 .mono {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-mono), monospace;
 }
 
 a,
@@ -26,14 +34,4 @@ a:link {
   }
 }
 
-body {
-  font-family: var(--font-family-base);
-}
 
-:root {
-  --font-family-base: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-mono: "JetBrains Mono", monospace;
-  --font-family-mobile: "League Gothic", sans-serif;
-}

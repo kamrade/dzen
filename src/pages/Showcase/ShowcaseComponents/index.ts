@@ -7,3 +7,4 @@ export * from './MultipleCharsSlider.sc';
 export * from './RandomCharsSlider.sc';
 export * from './HitmanCharSlider.sc';
 export * from './ButtonShowcase';
+export * from './ModalDialogShowcase';

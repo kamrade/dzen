@@ -1,0 +1,30 @@
+.ModalDialog {
+  width: 500px;
+  padding: 1rem;
+  border-radius: 12px;
+  background: white;
+  margin: auto;
+  position: relative;
+
+  &.ModalDialogDefault {
+    position: relative;
+  }
+
+  &.ModalDialogFullscreen {
+    width: calc(100% - 1rem);
+    min-height: calc(100vh - 4rem);
+  }
+
+}
+
+.ModalDialogContent {
+  position: relative;
+}
+
+.Close {
+  position: absolute;
+  z-index: 1;
+  right: .5rem;
+  top: .5rem;
+}
+

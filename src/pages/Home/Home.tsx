@@ -16,7 +16,7 @@ export const Home = () => {
   const [phrase, setPhrase] = useState(phrase1);
   const { scrollY } = useScroll({ debounceTime: 10 });
 
-  let lottieRef = useRef<LottieRefCurrentProps | null>(null);
+  const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
   useEffect(() => {
     const scrollHeight = document.body.scrollHeight - window.innerHeight
@@ -76,12 +76,14 @@ export const Home = () => {
             sustainability, ensuring solutions are intuitive, accessible, and beneficial for both users and organizations."
           />
         </h2>
+      </div>
+      <div className={"container-fluid"}>
 
         <div className="row">
           
-          <div className="col-md-8">
+          <div className="col-lg-6 col-md-12">
             <div className='base-image-wrapper'>
-              <img src="img/sidebar_showcase.png" alt="" className='base-image' />
+              <img src="public/img/sidebar_showcase.png" alt="" className='base-image' />
               
               <div className="image-label">
                 <p className="image-title">Sidebar UI component</p>
@@ -91,9 +93,9 @@ export const Home = () => {
             </div>
           </div>
           
-          <div className="col-md-8">
+          <div className="col-lg-6 col-md-12">
             <div className='base-image-wrapper'>
-              <img src="img/calendar_showcase.png" alt="" className='base-image' />
+              <img src="public/img/calendar_showcase.png" alt="" className='base-image' />
               
               <div className="image-label">
                 <p className="image-title">Calendar UI component</p>
@@ -103,9 +105,9 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className="col-md-8">
+          <div className="col-lg-6 col-md-12">
             <div className='base-image-wrapper'>
-              <img src="img/ews_thumbnail.png" alt="" className='base-image' />
+              <img src="public/img/ews_thumbnail.png" alt="" className='base-image' />
               
               <div className="image-label">
                 <p className="image-title">Extreme Ways</p>
@@ -115,9 +117,9 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className="col-md-8">
+          <div className="col-lg-6 col-md-12">
             <div className='base-image-wrapper'>
-              <img src="img/turnover_flow_chart.png" alt="" className='base-image' />
+              <img src="public/img/turnover_flow_chart.png" alt="" className='base-image' />
               
               <div className="image-label">
                 <p className="image-title">Extreme Ways</p>
@@ -129,7 +131,6 @@ export const Home = () => {
 
         </div>
 
-        
         <div className={s.Slide}></div>
         <div className={s.Slide}></div>
         <div className={s.Slide}></div>
@@ -137,13 +138,15 @@ export const Home = () => {
         <div className={s.Slide}></div>
       </div>
 
-      <div className={s.BackgroundVideoContainer}>
+      <div className={s.BackgroundVideoContainer} style={{
+        opacity: `${scrollY > 400 ? (400/scrollY > 0.3 ? 600/scrollY : 0.3) : 1}`
+      }}>
         <video autoPlay muted loop>
-          <source src="Gradient2.webm" type="video/webm" />
+          <source src="/Gradient2.webm" type="video/webm" />
         </video>
       </div>
       
-      <div className={s.BackgroundLottieContainer}>
+      <div className={s.BackgroundLottieContainer} >
         <Lottie
           animationData={animation}
           autoplay={false}

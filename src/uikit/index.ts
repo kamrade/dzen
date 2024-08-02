@@ -14,3 +14,5 @@ export * from './HitmanCharsSlider';
 export * from './Card';
 
 export * from './ProgressiveImage';
+
+export * from './Modal';

@@ -16,7 +16,7 @@ export const HitmanCharsSliderShowcase = () => {
   return (
     <>
       <div className="mb-3">
-        <Button theme='primary' shape={'straight'} variant={'contained'} size={'md'} onClick={refresh}>Animate</Button>
+        <Button theme='primary' variant={'outlined'} size={'md'} onClick={refresh}>Animate</Button>
       </div>
       <HitmanCharsSlider text={phrase} />
     </>

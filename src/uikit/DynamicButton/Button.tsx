@@ -66,7 +66,7 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
       background: '#F3F6F8',
       hoverBackground: '#EBEEF0',
       activeBackground: '#E3E6E8',
-      borderColor: '#E3E6E8',
+      borderColor: '#F3F6F8',
       color: '#272D34',
       focusColor: '#7ED1FF',
     }, {
@@ -82,19 +82,19 @@ export const Button = DynamicButtonGenerator<ButtonTheme, ButtonVariant, ButtonS
 
   sizes: [{
     name: 'sm',
-    paddingY: 2,
-    paddingX: 8,
+    paddingY: 3,
+    paddingX: 6,
     innerGap: 2,
     fontSize: 12,
-    lineHeight: 1.5,
+    lineHeight: 1,
     borderWidth: 1,
   }, {
     name: 'md',
-    paddingY: 4,
-    paddingX: 10,
+    paddingY: 2,
+    paddingX: 8,
     innerGap: 4,
     fontSize: 14,
-    lineHeight: 1.5,
+    lineHeight: 1.4286,
     borderWidth: 1,
   }, {
     name: 'lg',
