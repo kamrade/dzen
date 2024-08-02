@@ -12,6 +12,8 @@ export interface IModalProps {
 
 export const Modal: FC<IModalProps> = ({ children, isShowed, hideModal, hideOnEscape }) => {
 
+  // console.log(name);
+
   useLockBodyScroll(isShowed);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {

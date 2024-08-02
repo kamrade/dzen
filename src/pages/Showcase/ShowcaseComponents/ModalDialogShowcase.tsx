@@ -31,7 +31,7 @@ export const ModalDialogShowcase = () => {
         Open Modal 2
       </Button>{' '}
 
-      <Modal hideOnEscape={true} isShowed={isModalOpen} hideModal={() => setIsModalOpen(false)} >
+      <Modal hideOnEscape={true} isShowed={isModalOpen} hideModal={() => setIsModalOpen(false)}>
         <ModalDialog hideModal={() => setIsModalOpen(false)}>
           <div><h2>Modal</h2></div>
           <div style={{ height: '2200px' }}>
@@ -40,7 +40,7 @@ export const ModalDialogShowcase = () => {
         </ModalDialog>
       </Modal>
 
-      <Modal hideOnEscape={true} isShowed={isFullscreenModalOpen} hideModal={() => setIsFullscreenModalOpen(false)} >
+      <Modal hideOnEscape={true} isShowed={isFullscreenModalOpen} hideModal={() => setIsFullscreenModalOpen(false)}>
         <ModalDialog type={'fullscreen'} hideModal={() => setIsFullscreenModalOpen(false)}>
           <div className="container">
             <div><h2>Modal</h2></div>
