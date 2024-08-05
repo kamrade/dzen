@@ -17,10 +17,16 @@ export const GallerySidebar: FC<IGallerySidebar> = ({ isShowed, setIsShowed }) =
           </div>
           <div>
             <div className={'mb-3'}>
-              <img src="/img/sidebar_associated_individuals_details.png" alt="" className='base-image' />
+              <img src="/img/sidebar_associated_individuals.png" alt="" className='base-image' />
             </div>
             <div className={'mb-3'}>
-              <img src="/img/sidebar_components.png" alt="" className='base-image' />
+              <img src="/img/sidebar_crypto.png" alt="" className='base-image' />
+            </div>
+            <div className={'mb-3'}>
+              <img src="/img/sidebar_preferences.png" alt="" className='base-image' />
+            </div>
+            <div className={'mb-3'}>
+              <img src="/img/sidebar_iphone.png" alt="" className='base-image' />
             </div>
           </div>
         </div>
