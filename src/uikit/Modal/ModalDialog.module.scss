@@ -1,10 +1,9 @@
-.ModalDialog {
-  width: 500px;
-  padding: 1rem;
+.ModalDialogWrapper {
+  padding: .5rem;
   border-radius: 12px;
   background: white;
   margin: auto;
-  position: relative;
+  width: 500px;
 
   &.ModalDialogDefault {
     position: relative;
@@ -13,19 +12,23 @@
   &.ModalDialogFullscreen {
     width: calc(100% - 1rem);
     height: calc(100vh - 4rem);
-    overflow-y: scroll;
   }
+}
 
+.ModalDialog {
+  position: relative;
 }
 
 .ModalDialogContent {
   position: relative;
+  overflow-y: auto;
+  height: calc(100vh - 6rem);
 }
 
 .Close {
   position: fixed;
   z-index: 1;
-  right: .5rem;
+  right: 1.5rem;
   top: .5rem;
 }
 

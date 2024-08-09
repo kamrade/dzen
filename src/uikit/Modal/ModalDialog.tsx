@@ -15,21 +15,21 @@ export interface IModalDialogProps {
 
 export const ModalDialog: FC<IModalDialogProps> = ({ children, hideModal, type='default' }) => (
   <>
-    <div className={cx({
-      ModalDialog,
+    <div className={cx('ModalDialogWrapper', {
       ModalDialogDefault: type === 'default',
       ModalDialogFullscreen: type === 'fullscreen'
     })}>
+      <div className={s.ModalDialog}>
 
-      <div className={s.ModalDialogContent}>
-        {children}
+        <div className={s.ModalDialogContent}>
+          {children}
+        </div>
+
+        <div className={s.Close}>
+          <IconButton theme={'inv'} size={'md'} onClick={() => hideModal && hideModal()}><RiCloseFill /></IconButton>
+        </div>
+
       </div>
-
-      <div className={s.Close}>
-        <IconButton theme={'inv'} size={'md'} onClick={() => hideModal && hideModal()}><RiCloseFill /></IconButton>
-      </div>
-
     </div>
-
   </>
 )
