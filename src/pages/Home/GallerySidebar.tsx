@@ -28,6 +28,9 @@ export const GallerySidebar: FC<IGallerySidebar> = ({ isShowed, setIsShowed }) =
             <div className={'mb-3'}>
               <img src="/img/sidebar_iphone.png" alt="" className='base-image' />
             </div>
+            <div className={'mb-3'}>
+              <img src="/img/sidebar_associated_individuals_2.png" alt="" className='base-image' />
+            </div>
           </div>
         </div>
       </ModalDialog>
