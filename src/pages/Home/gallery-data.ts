@@ -32,4 +32,22 @@ export const galleryEWData: IGalleryImage[] = [{
 }, {
   src: '/img/ews_slide_05.jpg',
   alt: ''
+}];
+
+export const galleryB2BCardsData: IGalleryImage[] = [{
+  src: '/img/b2bcards_slide_01.jpg',
+  alt: ''
+}, {
+  src: '/img/b2bcards_slide_02.jpg',
+  alt: ''
+}, {
+  src: '/img/b2bcards_slide_03.jpg',
+  alt: ''
+}, {
+  src: '/img/b2bcards_slide_04.jpg',
+  alt: ''
+}, {
+  src: '/img/b2bcards_slide_05.jpg',
+  alt: ''
 }]
+

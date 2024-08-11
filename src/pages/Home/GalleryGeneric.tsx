@@ -1,32 +1,45 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Modal, ModalDialog } from '~/uikit';
 import type { IGalleryImage } from '~/types';
 
 export interface IGalleryGenericProps {
-  isShowed: boolean;
-  setIsShowed: (isShowed: boolean) => void;
+  previewTitle: string;
+  previewChip: string;
+  previewImage: IGalleryImage;
   title: string;
   images: IGalleryImage[];
 }
 
-export const GalleryGeneric: FC<IGalleryGenericProps> = ({ isShowed, setIsShowed, title, images }) => {
+export const GalleryGeneric: FC<IGalleryGenericProps> = ({ title, images, previewTitle, previewChip, previewImage }) => {
+
+  const [isGallery, setIsGallery] = useState(false);
 
   return (
-    <Modal hideOnEscape={true} isShowed={isShowed} hideModal={() => setIsShowed(false)}>
-      <ModalDialog type={'fullscreen'} hideModal={() => setIsShowed(false)}>
+    <>
+      <div className="base-image-wrapper" onClick={() => setIsGallery(true)}>
+        <img src={previewImage.src} alt={previewImage.alt} className="base-image" />
+        <div className="image-label">
+          <p className="image-title">{ previewTitle }</p>
+          <p className="image-chip">{ previewChip }</p>
+        </div>
+      </div>
+
+    <Modal hideOnEscape={true} isShowed={isGallery} hideModal={() => setIsGallery(false)}>
+      <ModalDialog type={'fullscreen'} hideModal={() => setIsGallery(false)}>
         <div className="container">
-          <div className={"pt-5 pb-3"}>
-            <h2>{ title }</h2>
+          <div className={'pt-5 pb-3'}>
+            <h2>{title}</h2>
           </div>
           <div>
             {images.map((image, i) => (
               <div className={'mb-3'} key={i}>
-                <img src={image.src} alt={image.alt} className="base-image" />
-              </div>
-            ))}
+                  <img src={image.src} alt={image.alt} className="base-image" />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </ModalDialog>
-    </Modal>
+        </ModalDialog>
+      </Modal>
+    </>
   );
 }

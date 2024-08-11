@@ -6,8 +6,7 @@ import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import animation from './Flow3.json';
-import { GalleryGeneric } from './GalleryGeneric.tsx';
-import { gallerySidebarData, galleryEWData } from './gallery-data.ts';
+import { PortfolioSection } from './PortfolioSection.tsx';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 const phrase1 = 'User-friendly, intuitive, and enjoyable digital platforms';
@@ -17,9 +16,6 @@ export const Home = () => {
 
   const [phrase, setPhrase] = useState(phrase1);
   const { scrollY } = useScroll({ debounceTime: 10 });
-
-  const [ isGallerySidebarShowed, setIsGallerySidebarShowed ] = useState(false);
-  const [ isGalleryExtremeShowed, setIsGalleryExtremeShowed ] = useState(false);
 
   const lottieRef = useRef<LottieRefCurrentProps | null>(null);
 
@@ -82,74 +78,11 @@ export const Home = () => {
           />
         </h2>
       </div>
-      <div className={"container-fluid"}>
 
-        <div className="row">
-
-          <div className="col-lg-6 col-md-12">
-
-            <div className='base-image-wrapper' onClick={() => setIsGallerySidebarShowed(true)}>
-              <img src="/img/sidebar_showcase.png" alt="" className='base-image' />
-              <div className="image-label">
-                <p className="image-title">Sidebar UI component</p>
-                <p className="image-chip">UI Component</p>
-              </div>
-            </div>
-
-            <GalleryGeneric title={'Sidebar UI'} images={gallerySidebarData} isShowed={isGallerySidebarShowed} setIsShowed={setIsGallerySidebarShowed} />
-
-          </div>
-          
-          <div className="col-lg-6 col-md-12">
-            <div className='base-image-wrapper'>
-              <img src="/img/calendar_showcase.png" alt="" className='base-image' />
-              
-              <div className="image-label">
-                <p className="image-title">Calendar UI component</p>
-                <p className="image-chip">UI Component</p>
-              </div>
-
-            </div>
-          </div>
-
-          <div className="col-lg-6 col-md-12" onClick={() => setIsGalleryExtremeShowed(true)}>
-            <div className='base-image-wrapper'>
-              <img src="/img/ews_thumbnail.png" alt="" className='base-image' />
-              
-              <div className="image-label">
-                <p className="image-title">Extreme Ways</p>
-                <p className="image-chip">Design Systems</p>
-              </div>
-
-            </div>
-
-            <GalleryGeneric title={'Extreme Waves Project'} images={galleryEWData} isShowed={isGalleryExtremeShowed} setIsShowed={setIsGalleryExtremeShowed} />
-
-          </div>
-
-          <div className="col-lg-6 col-md-12">
-            <div className='base-image-wrapper'>
-              <img src="/img/turnover_flow_chart.png" alt="" className='base-image' />
-              
-              <div className="image-label">
-                <p className="image-title">Extreme Ways</p>
-                <p className="image-chip">Design Systems</p>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-        <div className={s.Slide}></div>
-        <div className={s.Slide}></div>
-        <div className={s.Slide}></div>
-        <div className={s.Slide}></div>
-        <div className={s.Slide}></div>
-      </div>
+      <PortfolioSection />
 
       <div className={s.BackgroundVideoContainer} style={{
-        opacity: `${scrollY > 400 ? (400/scrollY > 0.3 ? 600/scrollY : 0.3) : 1}`
+        opacity: `${scrollY > 400 ? (400 / scrollY > 0.3 ? 600 / scrollY : 0.3) : 1}`,
       }}>
         <video autoPlay muted loop>
           <source src="/Gradient2.webm" type="video/webm" />
