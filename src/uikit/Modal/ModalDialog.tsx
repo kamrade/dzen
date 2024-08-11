@@ -26,7 +26,9 @@ export const ModalDialog: FC<IModalDialogProps> = ({ children, hideModal, type='
         </div>
 
         <div className={s.Close}>
-          <IconButton theme={'inv'} size={'md'} onClick={() => hideModal && hideModal()}><RiCloseFill /></IconButton>
+          <IconButton theme={'inv'} size={'md'} onClick={() => {
+            hideModal && hideModal();
+          }}><RiCloseFill /></IconButton>
         </div>
 
       </div>
