@@ -16,3 +16,7 @@ export * from './Card';
 export * from './ProgressiveImage';
 
 export * from './Modal';
+
+export * from './GalleryImage';
+
+export * from './Image';

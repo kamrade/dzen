@@ -1,3 +1,6 @@
+@import '~styles/variables';
+@import '~bootstrap/scss/mixins';
+
 .cvTitle {
   color: var(--color-text-placeholder);
   font-size: 48px;
@@ -84,4 +87,17 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 4rem 0;
+}
+
+.DateInner {
+  position: relative;
+  @include media-breakpoint-down(md) {
+    position: static;
+  }
+}
+
+.DateOuter {
+  @include media-breakpoint-down(md) {
+    position: relative;
+  }
 }

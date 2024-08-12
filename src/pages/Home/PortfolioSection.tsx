@@ -1,14 +1,14 @@
-import { GalleryGeneric } from '~/pages/Home/GalleryGeneric.tsx';
 import { galleryB2BCardsData, galleryEWData, gallerySidebarData } from '~/pages/Home/gallery-data.ts';
+import { GalleryImage } from '~/uikit';
 
 export const PortfolioSection = () => (
-  <div className={"container-fluid"}>
+  <div className={"container"}>
 
     <div className="row">
 
       <div className="col-lg-6 col-md-12">
 
-        <GalleryGeneric
+        <GalleryImage
           previewTitle={'Sidebar UI component'}
           previewChip={'UI Component'}
           previewImage={{
@@ -22,7 +22,7 @@ export const PortfolioSection = () => (
       </div>
 
       <div className="col-lg-6 col-md-12">
-        <GalleryGeneric
+        <GalleryImage
           previewTitle={'Extreme Waves'}
           previewChip={'Design System. User Interface.'}
           previewImage={{
@@ -35,7 +35,7 @@ export const PortfolioSection = () => (
       </div>
 
       <div className="col-lg-6 col-md-12">
-        <GalleryGeneric
+        <GalleryImage
           previewTitle={'B2BCards'}
           previewChip={'User Interface.'}
           previewImage={{
@@ -48,27 +48,29 @@ export const PortfolioSection = () => (
       </div>
 
       <div className="col-lg-6 col-md-12">
-        <div className="base-image-wrapper">
-          <img src="/img/calendar_showcase.png" alt="" className="base-image" />
-
-          <div className="image-label">
-            <p className="image-title">Calendar UI component</p>
-            <p className="image-chip">UI Component</p>
-          </div>
-
-        </div>
+        <GalleryImage
+          previewTitle={'Calendar UI component'}
+          previewChip={'UI Component'}
+          previewImage={{
+            src: '/img/calendar_showcase.png',
+            alt: '',
+          }}
+          title={'Calendar UI component'}
+        />
       </div>
 
       <div className="col-lg-6 col-md-12">
-        <div className="base-image-wrapper">
-          <img src="/img/turnover_flow_chart.png" alt="" className="base-image" />
 
-          <div className="image-label">
-            <p className="image-title">Turnovers Flow</p>
-            <p className="image-chip">Feature</p>
-          </div>
+        <GalleryImage
+          previewTitle={'Turnovers Flow'}
+          previewChip={'Feature'}
+          previewImage={{
+            src: '/img/turnover_flow_chart.png',
+            alt: '',
+          }}
+          title={'Turnovers Flow'}
+        />
 
-        </div>
       </div>
 
     </div>
