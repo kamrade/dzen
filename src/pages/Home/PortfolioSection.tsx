@@ -2,7 +2,7 @@ import { galleryB2BCardsData, galleryEWData, gallerySidebarData } from '~/pages/
 import { GalleryImage } from '~/uikit';
 
 export const PortfolioSection = () => (
-  <div className={"container"}>
+  <div className={"container-fluid"}>
 
     <div className="row">
 

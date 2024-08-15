@@ -1,5 +1,9 @@
 .GalleryImage {
   width: 100%;
-  border-radius: 12px;
-  border: 1px solid var(--color-line-base-050);
+  border: 1px solid transparent;
+  transition: background .2s ease-in-out;
+  border-radius: 20px;
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
 }
