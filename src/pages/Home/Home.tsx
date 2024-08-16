@@ -85,7 +85,7 @@ export const Home = () => {
         opacity: `${scrollY > 400 ? (400 / scrollY > 0.3 ? 600 / scrollY : 0.3) : 1}`,
       }}>
         <video autoPlay muted loop>
-          <source src="/Gradient2.webm" type="video/webm" />
+          <source src="/Gradient1.webm" type="video/webm" />
         </video>
       </div>
       
