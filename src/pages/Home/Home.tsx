@@ -80,7 +80,7 @@ export const Home = () => {
           />
         </h2>
       </div>
-
+      
       <div className={s.PortfolioSectionContainer}>
         <div className="container">
           <PortfolioSection />
