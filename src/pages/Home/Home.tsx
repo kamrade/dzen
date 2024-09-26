@@ -35,10 +35,10 @@ export const Home = () => {
       <div className="container">
         <div>
           
-          <div className={s.TitleWrapper}>
-            <h1 className={s.title} style={{
-              transform: `translateY(${scrollY/10}px)`,
-            }}>
+          <div className={s.TitleWrapper} style={{
+            transform: `translateY(${scrollY/10}px)`,
+          }}>
+            <h1 className={s.title} >
               <div>Human</div>
               <div>focusing</div>
               <div className={s.titleLabelAnchor}>
@@ -80,11 +80,9 @@ export const Home = () => {
           />
         </h2>
       </div>
-      
-      <div className={s.PortfolioSectionContainer}>
-        <div className="container">
-          <PortfolioSection />
-        </div>
+
+      <div className="container">
+        <PortfolioSection />
       </div>
 
       {/*<div className={s.BackgroundVideoContainer} style={{*/}

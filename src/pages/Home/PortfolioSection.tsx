@@ -6,7 +6,7 @@ export const PortfolioSection = () => (
 
     <div className="row">
 
-      <div className="col-lg-6 col-md-12">
+      <div className="col-lg-8 col-md-12">
 
         <GalleryImage
           previewTitle={'Sidebar UI component'}
@@ -21,7 +21,7 @@ export const PortfolioSection = () => (
 
       </div>
 
-      <div className="col-lg-6 col-md-12">
+      <div className="col-lg-8 col-md-12">
         <GalleryImage
           previewTitle={'Extreme Waves'}
           previewChip={'Design System. User Interface.'}
@@ -34,7 +34,7 @@ export const PortfolioSection = () => (
         />
       </div>
 
-      <div className="col-lg-6 col-md-12">
+      <div className="col-lg-8 col-md-12">
         <GalleryImage
           previewTitle={'B2BCards'}
           previewChip={'User Interface.'}
@@ -47,7 +47,7 @@ export const PortfolioSection = () => (
         />
       </div>
 
-      <div className="col-lg-6 col-md-12">
+      <div className="col-lg-8 col-md-12">
         <GalleryImage
           previewTitle={'Calendar UI component'}
           previewChip={'UI Component'}
@@ -59,7 +59,7 @@ export const PortfolioSection = () => (
         />
       </div>
 
-      <div className="col-lg-6 col-md-12">
+      <div className="col-lg-8 col-md-12">
 
         <GalleryImage
           previewTitle={'Turnovers Flow'}
