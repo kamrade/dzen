@@ -39,7 +39,8 @@ export const Home = () => {
             <h1 className={s.title} style={{
               transform: `translateY(${scrollY/10}px)`,
             }}>
-              <div>Human focusing</div>
+              <div>Human</div>
+              <div>focusing</div>
               <div className={s.titleLabelAnchor}>
                 design
                 <div className={s.titleLabel}>
@@ -57,7 +58,7 @@ export const Home = () => {
             <div className="row">
               {homeCards.map((card, i) => (
                 <div className="col-lg-12 col-xl-6" key={i}>
-                  
+
                   <Card image={card.image} title={card.title}>
                     {card.text}
                   </Card>
@@ -66,6 +67,7 @@ export const Home = () => {
               ))}
             </div>
           </div>
+
 
         </div>
 
@@ -79,27 +81,31 @@ export const Home = () => {
         </h2>
       </div>
 
-      <PortfolioSection />
+      <div className={s.PortfolioSectionContainer}>
+        <div className="container">
+          <PortfolioSection />
+        </div>
+      </div>
 
-      <div className={s.BackgroundVideoContainer} style={{
-        opacity: `${scrollY > 400 ? (400 / scrollY > 0.3 ? 600 / scrollY : 0.3) : 1}`,
-      }}>
-        <video autoPlay muted loop>
-          <source src="/Gradient2.webm" type="video/webm" />
-        </video>
-      </div>
+      {/*<div className={s.BackgroundVideoContainer} style={{*/}
+      {/*  opacity: `${scrollY > 400 ? (400 / scrollY > 0.3 ? 600 / scrollY : 0.3) : 1}`,*/}
+      {/*}}>*/}
+      {/*  <video autoPlay muted loop>*/}
+      {/*    <source src="/Gradient2.webm" type="video/webm" />*/}
+      {/*  </video>*/}
+      {/*</div>*/}
       
-      <div className={s.BackgroundLottieContainer} >
-        <Lottie
-          animationData={animation}
-          autoplay={false}
-          height={'100%'}
-          width={'100%'}
-          lottieRef={lottieRef}
-        />
-      </div>
+      {/*<div className={s.BackgroundLottieContainer} >*/}
+      {/*  <Lottie*/}
+      {/*    animationData={animation}*/}
+      {/*    autoplay={false}*/}
+      {/*    height={'100%'}*/}
+      {/*    width={'100%'}*/}
+      {/*    lottieRef={lottieRef}*/}
+      {/*  />*/}
+      {/*</div>*/}
       
-      <div className={s.BackgroundPatter}>
+      <div className={s.BackgroundPattern}>
 
       </div>
 

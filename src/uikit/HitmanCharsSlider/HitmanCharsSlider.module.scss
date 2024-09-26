@@ -2,7 +2,8 @@
   margin-bottom: 1rem;
   display: flex;
   white-space: pre;
-  font-family: var(--font-family-mono);
+  letter-spacing: 2px;
+  font-family: var(--font-family-mono), monospace;
 
   .Bold {
     background-color: var(--color-bg-inv-100);

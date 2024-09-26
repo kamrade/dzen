@@ -1,10 +1,11 @@
 
 .title {
-  font-size: 80px;
+  font-size: 120px;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-top: 100px;
+  font-weight: 400;
 }
 
 .titleLabelAnchor {
@@ -82,37 +83,37 @@
   margin-bottom: 120px;
 }
 
-.BackgroundVideoContainer {
-  position: fixed;
-  z-index: -3;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  opacity: 1;
+//.BackgroundVideoContainer {
+//  position: fixed;
+//  z-index: -3;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//  width: 100%;
+//  opacity: 1;
+//
+//  > video {
+//    min-width: 100%;
+//    min-height: 100%;
+//    position: absolute;
+//    top: 50%;
+//    left: 50%;
+//    transform: translate(-50%,-50%);
+//  }
+//}
 
-  > video {
-    min-width: 100%; 
-    min-height: 100%; 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-  }
-}
+//.BackgroundLottieContainer {
+//  position: fixed;
+//  z-index: -2;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//  width: 100%;
+//}
 
-.BackgroundLottieContainer {
-  position: fixed;
-  z-index: -2;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-.BackgroundPatter {
+.BackgroundPattern {
   position: fixed;
   z-index: -1;
   top: 0;
@@ -120,7 +121,12 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  background-image: radial-gradient(white .5px, transparent .5px);
-  background-size: calc(10 * .5px) calc(10 * .5px);
-  opacity: 0.5;
+  background-image: radial-gradient(gray 1px, transparent 1px);
+  background-size: calc(50 * .5px) calc(50 * .5px);
+  opacity: 0.25;
+}
+
+.PortfolioSectionContainer {
+  //padding-top: 40px;
+  //background-color: white;
 }
