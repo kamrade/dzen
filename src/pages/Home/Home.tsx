@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import { LottieRefCurrentProps } from "lottie-react";
 import { ScrambledText } from '@kamrade/react-scrambled-text';
 import { Typewriter, HitmanCharsSlider, Card } from '~/uikit';
 import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
-import animation from './Flow3.json';
 import { PortfolioSection } from './PortfolioSection.tsx';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
@@ -81,27 +80,7 @@ export const Home = () => {
         </h2>
       </div>
 
-      <div className="container">
-        <PortfolioSection />
-      </div>
-
-      {/*<div className={s.BackgroundVideoContainer} style={{*/}
-      {/*  opacity: `${scrollY > 400 ? (400 / scrollY > 0.3 ? 600 / scrollY : 0.3) : 1}`,*/}
-      {/*}}>*/}
-      {/*  <video autoPlay muted loop>*/}
-      {/*    <source src="/Gradient2.webm" type="video/webm" />*/}
-      {/*  </video>*/}
-      {/*</div>*/}
-      
-      {/*<div className={s.BackgroundLottieContainer} >*/}
-      {/*  <Lottie*/}
-      {/*    animationData={animation}*/}
-      {/*    autoplay={false}*/}
-      {/*    height={'100%'}*/}
-      {/*    width={'100%'}*/}
-      {/*    lottieRef={lottieRef}*/}
-      {/*  />*/}
-      {/*</div>*/}
+      <PortfolioSection />
       
       <div className={s.BackgroundPattern}>
 

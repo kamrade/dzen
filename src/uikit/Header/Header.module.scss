@@ -2,7 +2,7 @@
 @import "~styles/colors";
 
 .Header {
-  --header-font-size: 12px;
+  --header-font-size: 20px;
 }
 
 .Header {
@@ -20,6 +20,8 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
+  font-weight: 800;
+
   .HeaderTitleEmphasis {
     color: var(--color-text-emphasis);
     padding-left: 0.5rem;
@@ -62,6 +64,7 @@
     text-transform: uppercase;
     font-size: var(--header-font-size);
     letter-spacing: 1px;
+    font-weight: 400;
   }
 }
 

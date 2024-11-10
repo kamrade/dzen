@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import s from './App.module.scss';
 
 import { About, CallMe, Showcase, Home } from '~/pages';
-import { Header } from '~/uikit';
+import { Header, Footer } from '~/uikit';
 
 function App() {
   
@@ -21,6 +21,8 @@ function App() {
 
           </Routes>
         </main>
+
+        <Footer/>
       </div>
     </BrowserRouter>
   )

@@ -20,3 +20,4 @@ export * from './Modal';
 export * from './GalleryImage';
 
 export * from './Image';
+export * from './Footer';

@@ -1,0 +1,8 @@
+@import "~styles/variables";
+@import "~styles/colors";
+
+.Footer {
+  background: var(--color-bg-inv-100);
+  color: var(--color-text-body-inv);
+  padding: 5rem 0;
+}

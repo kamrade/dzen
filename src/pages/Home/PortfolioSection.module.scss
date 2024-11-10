@@ -1,0 +1,80 @@
+@import "~styles/variables";
+@import "~styles/colors";
+
+.blackBox {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  background-color: var(--color-bg-inv-100);
+  border-radius: 20px;
+}
+
+.quote {
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 800;
+  padding: 4rem 2rem 0;
+  position: relative;
+
+  &::before {
+    content: '"';
+    font-size: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.quoteAuthor {
+  padding-left: 2rem;
+}
+
+.imageContainer {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  height: 520px;
+  border-radius: 20px;
+}
+
+.title {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.PortfolioSectionContent {
+  margin: 2rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid var(--color-line-base-050);
+}
+
+.ProjectNumber {
+  font-size: 100px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.NumberOf {
+  font-size: 40px;
+  line-height: 1;
+  position: relative;
+  bottom: 1em;
+  left: 1rem;
+}
+
+.mainImage {
+  width: 100%;
+}
+
+.introText {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.label {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  position: relative;
+  top: 4px;
+  padding-right: 1rem;
+}
