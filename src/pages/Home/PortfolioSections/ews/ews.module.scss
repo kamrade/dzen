@@ -41,6 +41,11 @@
   line-height: 1;
 }
 
+.image {
+  width: 100%;
+  border-radius: 20px;
+}
+
 .PortfolioSectionContent {
   margin: 2rem 0;
   padding: 2rem 0;
@@ -68,7 +73,7 @@
 .introText {
   font-size: 1.25rem;
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .label {
