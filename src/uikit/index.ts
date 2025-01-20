@@ -21,3 +21,5 @@ export * from './GalleryImage';
 
 export * from './Image';
 export * from './Footer';
+
+export * from './@sections';

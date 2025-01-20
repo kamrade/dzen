@@ -11,6 +11,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+h2 {
+  font-size: 4rem;
+  line-height: 1;
+}
+
 h6 {
   font-size: 12px;
   line-height: 1;
@@ -35,3 +40,6 @@ a:link {
 }
 
 
+.text-muted {
+  color: var(--color-text-secondary);
+}
