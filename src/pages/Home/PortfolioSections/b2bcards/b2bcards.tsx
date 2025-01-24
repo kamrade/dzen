@@ -7,10 +7,10 @@ export interface B2bCardsSectionProps {
 }
 
 const headDataDescription: IDescriptionBlock[] = [{
-  title: "Expertise",
+  title: "Technical Development",
   items: [
-    "Web Development",
-    "Backend Architecture",
+    "Designed and implemented the card issuance process",
+    "Developed a user-friendly interface",
     "Data Management",
     "API Integration",
     "Security"
