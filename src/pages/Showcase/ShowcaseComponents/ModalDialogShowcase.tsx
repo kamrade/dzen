@@ -60,7 +60,7 @@ export const ModalDialogShowcase = () => {
       <Modal hideOnEscape={true} isShowed={isModalOpen2} hideModal={() => setIsModalOpen2(false)}>
         <ModalDialog hideModal={() => setIsModalOpen2(false)}>
           <div><h2>Modal</h2></div>
-          <div style={{ height: '2200px' }}>
+          <div>
             Content
           </div>
         </ModalDialog>

@@ -1,26 +1,24 @@
 import { GalleryImage } from '~/uikit';
 
+const images = [{
+  src: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/61154c214704577.675c7bab91bdd.png',
+  alt: ''
+},{
+  src: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/27b8eb211051423.671b9f15a06cd.jpg',
+  alt: 'Image 1'
+}, {
+  src: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/066880211051423.671b9f15a4c6d.jpg',
+  alt: 'Image 2'
+}]
+
 export const GalleryShowcase = () => {
   return (
     <div>
       <h1>Gallery Showcase</h1>
       <GalleryImage
-        previewTitle={"Preview Title"}
-        previewChip={"Preview Chip"}
-
-        images={[{
-          src: 'https://ath.live/api/v1/uploads/large_u4568294993_A_bold_and_vibrant_artwork_of_a_glowing_Bitcoin_f_94cd2ab0_5817_4ad1_9ff5_1ba0e82bfe74_2_a9cbb34c3e.jpg',
-          alt: 'Image 1'
-        }, {
-          src: 'https://ath.live/api/v1/uploads/large_tata007683_Bitcoin_depicted_as_a_tree_or_path_At_the_bottom_79b6e449_bd43_4fbd_8508_aeb7790519be_3_54cb25238f.jpg',
-          alt: 'Image 2'
-        }]}
-
-        previewImage = {{
-          src: 'https://ath.live/api/v1/uploads/large_u4568294993_A_bold_and_vibrant_artwork_of_a_glowing_Bitcoin_f_94cd2ab0_5817_4ad1_9ff5_1ba0e82bfe74_2_a9cbb34c3e.jpg',
-          alt: 'Image'
-        }}
-
+        noFrame={true}
+        images={images}
+        previewImage={images[1]}
         previewWidth={200}
       />
     </div>

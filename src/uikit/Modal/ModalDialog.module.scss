@@ -1,19 +1,24 @@
+$modal-border-radius: 20px;
+
 .ModalDialogWrapper {
-  padding: .5rem;
   background: white;
   margin: auto;
   width: 500px;
-  border-radius: 20px 20px 0 0;
+  border-radius: $modal-border-radius;
   overflow: hidden;
 
   &.ModalDialogDefault {
     position: relative;
   }
 
+  &.ModalDialogContainer {
+    width: auto;
+    padding: 0;
+  }
+
   &.ModalDialogFullscreen {
     padding: 0;
     width: 100%;
-    height: calc(100vh - 4rem);
   }
 }
 

@@ -1,10 +1,33 @@
+$gallery-image-border-radius: 8px;
+
 .GalleryImage {
-  width: 100%;
   border: none;
   transition: background .2s ease-in-out;
   background-color: rgba(255, 255, 255, 0.6);
   margin-bottom: .25rem;
+  padding: .5rem .5rem 1rem;
+  display: inline-flex;
+  border-radius: 12px;
   &:hover {
     background: rgba(255, 255, 255, 1);
   }
+}
+
+.ImageWrapper {
+  display: block;
+  margin: 0 auto;
+  padding: .25rem 1rem;
+
+  &:first-of-type {
+    padding-top: 1rem;
+  }
+  &:last-of-type {
+    padding-bottom: 1rem;
+  }
+}
+
+.ImageElement {
+  width: 100%;
+  border-radius: $gallery-image-border-radius;
+  margin: 0;
 }
