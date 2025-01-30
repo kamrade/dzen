@@ -1,43 +1,13 @@
 import { FC } from 'react';
 import s from './ews.module.scss';
-import { IDescriptionBlock, SectionHead, SectionSeparator, GalleryImage } from '~/uikit';
+import { SectionHead, SectionSeparator, GalleryImage } from '~/uikit';
 import { images } from './images';
 import {moveElementToFront} from "~/helpers";
+import { headDataDescription } from './ews-head-data.ts';
 
 export interface EWSSectionProps {
 
 }
-
-const headDataDescription: IDescriptionBlock[] = [{
-  title: "Expertise",
-  items: [
-    "Web Development",
-    "Backend Architecture",
-    "Data Management",
-    "API Integration",
-    "Security"
-  ]
-}, {
-  title: "Focus",
-  items: [
-    "User Interface",
-    "Data-Driven Insights",
-    "Real-Time Processing",
-    "Scalability",
-    "Cloud Infrastructure",
-  ]
-}, {
-  title: "Features",
-  items: [
-    "Optimizations",
-    "Admin Dashboard",
-    "Back-Office Tools",
-    "Data Visualisations",
-    "Analytics"
-  ]
-}];
-
-
 
 export const EWSSection: FC<EWSSectionProps> = () => (
 
