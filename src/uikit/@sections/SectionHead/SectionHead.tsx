@@ -27,12 +27,12 @@ export const SectionHead: FC<ISectionHeadProps> =
 
       <div className="col-xl-16">
         <div className="row">
-          {description.map((item) => (
-            <div className="col-12 col-md-8 mb-md-0 mb-5">
+          {description.map((item, i) => (
+            <div className="col-12 col-md-8 mb-md-0 mb-5" key={i}>
               <div className="mb-3"><b>{item.title}</b></div>
               <div>
-                {item.items.map((tag) => (
-                  <div>{tag}</div>
+                {item.items.map((tag, j) => (
+                  <div key={j}>{tag}</div>
                 ))}
               </div>
             </div>
