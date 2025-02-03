@@ -1,22 +1,21 @@
 import { FC } from 'react';
 import s from './b2bcards.module.scss';
-import {GalleryImage, SectionHead, SectionSeparator} from '~/uikit';
+import { GalleryImage, SectionHead, SectionSeparator } from '~/uikit';
 import { headDataDescription } from './b2b-head-data';
 import { b2bImages } from "./b2b-images.ts";
-import {moveElementToFront} from "~/helpers";
-import {images} from "~/pages/Home/PortfolioSections/ews/images.ts";
+import { moveElementToFront } from "~/helpers";
 
 export interface B2bCardsSectionProps {
-
+  sectionNumber: string;
 }
 
-export const B2bCardsSection: FC<B2bCardsSectionProps> = () => (
+export const B2bCardsSection: FC<B2bCardsSectionProps> = ({ sectionNumber }) => (
   <div className={s.b2bSection}>
 
     <SectionSeparator/>
 
     <div className="mb-5">
-      <SectionHead number={"02"} description={headDataDescription}/>
+      <SectionHead number={sectionNumber} description={headDataDescription}/>
     </div>
 
     <div className="row mb-5">
@@ -25,7 +24,7 @@ export const B2bCardsSection: FC<B2bCardsSectionProps> = () => (
       </div>
     </div>
 
-    <div className="row">
+    <div className="row mb-3">
       <div className="col-md-12">
         <GalleryImage
           noFrame={true}
@@ -34,7 +33,7 @@ export const B2bCardsSection: FC<B2bCardsSectionProps> = () => (
         />
       </div>
       <div className="offset-md-4 col-md-8">
-        <h3>Key Offerings:</h3>
+        <h3>Key Offerings</h3>
 
           Card Issuance Services: End-to-end support for issuing physical and virtual payment cards.
           Custom Card Programs: Tailored solutions for businesses to launch branded card programs.
@@ -54,9 +53,45 @@ export const B2bCardsSection: FC<B2bCardsSectionProps> = () => (
       <div className="offset-md-4 col-md-8">
         <GalleryImage
           noFrame={true}
-          images={moveElementToFront(b2bImages, 1)}
-          previewImage={b2bImages[1]}
+          images={moveElementToFront(b2bImages, 3)}
+          previewImage={b2bImages[3]}
         />
+      </div>
+      <div className="col-md-12 mb-3">
+        <div className="row mb-3">
+          <div className="offset-md-2 col-md-10">
+            <h3>Key Achievements as a Product Designer for B2B Cards</h3>
+            <ul style={{
+              listStyle: 'none',
+              margin: '0',
+              padding: '0'
+            }}>
+              <li>End-to-End User-Centric Design</li>
+              <li>White-Label Branding Solutions</li>
+              <li>Innovative Modular Architecture Integration</li>
+              <li>Security-First Design</li>
+              <li>Cross-Platform Consistency</li>
+              <li>Data-Driven Iterations</li>
+              <li>Collaboration & Leadership</li>
+            </ul>
+          </div>
+          <div className="col-md-12">
+            <GalleryImage
+              noFrame={true}
+              images={moveElementToFront(b2bImages, 1)}
+              previewImage={b2bImages[1]}
+            />
+          </div>
+        </div>
+        <div>
+          <GalleryImage
+            noFrame={true}
+            images={moveElementToFront(b2bImages, 2)}
+            previewImage={b2bImages[2]}
+          />
+        </div>
+
+
       </div>
     </div>
 

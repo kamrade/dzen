@@ -6,18 +6,18 @@ import {moveElementToFront} from "~/helpers";
 import { headDataDescription } from './ews-head-data.ts';
 
 export interface EWSSectionProps {
-
+  sectionNumber: string;
 }
 
-export const EWSSection: FC<EWSSectionProps> = () => (
+export const EWSSection: FC<EWSSectionProps> = ({ sectionNumber }) => (
 
   <div className="mb-5">
 
     <SectionSeparator />
 
-    <SectionHead number={"01"} description={headDataDescription}  />
+    <SectionHead number={sectionNumber} description={headDataDescription}  />
 
-    <div className="row mb-5">
+    <div className="row mb-2">
       <div className="offset-xl-8 col-xl-16">
         <h2>Extreme waves. Auto moto sports</h2>
       </div>
@@ -57,7 +57,7 @@ export const EWSSection: FC<EWSSectionProps> = () => (
     </div>
 
 
-    <div className="row">
+    <div className="row mb-2">
 
       <div className="offset-xl-4 col-xl-10 col-lg-12">
         <GalleryImage
@@ -78,7 +78,7 @@ export const EWSSection: FC<EWSSectionProps> = () => (
     </div>
 
 
-    <div className="row">
+    <div className="row mb-2">
 
       <div className="col-lg-4">
         <div className={s.blackBox}></div>

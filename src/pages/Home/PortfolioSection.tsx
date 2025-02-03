@@ -7,7 +7,7 @@ export interface IPortfolioSectionProps {
 
 export const PortfolioSection: FC<IPortfolioSectionProps> = () => (
   <div className="container">
-    <EWSSection />
-    <B2bCardsSection/>
+    <B2bCardsSection sectionNumber={'01'} />
+    <EWSSection sectionNumber={'02'} />
   </div>
 )
