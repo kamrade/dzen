@@ -16,13 +16,6 @@ h2 {
   line-height: 1;
 }
 
-h6 {
-  font-size: 12px;
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 .mono {
   font-family: var(--font-family-mono), monospace;
 }
@@ -31,6 +24,7 @@ a,
 a:visited,
 a:link {
   color: var(--color-text-placeholder);
+  display: block;
   &.active {
     color: var(--color-text-emphasis);
   }
@@ -39,6 +33,12 @@ a:link {
   }
 }
 
+h6 {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
 
 .text-muted {
   color: var(--color-text-secondary);

@@ -20,13 +20,16 @@
     border-radius: var(--border-radius-control-panel) var(--border-radius-control-panel) 0 0;
   }
 
+  a, a:visited, a:link {
+    text-decoration: none;
+    color: var(--color-text-body);
+  }
+
   .mobileMenuItem {
     display: block;
     font-size: 2rem;
     line-height: 1;
     margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 
     >h6 {
       font-size: 30px;

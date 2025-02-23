@@ -43,13 +43,13 @@ export const Home = () => {
               <div className={s.titleLabelAnchor}>
                 design
                 <div className={s.titleLabel}>
-                  <ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />
+                  {/*<ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />*/}
                 </div>
               </div>
             </h1>
 
             <div className={s.titleSub}>
-              <HitmanCharsSlider text={phrase} />
+              {/*<HitmanCharsSlider text={phrase} />*/}
             </div>
           </div>
 

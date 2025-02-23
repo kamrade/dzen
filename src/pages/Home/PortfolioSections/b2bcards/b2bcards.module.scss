@@ -1,3 +1,22 @@
 .b2bSection {
   position: relative;
 }
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  aspect-ratio: 1;
+  width: 50%;
+  height: auto;
+  background: var(--color-bg-inv-100);
+  color: var(--color-text-body-inv);
+  padding: 1em;
+  border-radius: 20px;
+  font-weight: 600;
+}

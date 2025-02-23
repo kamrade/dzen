@@ -2,11 +2,17 @@
 @import "~styles/colors";
 
 .Header {
-  --header-font-size: 20px;
+  --header-font-size: 1rem;
 }
 
 .Header {
   font-size: var(--header-font-size);
+
+  a, a:visited, a:link {
+    text-decoration: none;
+    color: var(--color-text-body);
+  }
+
 }
 
 .HeaderContent {
@@ -17,10 +23,8 @@
 .HeaderTitle {
   font-size: var(--header-font-size);
   line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   margin: 0;
-  font-weight: 800;
+  font-weight: 400;
 
   .HeaderTitleEmphasis {
     color: var(--color-text-emphasis);
@@ -45,26 +49,11 @@
 }
 
 .HeaderNav {
-  line-height: 0;
   display: flex;
   gap: 2rem;
 
-  > a, a:visited, a:link {
-    text-decoration: none;
-    color: var(--color-text-body);
-  }
-
   @include media-breakpoint-down(lg) {
     display: none;
-  }
-
-  h6 {
-    line-height: 1;
-    margin: 0;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1px;
-    font-weight: 500;
   }
 }
 

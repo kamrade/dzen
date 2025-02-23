@@ -3,7 +3,7 @@ import {IDescriptionBlock} from "~/uikit";
 export const headDataDescription: IDescriptionBlock[] = [{
   title: "Technical Development",
   items: [
-    "Designed and implemented the card issuance process",
+    "Cards issuance process",
     "Developed a user-friendly interface",
     "Data Management",
     "API Integration",

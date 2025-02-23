@@ -20,7 +20,7 @@ export const B2bCardsSection: FC<B2bCardsSectionProps> = ({ sectionNumber }) => 
 
     <div className="row mb-5">
       <div className="offset-xl-8 col-xl-16">
-        <h2>B2B Cards. A company that specializes in issuing payment cards and provides solutions enabling clients to launch their own card programs</h2>
+        <h2>B2B Cards. Issuing payment cards and provides solutions enabling clients to launch their own card programs</h2>
       </div>
     </div>
 
@@ -32,67 +32,70 @@ export const B2bCardsSection: FC<B2bCardsSectionProps> = ({ sectionNumber }) => 
           previewImage={b2bImages[0]}
         />
       </div>
-      <div className="offset-md-4 col-md-8">
-        <h3>Key Offerings</h3>
 
-          Card Issuance Services: End-to-end support for issuing physical and virtual payment cards.
-          Custom Card Programs: Tailored solutions for businesses to launch branded card programs.
-          Payment Processing: Secure and efficient transaction processing.
-          Compliance and Security: Robust systems to ensure regulatory compliance and data protection.
-          Technology Integration: APIs and platforms for seamless integration with existing systems.
-          Customer Support: Dedicated assistance for program setup, management, and optimization.
+      <div className="offset-md-2 col-md-10">
+        <div className="mb-5">
+          <h3>Key Offerings</h3>
+          Payment Card Solutions
+          <div><b>Card Issuance:</b> Physical & virtual cards, end-to-end support</div>
+          <div><b>Custom Programs:</b> Branded card solutions for businesses</div>
+          <div><b>Payment Processing:</b> Secure & efficient transactions</div>
+          <div><b>Compliance & Security:</b> Regulatory adherence & data protection</div>
+          <div><b>Technology Integration:</b> APIs for seamless system connection</div>
+          <div><b>Customer Support:</b> Expert assistance for setup & management</div>
+        </div>
 
-        We are a leading provider of payment card solutions, specializing in the issuance of branded payment cards and offering comprehensive, customizable platforms for businesses to create and manage their own card programs. Our end-to-end services empower clients to design, launch, and operate payment cards tailored to their unique needs, whether for loyalty programs, corporate expenses, or consumer banking.
-
-        Our solutions include card design, payment processing, compliance management, and advanced technology integration, ensuring seamless and secure transactions. By leveraging our expertise, businesses can enhance customer engagement, streamline financial operations, and unlock new revenue streams through innovative payment solutions.
+        <div className={s.box}>
+          <div>
+            An incredibly convenient system. We were able to provide all our employees with our cards in just a few clicks, almost instantly.
+          </div>
+        </div>
 
       </div>
     </div>
 
     <div className="row">
-      <div className="offset-md-4 col-md-8">
+      <h3 className="mb-3">Key Achievements as a Product Designer for B2B Cards</h3>
+      <div className="col-md-8">
+        <ul className={s.list}>
+          <li>End-to-End User-Centric Design</li>
+          <li>White-Label Branding Solutions</li>
+          <li>Modular Architecture Integration</li>
+          <li>Data-Driven Iterations</li>
+          <li>Collaboration & Leadership</li>
+        </ul>
+      </div>
+
+      <div className="col-md-8">
+        Box
+      </div>
+
+      <div className="col-md-8">
         <GalleryImage
           noFrame={true}
           images={moveElementToFront(b2bImages, 3)}
           previewImage={b2bImages[3]}
         />
       </div>
-      <div className="col-md-12 mb-3">
-        <div className="row mb-3">
-          <div className="offset-md-2 col-md-10">
-            <h3>Key Achievements as a Product Designer for B2B Cards</h3>
-            <ul style={{
-              listStyle: 'none',
-              margin: '0',
-              padding: '0'
-            }}>
-              <li>End-to-End User-Centric Design</li>
-              <li>White-Label Branding Solutions</li>
-              <li>Innovative Modular Architecture Integration</li>
-              <li>Security-First Design</li>
-              <li>Cross-Platform Consistency</li>
-              <li>Data-Driven Iterations</li>
-              <li>Collaboration & Leadership</li>
-            </ul>
-          </div>
-          <div className="col-md-12">
-            <GalleryImage
-              noFrame={true}
-              images={moveElementToFront(b2bImages, 1)}
-              previewImage={b2bImages[1]}
-            />
-          </div>
-        </div>
-        <div>
-          <GalleryImage
-            noFrame={true}
-            images={moveElementToFront(b2bImages, 2)}
-            previewImage={b2bImages[2]}
-          />
-        </div>
 
 
-      </div>
+      {/*<div className="col-md-12">*/}
+      {/*  <GalleryImage*/}
+      {/*    noFrame={true}*/}
+      {/*    images={moveElementToFront(b2bImages, 1)}*/}
+      {/*    previewImage={b2bImages[1]}*/}
+      {/*  />*/}
+      {/*</div>*/}
+
+      {/*<div>*/}
+      {/*  <GalleryImage*/}
+      {/*    noFrame={true}*/}
+      {/*    images={moveElementToFront(b2bImages, 2)}*/}
+      {/*    previewImage={b2bImages[2]}*/}
+      {/*  />*/}
+      {/*</div>*/}
+
+
     </div>
 
 
