@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { LottieRefCurrentProps } from "lottie-react";
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, HitmanCharsSlider, Card } from '~/uikit';
+import { Typewriter, HitmanCharsSlider, Card, AnimatedCircle } from '~/uikit';
 import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import { PortfolioSection } from './PortfolioSection.tsx';
+import { data } from '~/data';
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 const phrase1 = 'User-friendly, intuitive, and enjoyable digital platforms';
@@ -33,25 +34,50 @@ export const Home = () => {
     <div className={s.HomePage}>
       <div className="container">
         <div>
-          
-          <div className={s.TitleWrapper} style={{
-            transform: `translateY(${scrollY/10}px)`,
-          }}>
-            <h1 className={s.title} >
-              <div>Human</div>
-              <div>focusing</div>
-              <div className={s.titleLabelAnchor}>
-                design
-                <div className={s.titleLabel}>
-                  {/*<ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />*/}
+
+
+          <div className={s.heroRow}>
+
+            <div className={s.heroColumn} style={{ position: 'sticky', top: '0', height: '100vh'}}>
+              <div className={s.TitleWrapper} style={{ transform: `translateY(${scrollY / 10}px)`, }}>
+
+                <h1 className={s.title}>
+                  <div>{data.heroLines[0]}</div>
+                  <div>{data.heroLines[1]}</div>
+
+                  <div className={s.titleLabelAnchor}>
+                    {data.heroLines[2]}
+                    <div className={s.titleLabel}>
+                      {/*<ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />*/}
+                    </div>
+                  </div>
+
+                </h1>
+
+                <div className={s.titleSub}>
+                  <HitmanCharsSlider text={phrase} />
                 </div>
               </div>
-            </h1>
-
-            <div className={s.titleSub}>
-              {/*<HitmanCharsSlider text={phrase} />*/}
             </div>
+            <div className={s.heroColumn}>
+
+
+
+
+              <AnimatedCircle></AnimatedCircle>
+
+
+              {homeCards.map((card, i) => (
+                <div key={i}>
+                  <Card image={card.image} title={card.title}>
+                    {card.text}
+                  </Card>
+                </div>
+              ))}
+            </div>
+
           </div>
+
 
           <div className={s.cards}>
             <div className="row">

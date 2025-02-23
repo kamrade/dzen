@@ -23,3 +23,4 @@ export * from './Image';
 export * from './Footer';
 
 export * from './@sections';
+export * from './AnimatedCircle';
