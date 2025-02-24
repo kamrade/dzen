@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import AnimatedCircle from "./AnimatedCircle";
+import {AnimatedCircle} from "./AnimatedCircle";
 
-const AnimatedCircleControl: React.FC = () => {
+export const AnimatedCircleControl: React.FC = () => {
   const [percentage, setPercentage] = useState<number>(0);
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,8 +10,7 @@ const AnimatedCircleControl: React.FC = () => {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Анимированный круг</h1>
-      <AnimatedCircle percentage={percentage} />
+      <AnimatedCircle percentage={percentage} radius={200} color={"#EA7871"} background={"transparent"} opacity={0.5} />
       <div style={{ marginTop: "20px" }}>
         <input
           type="range"
@@ -26,5 +25,3 @@ const AnimatedCircleControl: React.FC = () => {
     </div>
   );
 };
-
-export default AnimatedCircleControl;

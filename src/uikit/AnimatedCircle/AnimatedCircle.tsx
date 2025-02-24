@@ -2,18 +2,21 @@ import React, { useEffect, useRef } from "react";
 
 interface AnimatedCircleProps {
   percentage: number;
+  radius: number;
+  color: string;
+  background: string;
+  opacity: number;
 }
 
-const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage }) => {
+export const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage, radius, color, background, opacity }) => {
   const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (pathRef.current) {
       // Рассчитываем угол в зависимости от процента
       const angle = (percentage / 100) * 360;
-      const radius = 100;
-      const centerX = 120;
-      const centerY = 120;
+      const centerX = radius;
+      const centerY = radius;
 
       // Начальная точка (12 часов)
       const startX = centerX;
@@ -34,31 +37,19 @@ const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage }) => {
   }, [percentage]);
 
   return (
-    <svg width="240" height="240" viewBox="0 0 240 240">
+    <svg width={radius*2} height={radius*2} viewBox={`0 0 ${radius*2} ${radius*2}`}>
       {/* Фоновый круг */}
-      <circle cx="120" cy="120" r="120" fill="#e0e0e0"/>
+      <circle cx={radius} cy={radius} r={radius} fill={background} />
 
       {/* Анимированный сектор */}
       <path
         ref={pathRef}
-        fill="#007bff"
+        fill={color}
+        opacity={opacity}
       />
 
-      <circle cx="120" cy="120" r="8" fill="#232323"/>
+      <circle cx={radius} cy={radius} r="8" fill="#232323"/>
 
-      {/* Текст с процентом */}
-      {/*<text*/}
-      {/*  x="50%"*/}
-      {/*  y="50%"*/}
-      {/*  dominantBaseline="middle"*/}
-      {/*  textAnchor="middle"*/}
-      {/*  fontSize="20"*/}
-      {/*  fill="#007bff"*/}
-      {/*>*/}
-      {/*  {percentage}%*/}
-      {/*</text>*/}
     </svg>
   );
 };
-
-export default AnimatedCircle;

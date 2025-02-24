@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { LottieRefCurrentProps } from "lottie-react";
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, HitmanCharsSlider, Card } from '~/uikit';
+import { Typewriter, HitmanCharsSlider, Card, AnimatedCircleControl } from '~/uikit';
 import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import { PortfolioSection } from './PortfolioSection.tsx';
 import { data } from '~/data';
-import AnimatedCircleControl from "~/uikit/AnimatedCircle/AnimatedCircleControl.tsx";
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 const phrase1 = 'User-friendly, intuitive, and enjoyable digital platforms';
@@ -63,7 +62,9 @@ export const Home = () => {
             <div className={s.heroColumn}>
 
 
-              <AnimatedCircleControl></AnimatedCircleControl>
+              <div className={s.heroGraph}>
+                <AnimatedCircleControl></AnimatedCircleControl>
+              </div>
 
 
               {homeCards.map((card, i) => (
