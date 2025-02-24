@@ -5,45 +5,46 @@ interface AnimatedCircleProps {
 }
 
 const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage }) => {
-  const pathRef = useRef<SVGCircleElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (pathRef.current) {
+      // Рассчитываем угол в зависимости от процента
+      const angle = (percentage / 100) * 360;
       const radius = 50;
-      const circumference = 2 * Math.PI * radius;
-      const offset = circumference - (percentage / 100) * circumference;
-      pathRef.current.style.strokeDasharray = `${circumference} ${circumference}`;
-      pathRef.current.style.strokeDashoffset = offset.toString();
+      const centerX = 60;
+      const centerY = 60;
+
+      // Начальная точка (12 часов)
+      const startX = centerX;
+      const startY = centerY - radius;
+
+      // Конечная точка на окружности
+      const endX = centerX + radius * Math.sin((angle * Math.PI) / 180);
+      const endY = centerY - radius * Math.cos((angle * Math.PI) / 180);
+
+      // Флаг для больших углов (больше 180 градусов)
+      const largeArcFlag = angle > 180 ? 1 : 0;
+
+      // Команда для path
+      const pathData = `M ${centerX} ${centerY} L ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY} Z`;
+
+      pathRef.current.setAttribute("d", pathData);
     }
   }, [percentage]);
 
   return (
     <svg width="120" height="120" viewBox="0 0 120 120">
       {/* Фоновый круг */}
-      <circle
-        cx="60"
-        cy="60"
-        r="50"
-        fill="none"
-        stroke="#e0e0e0"
-        strokeWidth="10"
-      />
-      {/* Анимированный круг */}
-      <circle
-        cx="60"
-        cy="60"
-        r="50"
-        fill="none"
-        stroke="#007bff"
-        strokeWidth="10"
-        strokeLinecap="round"
+      <circle cx="60" cy="60" r="50" fill="#e0e0e0" />
+
+      {/* Анимированный сектор */}
+      <path
         ref={pathRef}
-        style={{
-          transition: "stroke-dashoffset 0.5s ease-in-out",
-          transform: "rotate(-90deg)",
-          transformOrigin: "center",
-        }}
+        fill="#007bff"
+
       />
+
       {/* Текст с процентом */}
       <text
         x="50%"
