@@ -1,51 +1,62 @@
-import { FC, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 interface AnimatedCircleProps {
-  test?: 'test';
+  percentage: number;
 }
 
-export const AnimatedCircle: FC<AnimatedCircleProps> = ( props ) => {
+const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage }) => {
+  const pathRef = useRef<SVGCircleElement>(null);
 
-  const circle = useRef<HTMLElement>();
-
-  const animateCircle = () => {
-    const circumference = 2 * Math.PI * 45;
-    if (circle.current) {
-      (circle.current as HTMLElement).style.strokeDasharray = circumference.toString();
-      (circle.current).style.strokeDashoffset = "0";
-
-      circle.current.animate([
-        { strokeDashoffset: 0 },
-        { strokeDashoffset: circumference }
-      ], {
-        duration: 2000,
-        easing: "linear",
-        fill: "forwards"
-      });
+  useEffect(() => {
+    if (pathRef.current) {
+      const radius = 50;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (percentage / 100) * circumference;
+      pathRef.current.style.strokeDasharray = `${circumference} ${circumference}`;
+      pathRef.current.style.strokeDashoffset = offset.toString();
     }
-
-
-  }
+  }, [percentage]);
 
   return (
-    <div>
-      <h1>Animated Circle</h1>
-      <svg viewBox="0 0 100 100" width="200" height="200" ref={circle}>
-        <circle
-          id="circle"
-          cx="50"
-          cy="50"
-          r="45"
-          stroke="blue"
-          strokeWidth="10"
-          fill="black"
-        />
-      </svg>
-
-      <div>
-        <button onClick={animateCircle}>Запустить анимацию</button>
-      </div>
-
-    </div>
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      {/* Фоновый круг */}
+      <circle
+        cx="60"
+        cy="60"
+        r="50"
+        fill="none"
+        stroke="#e0e0e0"
+        strokeWidth="10"
+      />
+      {/* Анимированный круг */}
+      <circle
+        cx="60"
+        cy="60"
+        r="50"
+        fill="none"
+        stroke="#007bff"
+        strokeWidth="10"
+        strokeLinecap="round"
+        ref={pathRef}
+        style={{
+          transition: "stroke-dashoffset 0.5s ease-in-out",
+          transform: "rotate(-90deg)",
+          transformOrigin: "center",
+        }}
+      />
+      {/* Текст с процентом */}
+      <text
+        x="50%"
+        y="50%"
+        dominantBaseline="middle"
+        textAnchor="middle"
+        fontSize="20"
+        fill="#007bff"
+      >
+        {percentage}%
+      </text>
+    </svg>
   );
-}
+};
+
+export default AnimatedCircle;

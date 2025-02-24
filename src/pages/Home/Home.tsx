@@ -7,6 +7,7 @@ import s from './Home.module.scss';
 import { homeCards } from './home-cards';
 import { PortfolioSection } from './PortfolioSection.tsx';
 import { data } from '~/data';
+import AnimatedCircleControl from "~/uikit/AnimatedCircle/AnimatedCircleControl.tsx";
 
 const scrambledValues = ['Digital', 'UX/UI', 'Mobile', 'Graphic', 'Motion', 'Info'];
 const phrase1 = 'User-friendly, intuitive, and enjoyable digital platforms';
@@ -64,7 +65,7 @@ export const Home = () => {
 
 
 
-              <AnimatedCircle></AnimatedCircle>
+              <AnimatedCircleControl></AnimatedCircleControl>
 
 
               {homeCards.map((card, i) => (
