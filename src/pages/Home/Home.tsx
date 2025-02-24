@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { LottieRefCurrentProps } from "lottie-react";
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, HitmanCharsSlider, Card, AnimatedCircle } from '~/uikit';
+import { Typewriter, HitmanCharsSlider, Card } from '~/uikit';
 import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { homeCards } from './home-cards';
@@ -45,11 +45,11 @@ export const Home = () => {
                 <h1 className={s.title}>
                   <div>{data.heroLines[0]}</div>
                   <div>{data.heroLines[1]}</div>
+                  <div>{data.heroLines[2]}</div>
 
                   <div className={s.titleLabelAnchor}>
-                    {data.heroLines[2]}
                     <div className={s.titleLabel}>
-                      {/*<ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />*/}
+                      <ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />
                     </div>
                   </div>
 
@@ -61,8 +61,6 @@ export const Home = () => {
               </div>
             </div>
             <div className={s.heroColumn}>
-
-
 
 
               <AnimatedCircleControl></AnimatedCircleControl>

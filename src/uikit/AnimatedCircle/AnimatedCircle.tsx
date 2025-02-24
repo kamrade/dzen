@@ -11,9 +11,9 @@ const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage }) => {
     if (pathRef.current) {
       // Рассчитываем угол в зависимости от процента
       const angle = (percentage / 100) * 360;
-      const radius = 50;
-      const centerX = 60;
-      const centerY = 60;
+      const radius = 100;
+      const centerX = 120;
+      const centerY = 120;
 
       // Начальная точка (12 часов)
       const startX = centerX;
@@ -34,28 +34,29 @@ const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage }) => {
   }, [percentage]);
 
   return (
-    <svg width="120" height="120" viewBox="0 0 120 120">
+    <svg width="240" height="240" viewBox="0 0 240 240">
       {/* Фоновый круг */}
-      <circle cx="60" cy="60" r="50" fill="#e0e0e0" />
+      <circle cx="120" cy="120" r="120" fill="#e0e0e0"/>
 
       {/* Анимированный сектор */}
       <path
         ref={pathRef}
         fill="#007bff"
-
       />
 
+      <circle cx="120" cy="120" r="8" fill="#232323"/>
+
       {/* Текст с процентом */}
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="middle"
-        textAnchor="middle"
-        fontSize="20"
-        fill="#007bff"
-      >
-        {percentage}%
-      </text>
+      {/*<text*/}
+      {/*  x="50%"*/}
+      {/*  y="50%"*/}
+      {/*  dominantBaseline="middle"*/}
+      {/*  textAnchor="middle"*/}
+      {/*  fontSize="20"*/}
+      {/*  fill="#007bff"*/}
+      {/*>*/}
+      {/*  {percentage}%*/}
+      {/*</text>*/}
     </svg>
   );
 };
