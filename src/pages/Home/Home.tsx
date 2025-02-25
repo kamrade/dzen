@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, HitmanCharsSlider, Card, AnimatedCircle } from '~/uikit';
+import { Typewriter, HitmanCharsSlider, Card, AnimatedCircle, TextBlinds } from '~/uikit';
 import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { PortfolioSection } from './PortfolioSection.tsx';
@@ -9,19 +9,16 @@ import { data } from '~/data';
 
 const scrambledValues = data.scrambledValuesHome;
 const homeCards = data.homeCards;
-const phrase1 = data.heroPhrases[0];
-const phrase2 = data.heroPhrases[1];
 const slidesText = [
-  "Research and Ideation",
-  "Prototyping and design",
-  "Development and testing",
-  "Feedback and Iteration"
+  "Research and Ideation. Understand the target audience, analyze the competitive landscape. Generate ideas and concepts, explore potential solutions.",
+  "Prototyping and design. Testing and gathering feedback. Improvements based on testing. Visual elements and layout. Seamless and enjoyable user journey.",
+  "Development and testing. Implement the UI design, integration. Check the user stories and test cases, ensure the product meets users expectations.",
+  "Feedback and Iteration. Continuously monitor the product, collect user feedback, make continuous improvements based on feedback and changing requirements."
 ];
 
 
 export const Home = () => {
 
-  const [phrase, setPhrase] = useState(phrase1);
   const [slideText, setSlideText] = useState(slidesText[0]);
   const [progress, setProgress] = useState<number>(0);
   const { scrollY } = useScroll({ debounceTime: 10 });
@@ -32,13 +29,9 @@ export const Home = () => {
   const scrollingColumnHeight = scrollingColumn.current?.getBoundingClientRect().height || 0;
 
   useEffect(() => {
-    const interval = setInterval(() => setPhrase(phrase => phrase === phrase1 ? phrase2 : phrase1), 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
     const percentage = parseFloat((scrollY / (scrollingColumnHeight - windowHeight)).toFixed(2))*100;
     setProgress( percentage );
+    console.log(percentage);
   }, [scrollingColumn, scrollY, windowHeight]);
 
   useEffect(() => {
@@ -51,15 +44,23 @@ export const Home = () => {
     } else {
       setSlideText(slidesText[3]);
     }
-  }, [progress])
+  }, [progress]);
 
+  const getPercentage = (percentage: number, i: number) => {
+    if (i === 0) {
+     return percentage * 4 + 10;
+    }
+    if (i === 1) {
+      return (percentage - 25) * 4 + 10;
+    }
+    if (i === 2) {
+      return (percentage - 50) * 4 + 10;
+    }
+    if (i === 3) {
+      return (percentage - 75) * 4 + 10;
+    }
 
-  // const lottieRef = useRef<LottieRefCurrentProps | null>(null);
-  useEffect(() => {
-    // const scrollHeight = document.body.scrollHeight - window.innerHeight
-    // const curr = Math.floor( (lottieRef.current?.animationItem?.totalFrames || 1) * scrollY/scrollHeight );
-    // lottieRef.current?.goToAndStop(curr, true);
-  }, [scrollY]);
+  }
 
   return (
     <div className={s.HomePage}>
@@ -82,21 +83,26 @@ export const Home = () => {
                     </div>
                   </div>
                 </h1>
-                {/*<div className={s.titleSub}>*/}
-                {/*  <HitmanCharsSlider text={phrase} />*/}
-                {/*</div>*/}
               </div>
             </div>
 
 
             <div className={s.heroColumn} ref={scrollingColumn}>
               <div className={s.heroGraph}>
-                <AnimatedCircle percentage={progress} radius={160} color={"#EA7871"} background={"transparent"} opacity={0.5} />
-                <div>
-                  <HitmanCharsSlider text={slideText} speed={0.5} />
-                </div>
+                <AnimatedCircle
+                  percentage={progress}
+                  radius={160}
+                  color={"#EA7871"}
+                  background={"transparent"}
+                  opacity={0.5}
+                />
               </div>
-              <div className={s.scrollingCards}>
+              <div className={s.heroSlides}>
+                {slidesText.map((heroSlide, i) => (
+                  <div className={s.heroSlide} key={i}>
+                    <TextBlinds text={heroSlide} percentage={ getPercentage(progress, i) }></TextBlinds>
+                  </div>
+                ))}
 
               </div>
             </div>

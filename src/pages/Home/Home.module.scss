@@ -12,6 +12,18 @@
   }
 }
 
+.heroSlides {
+  margin-top: 50vh;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-left: 25%;
+
+  .heroSlide {
+    min-height: 100vh;
+  }
+}
+
 .heroGraph {
   position: sticky;
   top: 50%;
@@ -23,7 +35,7 @@
   font-size: 120px;
   line-height: 1;
   margin-top: 100px;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: -1px;
 
   @include media-breakpoint-down(lg) {
@@ -43,6 +55,7 @@
 }
 
 .titleLabel {
+  margin-top: 1rem;
   display: inline-block;
   padding: 5px 10px;
   background-color: var(--color-bg-emp-100);
@@ -93,9 +106,9 @@
 
 .titleWrapper {
   padding: 5vh 0 20vh;
-  position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
+  //position: sticky;
+  //top: 50%;
+  //transform: translateY(-50%);
 }
 
 .titleSub {
@@ -113,11 +126,6 @@
 
 .cards {
   margin-bottom: 120px;
-}
-
-.scrollingCards {
-  margin-left: 25%;
-  height: 4000px;
 }
 
 .BackgroundPattern {
