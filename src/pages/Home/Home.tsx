@@ -69,9 +69,9 @@ export const Home = () => {
 
           <div className={s.heroRow}>
 
-            <div className={s.heroColumn} style={{ position: 'sticky', top: '0', height: '100vh'}}>
-              <div className={s.TitleWrapper} style={{ transform: `translateY(${scrollY / 50}px)`, }}>
-                <h1 className={s.title}>
+            <div className={s.heroColumn}>
+              <div className={s.titleWrapper} >
+                <h1 className={s.title} style={{ transform: `translateY(${ -1 * (scrollY / 50) }px)`, }}>
                   <div>{data.heroLines[0]}</div>
                   <div>{data.heroLines[1]}</div>
                   <div>{data.heroLines[2]}</div>

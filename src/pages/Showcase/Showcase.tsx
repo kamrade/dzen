@@ -9,7 +9,8 @@ import {
   HitmanCharsSliderShowcase,
   ButtonShowcase,
   ModalDialogShowcase,
-  GalleryShowcase
+  GalleryShowcase,
+  TextBlindsShowcase
 } from './ShowcaseComponents';
 
 export function Showcase() {
@@ -19,6 +20,14 @@ export function Showcase() {
       <div className="container">
 
         <h1 className="mb-3">Showcase</h1>
+        <hr/>
+
+        <div style={{marginBottom: '100px'}}>
+          <h5>Text Blinds</h5>
+          <div style={{fontSize: '3rem', lineHeight: '1', fontWeight: '600'}}>
+            <TextBlindsShowcase/>
+          </div>
+        </div>
         <hr/>
 
         <h5 className="mb-3">Gallery</h5>

@@ -14,7 +14,8 @@
 
 .heroGraph {
   position: sticky;
-  top: 5rem;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
 }
 
@@ -90,8 +91,11 @@
   margin: 80px 0 200px;
 }
 
-.TitleWrapper {
+.titleWrapper {
   padding: 5vh 0 20vh;
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .titleSub {
