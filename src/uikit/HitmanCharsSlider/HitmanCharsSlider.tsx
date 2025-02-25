@@ -44,7 +44,7 @@ export const HitmanCharsSlider: FC<IHitmanCharsSliderProps> = ({ text, speed = 1
       const randomArray = text.split('').map((_el, i) => i);
       animate2(randomArray);
     }
-  }
+  };
 
   const animate2 = (randomArray: number[]) => {
     animator(randomArray, 2);

@@ -39,13 +39,13 @@ export const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ percentage, radi
   return (
     <svg width={radius*2} height={radius*2} viewBox={`0 0 ${radius*2} ${radius*2}`}>
       {/* Фоновый круг */}
-      <circle cx={radius} cy={radius} r={radius} fill={background} />
+      <circle cx={radius} cy={radius} r={radius} fill={percentage >= 100 ? color : background} opacity={percentage >= 100 ? opacity : '1'} />
 
       {/* Анимированный сектор */}
       <path
         ref={pathRef}
         fill={color}
-        opacity={opacity}
+        opacity={percentage >= 100 ? 0 : opacity}
       />
 
       <circle cx={radius} cy={radius} r="8" fill="#232323"/>
