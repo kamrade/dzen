@@ -3,19 +3,31 @@ import s from './TextBlinds.module.scss';
 
 interface ITextBlindsProps {
   text: string;
+  percentage: number;
 }
 
-export const TextBlinds: FC<ITextBlindsProps> = ({ text }) => {
+export const TextBlinds: FC<ITextBlindsProps> = ({ text, percentage }) => {
 
-  const [innerText, setInnerText] = useState<string>(text);
+  const [foregroundText, setForegroundText] = useState<string>("");
+  const [backgroundText, setBackgroundText] = useState<string>(text);
 
   useEffect(() => {
-    setInnerText(text);
+    setBackgroundText(text);
   }, [text]);
+
+  useEffect(() => {
+    const lettersToShow = Math.round( (text.length / 100) * percentage);
+    setForegroundText(text.slice(0, lettersToShow));
+  }, [percentage, text]);
 
   return (
     <div className={s.TextBlinds}>
-      {innerText}
+      <div className={s.foregroundText}>
+        {foregroundText}
+      </div>
+      <div className={s.backgroundText}>
+        {backgroundText}
+      </div>
     </div>
   )
 }
