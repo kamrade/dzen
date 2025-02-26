@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, HitmanCharsSlider, Card, AnimatedCircle, TextBlinds } from '~/uikit';
+import { Typewriter, Card, AnimatedCircle, TextBlinds } from '~/uikit';
 import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { PortfolioSection } from './PortfolioSection.tsx';
 import { data } from '~/data';
 
 
+const heroText = data.home_page_data.hero_text;
 const scrambledValues = data.scrambledValuesHome;
 const homeCards = data.homeCards;
 const slidesText = [
@@ -16,114 +17,102 @@ const slidesText = [
   "Feedback and Iteration. Continuously monitor the product, collect user feedback, make continuous improvements based on feedback and changing requirements."
 ];
 
-
 export const Home = () => {
 
-  const [slideText, setSlideText] = useState(slidesText[0]);
   const [progress, setProgress] = useState<number>(0);
   const { scrollY } = useScroll({ debounceTime: 10 });
+
   const scrollingColumn = useRef<HTMLDivElement | null>(null);
+  const slidesRefs = useRef<HTMLDivElement[]>([]);
 
   // TODO: Add window resize handler
   const windowHeight = window.innerHeight;
   const scrollingColumnHeight = scrollingColumn.current?.getBoundingClientRect().height || 0;
 
   useEffect(() => {
-    const percentage = parseFloat((scrollY / (scrollingColumnHeight - windowHeight)).toFixed(2))*100;
+    const percentage = parseFloat((scrollY / (scrollingColumnHeight - windowHeight)).toFixed(6))*100;
     setProgress( percentage );
-    console.log(percentage);
   }, [scrollingColumn, scrollY, windowHeight]);
 
   useEffect(() => {
-    if (progress >= 0 && progress < 25) {
-      setSlideText(slidesText[0]);
-    } else if (progress >= 25 && progress < 50) {
-      setSlideText(slidesText[1]);
-    } else if (progress >= 50 && progress < 75) {
-      setSlideText(slidesText[2]);
-    } else {
-      setSlideText(slidesText[3]);
-    }
-  }, [progress]);
+    const currentScroll = window.innerHeight + scrollY;
+    for (let i = 0; i < slidesRefs.current.length; i++) {
+      const top = slidesRefs.current[i].getBoundingClientRect().top;
+      const height = slidesRefs.current[i].getBoundingClientRect().height;
 
-  const getPercentage = (percentage: number, i: number) => {
-    if (i === 0) {
-     return percentage * 4 + 10;
-    }
-    if (i === 1) {
-      return (percentage - 25) * 4 + 10;
-    }
-    if (i === 2) {
-      return (percentage - 50) * 4 + 10;
-    }
-    if (i === 3) {
-      return (percentage - 75) * 4 + 10;
-    }
+      console.log(`Current Scroll:`, currentScroll);
+      console.log(`Element ${i}:`, top + currentScroll - windowHeight, top + currentScroll + height - windowHeight);
 
-  }
+    }
+    console.log("---");
+  }, [scrollY]);
+
+  useEffect(() => {
+    slidesRefs.current.forEach((ref, index) => {
+      console.log(`Element ${ index }:`, ref.getBoundingClientRect().top, ref.getBoundingClientRect().height);
+    });
+  }, []);
+
 
   return (
     <div className={s.HomePage}>
       <div className="container">
-        <div>
 
+        <div className={s.hero} ref={scrollingColumn}>
 
-          <div className={s.heroRow}>
-
-            <div className={s.heroColumn}>
-              <div className={s.titleWrapper} >
-                <h1 className={s.title} style={{ transform: `translateY(${ -1 * (scrollY / 50) }px)`, }}>
-                  <div>{data.heroLines[0]}</div>
-                  <div>{data.heroLines[1]}</div>
-                  <div>{data.heroLines[2]}</div>
-
-                  <div className={s.titleLabelAnchor}>
-                    <div className={s.titleLabel}>
-                      <ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />
-                    </div>
-                  </div>
-                </h1>
-              </div>
-            </div>
-
-
-            <div className={s.heroColumn} ref={scrollingColumn}>
-              <div className={s.heroGraph}>
-                <AnimatedCircle
-                  percentage={progress}
-                  radius={160}
-                  color={"#EA7871"}
-                  background={"transparent"}
-                  opacity={0.5}
-                />
-              </div>
-              <div className={s.heroSlides}>
-                {slidesText.map((heroSlide, i) => (
-                  <div className={s.heroSlide} key={i}>
-                    <TextBlinds text={heroSlide} percentage={ getPercentage(progress, i) }></TextBlinds>
-                  </div>
-                ))}
-
-              </div>
-            </div>
-
+          <div className={s.titleLabel}>
+            <ScrambledText value={scrambledValues} slideLength={10000} postAnimate postAnimateSensetivity={100} />
           </div>
 
+          <h1 className={s.heroTitle}>
+            <div>{heroText.title1}</div>
+            <div className={s.textEmp}>{heroText.title2}</div>
+          </h1>
 
-          <div className={s.cards}>
+          <div className={s.heroText}>
             <div className="row">
-              {homeCards.map((card, i) => (
-                <div className="col-lg-12 col-xl-6" key={i}>
-                  <Card image={card.image} title={card.title}>
-                    {card.text}
-                  </Card>
-                </div>
-              ))}
+              <div className="col-md-12">
+                {heroText.text}
+              </div>
             </div>
           </div>
 
+
+          <div className={s.heroGraph}>
+            <div className={s.heroGraphInner}>
+              <AnimatedCircle
+                percentage={progress}
+                radius={260}
+                color={'#EA7871'}
+                background={'#E9EFF6'}
+                opacity={0.5}
+              />
+            </div>
+          </div>
+
+          <div className={s.heroSlides}>
+            {slidesText.map((heroSlide, i) => (
+              <div className={s.heroSlide} key={i} ref={(el: HTMLDivElement) => (slidesRefs.current[i] = el)}>
+                <TextBlinds text={heroSlide} percentage={progress} background={"var(--color-bg-control-100)"} foreground={"var(--color-text-body)"}></TextBlinds>
+              </div>
+            ))}
+
+          </div>
         </div>
 
+
+
+        <div className={s.cards}>
+          <div className="row">
+            {homeCards.map((card, i) => (
+              <div className="col-lg-12 col-xl-6" key={i}>
+                <Card image={card.image} title={card.title}>
+                  {card.text}
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
 
 
         <h2 className={s.openingQuote}>
@@ -138,7 +127,7 @@ export const Home = () => {
       </div>
 
       <PortfolioSection />
-      
+
       <div className={s.BackgroundPattern}></div>
 
     </div>

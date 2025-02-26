@@ -4,9 +4,11 @@ import s from './TextBlinds.module.scss';
 interface ITextBlindsProps {
   text: string;
   percentage: number;
+  background: string;
+  foreground: string;
 }
 
-export const TextBlinds: FC<ITextBlindsProps> = ({ text, percentage }) => {
+export const TextBlinds: FC<ITextBlindsProps> = ({ text, percentage, background, foreground }) => {
 
   const [foregroundText, setForegroundText] = useState<string>("");
   const [backgroundText, setBackgroundText] = useState<string>(text);
@@ -22,10 +24,10 @@ export const TextBlinds: FC<ITextBlindsProps> = ({ text, percentage }) => {
 
   return (
     <div className={s.TextBlinds}>
-      <div className={s.foregroundText}>
+      <div className={s.foregroundText} style={{ color: foreground }}>
         {foregroundText}
       </div>
-      <div className={s.backgroundText}>
+      <div className={s.backgroundText} style={{ color: background }}>
         {backgroundText}
       </div>
     </div>
