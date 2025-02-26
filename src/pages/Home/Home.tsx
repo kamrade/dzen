@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { Typewriter, Card, AnimatedCircle, TextBlinds } from '~/uikit';
+import { Typewriter, Card, AnimatedCircle, TextBlinds, useWindowSize } from '~/uikit';
 import { useScroll } from '~/hooks';
 import s from './Home.module.scss';
 import { PortfolioSection } from './PortfolioSection.tsx';
@@ -10,16 +10,23 @@ import { data } from '~/data';
 const heroText = data.home_page_data.hero_text;
 const scrambledValues = data.scrambledValuesHome;
 const homeCards = data.homeCards;
+const slidesTitle = [
+  "Research and Ideation.",
+  "Prototyping and design.",
+  "Development and testing.",
+  "Feedback and Iteration."
+];
 const slidesText = [
-  "Research and Ideation. Understand the target audience, analyze the competitive landscape. Generate ideas and concepts, explore potential solutions.",
-  "Prototyping and design. Testing and gathering feedback. Improvements based on testing. Visual elements and layout. Seamless and enjoyable user journey.",
-  "Development and testing. Implement the UI design, integration. Check the user stories and test cases, ensure the product meets users expectations.",
-  "Feedback and Iteration. Continuously monitor the product, collect user feedback, make continuous improvements based on feedback and changing requirements."
+  "Understand the target audience, analyze the competitive landscape. Generate ideas and concepts, explore potential solutions.",
+  "Testing and gathering feedback. Improvements based on testing. Visual elements and layout. Seamless and enjoyable user journey.",
+  "Implement the UI design, integration. Check the user stories and test cases, ensure the product meets users expectations.",
+  "Continuously monitor the product, collect user feedback, make continuous improvements based on feedback and changing requirements."
 ];
 
 export const Home = () => {
 
   const [progress, setProgress] = useState<number>(0);
+  const [progresses, setProgresses] = useState<number[]>([])
   const { scrollY } = useScroll({ debounceTime: 10 });
 
   const scrollingColumn = useRef<HTMLDivElement | null>(null);
@@ -29,10 +36,17 @@ export const Home = () => {
   const windowHeight = window.innerHeight;
   const scrollingColumnHeight = scrollingColumn.current?.getBoundingClientRect().height || 0;
 
+
+  // EFFECTS
+
+  useEffect(() => {
+    setProgresses( new Array(slidesRefs.current.length).fill(0));
+  }, []);
+
   useEffect(() => {
     const percentage = parseFloat((scrollY / (scrollingColumnHeight - windowHeight)).toFixed(6))*100;
     setProgress( percentage );
-  }, [scrollingColumn, scrollY, windowHeight]);
+  }, [scrollingColumn, scrollY, windowHeight, scrollingColumnHeight]);
 
   useEffect(() => {
     const currentScroll = window.innerHeight + scrollY;
@@ -40,19 +54,20 @@ export const Home = () => {
       const top = slidesRefs.current[i].getBoundingClientRect().top;
       const height = slidesRefs.current[i].getBoundingClientRect().height;
 
-      console.log(`Current Scroll:`, currentScroll);
-      console.log(`Element ${i}:`, top + currentScroll - windowHeight, top + currentScroll + height - windowHeight);
+      const currStart = top + currentScroll - windowHeight;
+      const currEnd = top + currentScroll + height - windowHeight;
 
+      if (currentScroll > currStart && currentScroll <= currEnd) {
+        const onePercent = ((currEnd) - (currStart + height*0.25)) / 100;
+        let progress = (currentScroll - currStart) / onePercent;
+        const innerProgresses = [...progresses];
+        innerProgresses[i] = progress;
+        progress = progress > 100 ? 100 : progress;
+        setProgresses(innerProgresses);
+      }
     }
     console.log("---");
   }, [scrollY]);
-
-  useEffect(() => {
-    slidesRefs.current.forEach((ref, index) => {
-      console.log(`Element ${ index }:`, ref.getBoundingClientRect().top, ref.getBoundingClientRect().height);
-    });
-  }, []);
-
 
   return (
     <div className={s.HomePage}>
@@ -93,13 +108,19 @@ export const Home = () => {
           <div className={s.heroSlides}>
             {slidesText.map((heroSlide, i) => (
               <div className={s.heroSlide} key={i} ref={(el: HTMLDivElement) => (slidesRefs.current[i] = el)}>
-                <TextBlinds text={heroSlide} percentage={progress} background={"var(--color-bg-control-100)"} foreground={"var(--color-text-body)"}></TextBlinds>
+                <div className={s.slideTitle}>{slidesTitle[i]}</div>
+                <TextBlinds
+                  text={heroSlide}
+                  percentage={progresses[i]}
+                  background={"var(--color-bg-control-100)"}
+                  foreground={"var(--color-text-body)"}
+                />
+                <div className={s.heroSlideNumber}>0{i+1}</div>
               </div>
             ))}
 
           </div>
         </div>
-
 
 
         <div className={s.cards}>

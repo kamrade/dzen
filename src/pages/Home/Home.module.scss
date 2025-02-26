@@ -59,6 +59,10 @@
     position: relative;
     left: 50%;
     width: 50%;
+    @include media-breakpoint-down(lg) {
+      left: 0;
+      padding: 2rem 0;
+    }
   }
 }
 
@@ -68,9 +72,32 @@
   font-weight: 600;
 
   .heroSlide {
-    min-height: 100vh;
+    position: relative;
+    min-height: 80vh;
     width: 50%;
+    margin-bottom: 20vh;
+
+    @include media-breakpoint-down(lg) {
+      width: 75%;
+    }
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
   }
+
+  .slideTitle {
+    color: var(--color-text-emphasis);
+  }
+}
+
+.heroSlideNumber {
+  position: absolute;
+  top: 0.25rem;
+  left: -4rem;
+  font-size: 1rem;
+  padding: .25rem;
+  background: var(--color-bg-emp-100);
+  color: var(--color-text-body-inv);
 }
 
 .openingQuote {
