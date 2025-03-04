@@ -1,0 +1,60 @@
+@import "~/styles/variables";
+@import "~/styles/colors";
+
+.TextBlinds {
+  position: relative;
+
+  .foregroundText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    color: var(--color-text-emphasis);
+
+    &:not(.foregroundMax) {
+
+      > span {
+        &:nth-last-child(9) {
+          opacity: 0.9;
+        }
+
+        &:nth-last-child(8) {
+          opacity: 0.8;
+        }
+
+        &:nth-last-child(7) {
+          opacity: 0.7;
+        }
+
+        &:nth-last-child(6) {
+          opacity: 0.6;
+        }
+
+        &:nth-last-child(5) {
+          opacity: 0.5;
+        }
+
+        &:nth-last-child(4) {
+          opacity: 0.4;
+        }
+
+        &:nth-last-child(3) {
+          opacity: 0.3;
+        }
+
+        &:nth-last-child(2) {
+          opacity: 0.2;
+        }
+
+        &:last-child {
+          opacity: 0.1;
+        }
+      }
+    }
+  }
+  .backgroundText {
+    color: var(--color-bg-control-100);
+  }
+}

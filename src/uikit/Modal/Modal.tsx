@@ -12,8 +12,6 @@ export interface IModalProps {
 
 export const Modal: FC<IModalProps> = ({ children, isShowed, hideModal, hideOnEscape }) => {
 
-  // console.log(name);
-
   useLockBodyScroll(isShowed);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -31,15 +29,15 @@ export const Modal: FC<IModalProps> = ({ children, isShowed, hideModal, hideOnEs
   }, [hideOnEscape, handleKeyDown])
 
   const modalClickHandler: MouseEventHandler<HTMLDivElement> = (e) => {
-    (e.target as HTMLElement).classList.contains('ModalContent') && hideModal();
+    (e.target as HTMLElement).classList.contains('modalContent') && hideModal();
   }
 
   return createPortal(
     isShowed &&
       (
         <div className={s.ModalRoot}>
-          <div className={s.ModalBackdrop} />
-          <div className={`${s.ModalContent} ModalContent`} onMouseDown={modalClickHandler}>
+          <div className={s.modalBackdrop} />
+          <div className={`${s.modalContent} modalContent`} onMouseDown={modalClickHandler}>
             {children}
           </div>
         </div>

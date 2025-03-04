@@ -63,7 +63,7 @@ export const About = () => {
           </div>
 
           <h3 className={s.quote}>
-            craft user-friendly and visually appealing digital experiences by understanding user needs, conducting research, and collaborating with teams. shaping intuitive designs that align with both user expectations and business goals through prototyping and iterative testing.
+            Craft user-friendly and visually appealing digital experiences by understanding user needs, conducting research, and collaborating with teams. shaping intuitive designs that align with both user expectations and business goals through prototyping and iterative testing.
           </h3>
 
         </div>

@@ -1,10 +1,9 @@
 import { useState, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import s from './Header.module.scss';
 import { StickyHeader, Drawer, TextSwitcherBoolean, MobileMenu } from '~/uikit';
-import { ScrambledText } from '@kamrade/react-scrambled-text';
-import { scrambledValues } from './scrambled-values';
 import { switcherValues } from './switcher-values';
+import { data } from '~/data';
 
 export const Header = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
@@ -16,13 +15,13 @@ export const Header = () => {
         <header className={s.Header}>
           <div className="container">
             <div className={s.HeaderContent}>
-              <h6 className={s.HeaderTitle}>
-                Denis Mikhailov.
-                <span className={s.HeaderTitleEmphasis}>Seasoned UX Designer</span>
-                <span className={s.HeaderTitleDynamic}>
-                  <ScrambledText value={scrambledValues} slideLength={2000} postAnimate postAnimateSensetivity={500} />
-                </span>
-              </h6>
+
+              <Link to={"/"}>
+                <h6 className={s.HeaderTitle}>
+                  {data.mainTitle.name}
+                  <span className={s.HeaderTitleEmphasis}>{data.mainTitle.description}</span>
+                </h6>
+              </Link>
 
               <div className={s.headerNavMobile} ref={switcherRef}>
                  <TextSwitcherBoolean values={switcherValues} currentValue={isDrawerVisible} setValue={setIsDrawerVisible} />
