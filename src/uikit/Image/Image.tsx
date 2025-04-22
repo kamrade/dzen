@@ -17,7 +17,11 @@ export const Image: FC<IImageProps> = ({ showGallery, image, title, chip, width 
       { title && chip &&
         <div className={s.ImageLabel}>
           { title && <p className={s.ImageTitle}>{title}</p> }
-          { chip && <p className={s.ImageChip}>{chip}</p> }
+          { chip &&
+            chip.split(",").map((singleChip) => (
+              <><p className={s.ImageChip}>{singleChip}</p>{' '}</>
+            ))
+          }
         </div>
       }
     </div>

@@ -3,6 +3,7 @@ $image-border-radius: 6px;
 .Image {
   border-radius: $image-border-radius;
   cursor: pointer;
+  border: 1px solid var(--color-line-base-050);
 }
 
 .ImageEl {
@@ -11,14 +12,16 @@ $image-border-radius: 6px;
 }
 
 .ImageLabel {
-  padding: 10px 0 0;
+  margin: .25rem;
+  padding: .5rem;
   align-items: center;
+  background: var(--color-bg-control-100);
+  border-radius: var(--border-radius-control-sm);
 }
 
 .ImageTitle {
   font-size: .875rem;
   line-height: 1.25rem;
-  font-weight: 600;
   margin: 0 4px 0 0;
 }
 

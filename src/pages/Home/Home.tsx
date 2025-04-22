@@ -4,29 +4,17 @@ import { Typewriter, AnimatedCircle, TextBlinds } from '~/uikit';
 import { useScroll, useWindowSize } from '~/hooks';
 import s from './Home.module.scss';
 import { PortfolioSection } from './PortfolioSection.tsx';
+import { GallerySection } from './GallerySection.tsx';
 import { data } from '~/data';
 
 
 const heroText = data.home_page_data.hero_text;
 const scrambledValues = data.scrambledValuesHome;
-const slidesTitle = [
-  "Research and Ideation.",
-  "Prototyping and design.",
-  "Development and testing.",
-  "Feedback and Iteration."
-];
-const slidesText = [
-  "Understand the target audience, analyze the competitive landscape. Generate ideas and concepts, explore potential solutions.",
-  "Testing and gathering feedback. Improvements based on testing. Visual elements and layout. Seamless and enjoyable user journey.",
-  "Implement the UI design, integration. Check the user stories and test cases, ensure the product meets users expectations.",
-  "Continuously monitor the product, collect user feedback, make continuous improvements based on feedback and changing requirements."
-];
-const slideTags = [
-  ["User Stories", "Moodboard", "Mind Maps", "User Journey Maps", "Characters Creation", "Empathy Cards", "Problem Statement"],
-  ["Test Cases (for TDD)", "Wireframes", "Interactive prototypes", "Usability testing", "A/B Testing", "Interviews"],
-  ["UIKit", "Design System", "Corner Cases", "Test Scenarios", "TDD", "Clean Architecture", "MVP", "FSD", "SOLID", "GRASP"],
-  ["Agile Development", "Feedback and Analytics", "Double Diamond", "Lean UX", "Agile Methodology", "User-Centered Design (UCD)", "Kano Model ", "HEART Framework", "MMP"]
-];
+const slidesTitle = data.home_page_data.slides_title;
+const slidesText = data.home_page_data.slider_text;
+const slideTags = data.home_page_data.slide_tags;
+const typewriterText = data.home_page_data.typewriter_text;
+
 
 export const Home = () => {
 
@@ -65,8 +53,6 @@ export const Home = () => {
 
   // EFFECT :: react to scroll
   useEffect(() => {
-
-
     const startQuote = (openingQuoteRef?.current?.offsetTop || 0) - windowHeight;
     const endQuote   = (openingQuoteRef?.current?.offsetTop || 0) + (openingQuoteRef?.current?.getBoundingClientRect().height || 0);
     if ((scrollY >= startQuote && scrollY <= endQuote )) {
@@ -98,6 +84,7 @@ export const Home = () => {
       }
     }
   }, [scrollY]);
+
 
   return (
     <div className={s.HomePage}>
@@ -158,33 +145,18 @@ export const Home = () => {
         </div>
 
 
-        {/*<div className={s.cards}>*/}
-        {/*  <div className="row">*/}
-        {/*    {homeCards.map((card, i) => (*/}
-        {/*      <div className="col-lg-12 col-xl-6" key={i}>*/}
-        {/*        <Card image={card.image} title={card.title}>*/}
-        {/*          {card.text}*/}
-        {/*        </Card>*/}
-        {/*      </div>*/}
-        {/*    ))}*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-
-
-        <h2 className={s.openingQuote} ref={openingQuoteRef}>
-          {isQuoteShowed &&
-            <Typewriter
-              maxTimeout={50}
-              defaultInterval={5}
-              text="Create products and services that meet users' needs and preferences. It emphasizes empathy, usability, satisfaction, inclusivity, and
-              sustainability, ensuring solutions are intuitive, accessible, and beneficial for both users and organizations."
-            />
-          }
+        <h2 className={s.openingQuote} ref={openingQuoteRef} style={{ opacity: isQuoteShowed ? '1' : '0' }}>
+          <Typewriter
+            maxTimeout={50}
+            defaultInterval={5}
+            text={typewriterText}
+          />
         </h2>
 
 
       </div>
 
+      <GallerySection />
       <PortfolioSection />
 
       <div className={s.BackgroundPattern}></div>
