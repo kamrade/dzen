@@ -1,10 +1,24 @@
+@import "~/styles/variables";
+@import "~/styles/colors";
+
 .masonry {
   column-count: 3;
-  column-gap: 2rem;
+  column-gap: .5rem;
+  @include media-breakpoint-down(lg) {
+    column-count: 2;
+    column-gap: .5rem;
+  }
+  @include media-breakpoint-down(md) {
+    column-count: 1;
+  }
+
 }
 
 .masonry .image {
   width: 100%;
-  margin-bottom: 1.25rem;
+  margin-bottom: .5rem;
   break-inside: avoid;
+  @include media-breakpoint-down(lg) {
+    margin-bottom: 0.125rem;
+  }
 }

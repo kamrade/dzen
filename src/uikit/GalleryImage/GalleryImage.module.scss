@@ -4,7 +4,6 @@ $gallery-image-border-radius: 8px;
   border: none;
   transition: background .2s ease-in-out;
   background-color: rgba(255, 255, 255, 0.6);
-  margin-bottom: .25rem;
   padding: .5rem .5rem 1rem;
   display: inline-flex;
   border-radius: 12px;
@@ -30,4 +29,30 @@ $gallery-image-border-radius: 8px;
   width: 100%;
   border-radius: $gallery-image-border-radius;
   margin: 0;
+}
+
+.ImageHeading {
+  color: var(--color-text-body);
+  margin-bottom: .5rem;
+}
+
+.ImageTitle {
+  color: var(--color-text-body);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: .375rem;
+}
+
+.ImageChip {
+  display: inline-block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-weight: 600;
+  line-height: 1rem;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--color-bg-neutral-100);
+  color: white;
+  margin: 0 .25rem 0 0;
 }

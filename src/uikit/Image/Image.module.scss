@@ -12,29 +12,9 @@ $image-border-radius: 6px;
 }
 
 .ImageLabel {
-  margin: .25rem;
+  margin: .125rem;
   padding: .5rem;
   align-items: center;
   background: var(--color-bg-control-100);
   border-radius: var(--border-radius-control-sm);
-}
-
-.ImageTitle {
-  font-size: .875rem;
-  line-height: 1.25rem;
-  margin: 0 4px 0 0;
-}
-
-.ImageChip {
-  display: inline-block;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  font-weight: 600;
-  line-height: 1rem;
-  padding: 1px 4px;
-  border-radius: 4px;
-  background: var(--color-bg-neutral-100);
-  color: white;
-  margin: 0;
 }

@@ -20,7 +20,7 @@ export const B2bCardsSection: FC<B2bCardsSectionProps> = ({ sectionNumber }) => 
 
     <div className="row mb-5">
       <div className="offset-xl-8 col-xl-16">
-        <h2>B2B Cards. Issuing payment cards and provides solutions enabling clients to launch their own card programs</h2>
+        <h2 className={s.title}>B2B Cards. Issuing payment cards and provides solutions enabling clients to launch their own card programs</h2>
       </div>
     </div>
 

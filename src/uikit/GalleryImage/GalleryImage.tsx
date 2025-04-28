@@ -37,8 +37,6 @@ export const GalleryImage: FC<IGalleryGenericProps> =
       <Image
         showGallery={() => setIsGallery(true)}
         image={previewImage}
-        title={previewTitle}
-        chip={previewChip}
         width={previewWidth}
       />
 
@@ -53,8 +51,21 @@ export const GalleryImage: FC<IGalleryGenericProps> =
 
               {images.map((image, i) => (
                 <div className={s.ImageWrapper} key={i}>
+                  {previewTitle && previewChip &&
+                    <div className={s.ImageHeading}>
+                      <a href={image.src} target={'_blank'}>
+                        <h1 className={s.ImageTitle}>{previewTitle}</h1>
+                      </a>
+                      <div>
+                        {previewChip?.split(',').map((singleChip, i) => (
+                          <p key={i} className={s.ImageChip}>{singleChip}</p>
+                        ))}
+                      </div>
+                    </div>
+                  }
                   <a href={image.src} target={"_blank"}>
-                    <img src={image.src} alt={image.alt} className={s.ImageElement} ref={ image.src === previewImage.src ? activeImageRef : null } />
+                    <img src={image.src} alt={image.alt} className={s.ImageElement}
+                         ref={image.src === previewImage.src ? activeImageRef : null} />
                   </a>
                 </div>
               ))}

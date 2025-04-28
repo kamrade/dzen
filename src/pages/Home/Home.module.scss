@@ -61,11 +61,13 @@
 
   .heroGraphInner {
     position: relative;
-    left: 50%;
+    left: 100%;
+    transform: translateX(-100%);
     width: 50%;
+
     @include media-breakpoint-down(lg) {
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(50%);
       display: inline-block;
       width: auto;
     }
@@ -108,7 +110,7 @@
 
 .heroSlideNumber {
   position: absolute;
-  top: 0.25rem;
+  top: .5rem;
   left: -3rem;
   font-size: 1rem;
   padding: .25rem;

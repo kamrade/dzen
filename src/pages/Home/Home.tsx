@@ -48,6 +48,10 @@ export const Home = () => {
 
   // EFFECT :: Initiate slidesRefs percentage
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'; // отключает автоматическое восстановление
+    }
+    window.scrollTo(0, 0); // мгновенный скролл в начало
     setProgresses( new Array(slidesRefs.current.length).fill(0));
   }, []);
 
@@ -75,7 +79,7 @@ export const Home = () => {
       const currEnd = top + currentScroll + height - windowHeight;
 
       if (currentScroll > currStart && currentScroll <= currEnd) {
-        const onePercent = ((currEnd) - (currStart + height*0.25)) / 100;
+        const onePercent = ((currEnd) - (currStart + height*0.05)) / 100;
         let progress = (currentScroll - currStart) / onePercent;
         const innerProgresses = [...progresses];
         innerProgresses[i] = progress;
@@ -157,6 +161,7 @@ export const Home = () => {
       </div>
 
       <GallerySection />
+
       <PortfolioSection />
 
       <div className={s.BackgroundPattern}></div>
