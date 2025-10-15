@@ -23,8 +23,9 @@ export const About = () => {
               <div className="text-secondary">{d.langs}</div>
             </div>
           </div>
-
+          
           <hr className={s.divider} />
+          <a className="mb-5" href="https://github.com/kamrade">My Github</a>
 
           <div className="row">
             {d.skills.map((skill, i) => (
